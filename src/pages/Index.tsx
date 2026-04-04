@@ -1,10 +1,11 @@
 import efbetLogo from "@/assets/efbet-logo.png";
+import winbetLogo from "@/assets/winbet-logo.png";
 
 const casinos = Array.from({ length: 17 }, (_, i) => ({
   id: i + 1,
-  name: i === 0 ? "Efbet" : `Casino ${i + 1}`,
+  name: i === 0 ? "Efbet" : i === 1 ? "Winbet" : `Casino ${i + 1}`,
   url: "#",
-  logo: i === 0 ? efbetLogo : "/placeholder.svg",
+  logo: i === 0 ? efbetLogo : i === 1 ? winbetLogo : "/placeholder.svg",
 }));
 
 const Index = () => {
