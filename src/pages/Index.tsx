@@ -1,16 +1,51 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+const casinos = Array.from({ length: 17 }, (_, i) => ({
+  id: i + 1,
+  name: `Casino ${i + 1}`,
+  url: "#",
+}));
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
+const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
+    <div className="min-h-screen py-10 px-4">
+      <header className="text-center mb-12">
+        <h1 className="text-4xl md:text-5xl font-bold text-primary tracking-tight">
+          All Casinos BG
+        </h1>
+      </header>
+
+      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {casinos.map((casino) => (
+          <a
+            key={casino.id}
+            href={casino.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center gap-4 rounded-full px-3 py-3 transition-all duration-300 hover:scale-[1.03] hover:shadow-[var(--pill-glow)]"
+            style={{
+              background: "var(--pill-bg)",
+              border: "1px solid var(--pill-border)",
+            }}
+          >
+            <div className="h-12 w-24 shrink-0 rounded-full bg-muted flex items-center justify-center overflow-hidden">
+              <img
+                src="/placeholder.svg"
+                alt={casino.name}
+                className="h-full w-full object-cover opacity-60 group-hover:opacity-100 transition-opacity"
+              />
+            </div>
+
+            <span className="flex-1 text-sm font-semibold text-primary truncate">
+              {casino.name}
+            </span>
+
+            <span className="shrink-0 rounded-full bg-primary px-4 py-1.5 text-xs font-bold text-primary-foreground transition-colors group-hover:bg-accent">
+              Visit Site
+            </span>
+          </a>
+        ))}
+      </div>
     </div>
   );
 };
-
-const Index = PlaceholderIndex;
 
 export default Index;
