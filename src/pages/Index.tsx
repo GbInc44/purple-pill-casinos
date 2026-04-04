@@ -31,7 +31,7 @@ const Index = () => {
           >
             <div className="h-12 w-24 shrink-0 rounded-full bg-muted flex items-center justify-center overflow-hidden">
               <img
-                src="/placeholder.svg"
+                src={casino.logo}
                 alt={casino.name}
                 className="h-full w-full object-cover opacity-60 group-hover:opacity-100 transition-opacity"
               />
