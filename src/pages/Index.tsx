@@ -8,7 +8,7 @@ const Index = () => {
   return (
     <div className="min-h-screen py-10 px-4">
       <header className="text-center mb-12">
-        <h1 className="text-4xl md:text-5xl tracking-widest uppercase font-bold bg-primary-foreground text-destructive-foreground" style={{ fontFamily: "'Orbitron', sans-serif" }}>
+        <h1 className="text-4xl md:text-5xl tracking-widest uppercase font-bold text-destructive-foreground bg-inherit" style={{ fontFamily: "'Orbitron', sans-serif" }}>
           All Casinos BG
         </h1>
       </header>
@@ -50,7 +50,7 @@ const Index = () => {
           <span className="inline-flex items-center justify-center h-8 w-8 rounded-full border-2 border-destructive text-destructive font-bold text-sm">
             18+
           </span>
-          <span className="font-semibold">18+ | Отговорна игра</span>
+          <span className="font-semibold">Отговорна игра</span>
         </div>
         <p>Сайтът е предназначен само за лица над 18 години. Хазартът крие риск от зависимост. Играйте отговорно.</p>
         <p className="mt-1">
