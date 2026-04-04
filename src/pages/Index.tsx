@@ -23,13 +23,13 @@ const Index = () => {
             href={casino.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center gap-4 rounded-full px-3 py-3 transition-all duration-300 hover:scale-[1.03] hover:shadow-[var(--pill-glow)]"
+            className="group flex flex-col items-center gap-3 rounded-2xl px-4 py-4 transition-all duration-300 hover:scale-[1.03] hover:shadow-[var(--pill-glow)]"
             style={{
               background: "var(--pill-bg)",
               border: "1px solid var(--pill-border)",
             }}
           >
-            <div className="h-12 w-24 shrink-0 rounded-full bg-muted flex items-center justify-center overflow-hidden">
+            <div className="h-20 w-full rounded-xl bg-muted flex items-center justify-center overflow-hidden">
               <img
                 src={casino.logo}
                 alt={casino.name}
@@ -37,11 +37,11 @@ const Index = () => {
               />
             </div>
 
-            <span className="flex-1 text-sm font-semibold text-primary truncate">
+            <span className="text-sm font-semibold text-primary">
               {casino.name}
             </span>
 
-            <span className="shrink-0 rounded-full bg-primary px-4 py-1.5 text-xs font-bold text-primary-foreground transition-colors group-hover:bg-accent">
+            <span className="rounded-full bg-primary px-4 py-1.5 text-xs font-bold text-primary-foreground transition-colors group-hover:bg-accent">
               Visit Site
             </span>
           </a>
