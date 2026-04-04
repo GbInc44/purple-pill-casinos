@@ -1,6 +1,6 @@
 import efbetLogo from "@/assets/efbet-logo.png";
 import winbetLogo from "@/assets/winbet-logo.png";
-import logo8888 from "@/assets/8888-logo.jpg";
+import logo8888 from "@/assets/logo-8888-v2.jpg";
 import palmsbetLogo from "@/assets/palmsbet-logo.png";
 
 const casinos = Array.from({ length: 17 }, (_, i) => ({
