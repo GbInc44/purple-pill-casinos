@@ -44,6 +44,27 @@ const Index = () => {
           </a>
         ))}
       </div>
+
+      <footer className="max-w-6xl mx-auto mt-16 mb-8 text-center text-muted-foreground text-xs leading-relaxed">
+        <div className="flex items-center justify-center gap-2 mb-2">
+          <span className="inline-flex items-center justify-center h-8 w-8 rounded-full border-2 border-destructive text-destructive font-bold text-sm">
+            18+
+          </span>
+          <span className="font-semibold">18+ | Отговорна игра</span>
+        </div>
+        <p>Сайтът е предназначен само за лица над 18 години. Хазартът крие риск от зависимост. Играйте отговорно.</p>
+        <p className="mt-1">
+          Помощ:{" "}
+          <a
+            href="https://www.begambleaware.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary underline hover:text-accent transition-colors"
+          >
+            https://www.begambleaware.org/
+          </a>
+        </p>
+      </footer>
     </div>
   );
 };
