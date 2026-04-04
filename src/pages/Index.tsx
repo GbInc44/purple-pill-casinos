@@ -6,12 +6,13 @@ import sesameLogo from "@/assets/sesame-logo.png";
 import inbetLogo from "@/assets/inbet-logo.png";
 import alphawinLogo from "@/assets/alphawin-logo.webp";
 import alphawinLogo2 from "@/assets/alphawin-logo-2.webp";
+import mrbitLogo from "@/assets/mrbit-logo.webp";
 
 const casinos = Array.from({ length: 17 }, (_, i) => ({
   id: i + 1,
-  name: i === 0 ? "Efbet" : i === 1 ? "Winbet" : i === 2 ? "8888" : i === 3 ? "Palms Bet" : i === 4 ? "Sesame" : i === 5 ? "Inbet" : i === 6 ? "Alphawin" : i === 7 ? "Alphawin" : `Casino ${i + 1}`,
+  name: i === 0 ? "Efbet" : i === 1 ? "Winbet" : i === 2 ? "8888" : i === 3 ? "Palms Bet" : i === 4 ? "Sesame" : i === 5 ? "Inbet" : i === 6 ? "Alphawin" : i === 7 ? "Alphawin" : i === 8 ? "MrBit" : `Casino ${i + 1}`,
   url: "#",
-  logo: i === 0 ? efbetLogo : i === 1 ? winbetLogo : i === 2 ? logo8888 : i === 3 ? palmsbetLogo : i === 4 ? sesameLogo : i === 5 ? inbetLogo : i === 6 ? alphawinLogo : i === 7 ? alphawinLogo2 : "/placeholder.svg",
+  logo: i === 0 ? efbetLogo : i === 1 ? winbetLogo : i === 2 ? logo8888 : i === 3 ? palmsbetLogo : i === 4 ? sesameLogo : i === 5 ? inbetLogo : i === 6 ? alphawinLogo : i === 7 ? alphawinLogo2 : i === 8 ? mrbitLogo : "/placeholder.svg",
 }));
 
 const Index = () => {
