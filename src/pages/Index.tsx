@@ -8,7 +8,7 @@ const Index = () => {
   return (
     <div className="min-h-screen py-10 px-4">
       <header className="text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold text-primary tracking-tight">
+        <h1 className="text-4xl md:text-5xl font-black tracking-widest uppercase text-white" style={{ fontFamily: "'Orbitron', sans-serif" }}>
           All Casinos BG
         </h1>
       </header>
