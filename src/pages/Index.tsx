@@ -50,7 +50,7 @@ const Index = () => {
           <span className="inline-flex items-center justify-center h-8 w-8 rounded-full border-2 border-destructive text-destructive font-bold text-sm">
             18+
           </span>
-          <span className="font-semibold">18+ | Отговорна игра</span>
+          <span className="font-semibold">Отговорна игра</span>
         </div>
         <p>Сайтът е предназначен само за лица над 18 години. Хазартът крие риск от зависимост. Играйте отговорно.</p>
         <p className="mt-1">
