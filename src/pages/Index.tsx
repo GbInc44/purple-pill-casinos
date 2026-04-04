@@ -2,12 +2,13 @@ import efbetLogo from "@/assets/efbet-logo.png";
 import winbetLogo from "@/assets/winbet-logo.png";
 import logo8888 from "@/assets/logo-8888-v2.jpg";
 import palmsbetLogo from "@/assets/palmsbet-logo-new.png";
+import sesameLogo from "@/assets/sesame-logo.png";
 
 const casinos = Array.from({ length: 17 }, (_, i) => ({
   id: i + 1,
-  name: i === 0 ? "Efbet" : i === 1 ? "Winbet" : i === 2 ? "8888" : i === 3 ? "Palms Bet" : `Casino ${i + 1}`,
+  name: i === 0 ? "Efbet" : i === 1 ? "Winbet" : i === 2 ? "8888" : i === 3 ? "Palms Bet" : i === 4 ? "Sesame" : `Casino ${i + 1}`,
   url: "#",
-  logo: i === 0 ? efbetLogo : i === 1 ? winbetLogo : i === 2 ? logo8888 : i === 3 ? palmsbetLogo : "/placeholder.svg",
+  logo: i === 0 ? efbetLogo : i === 1 ? winbetLogo : i === 2 ? logo8888 : i === 3 ? palmsbetLogo : i === 4 ? sesameLogo : "/placeholder.svg",
 }));
 
 const Index = () => {
