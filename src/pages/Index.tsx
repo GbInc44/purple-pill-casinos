@@ -15,12 +15,13 @@ import topwinLogo from "@/assets/topwin-logo.jpg";
 import elitbetLogo from "@/assets/elitbet-logo.png";
 import bethubLogo from "@/assets/bethub-logo.png";
 import everbetLogo from "@/assets/everbet-logo.png";
+import magicbetLogo from "@/assets/magicbet-logo.webp";
 
 const casinos = Array.from({ length: 17 }, (_, i) => ({
   id: i + 1,
-  name: i === 0 ? "Efbet" : i === 1 ? "Winbet" : i === 2 ? "8888" : i === 3 ? "Palms Bet" : i === 4 ? "Sesame" : i === 5 ? "Inbet" : i === 6 ? "Alphawin" : i === 7 ? "MrBit" : i === 8 ? "CBET.bg" : i === 9 ? "Betano" : i === 10 ? "Bet365" : i === 11 ? "Bwin" : i === 12 ? "Topwin" : i === 13 ? "Elitbet" : i === 14 ? "BetHub" : i === 15 ? "Everbet" : `Casino ${i + 1}`,
+  name: i === 0 ? "Efbet" : i === 1 ? "Winbet" : i === 2 ? "8888" : i === 3 ? "Palms Bet" : i === 4 ? "Sesame" : i === 5 ? "Inbet" : i === 6 ? "Alphawin" : i === 7 ? "MrBit" : i === 8 ? "CBET.bg" : i === 9 ? "Betano" : i === 10 ? "Bet365" : i === 11 ? "Bwin" : i === 12 ? "Topwin" : i === 13 ? "Elitbet" : i === 14 ? "BetHub" : i === 15 ? "Everbet" : i === 16 ? "Magic Bet" : `Casino ${i + 1}`,
   url: "#",
-  logo: i === 0 ? efbetLogo : i === 1 ? winbetLogo : i === 2 ? logo8888 : i === 3 ? palmsbetLogo : i === 4 ? sesameLogo : i === 5 ? inbetLogo : i === 6 ? alphawinLogo : i === 7 ? mrbitLogo : i === 8 ? cbetLogo : i === 9 ? betanoLogo : i === 10 ? bet365Logo : i === 11 ? bwinLogo : i === 12 ? topwinLogo : i === 13 ? elitbetLogo : i === 14 ? bethubLogo : i === 15 ? everbetLogo : "/placeholder.svg",
+  logo: i === 0 ? efbetLogo : i === 1 ? winbetLogo : i === 2 ? logo8888 : i === 3 ? palmsbetLogo : i === 4 ? sesameLogo : i === 5 ? inbetLogo : i === 6 ? alphawinLogo : i === 7 ? mrbitLogo : i === 8 ? cbetLogo : i === 9 ? betanoLogo : i === 10 ? bet365Logo : i === 11 ? bwinLogo : i === 12 ? topwinLogo : i === 13 ? elitbetLogo : i === 14 ? bethubLogo : i === 15 ? everbetLogo : i === 16 ? magicbetLogo : "/placeholder.svg",
 }));
 
 const Index = () => {
