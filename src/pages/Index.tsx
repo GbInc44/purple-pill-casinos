@@ -17,7 +17,7 @@ import bethubLogo from "@/assets/bethub-logo.png";
 import everbetLogo from "@/assets/everbet-logo.png";
 import magicbetLogo from "@/assets/magicbet-logo.webp";
 
-const casinos = Array.from({ length: 17 }, (_, i) => ({
+const casinos = Array.from({ length: 22 }, (_, i) => ({
   id: i + 1,
   name: i === 0 ? "Efbet" : i === 1 ? "Winbet" : i === 2 ? "8888" : i === 3 ? "Palms Bet" : i === 4 ? "Sesame" : i === 5 ? "Inbet" : i === 6 ? "Alphawin" : i === 7 ? "MrBit" : i === 8 ? "CBET.bg" : i === 9 ? "Betano" : i === 10 ? "Bet365" : i === 11 ? "Bwin" : i === 12 ? "Topwin" : i === 13 ? "Elitbet" : i === 14 ? "BetHub" : i === 15 ? "Everbet" : i === 16 ? "Magic Bet" : `Casino ${i + 1}`,
   url: "#",
