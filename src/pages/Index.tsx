@@ -32,7 +32,9 @@ const casinos = Array.from({ length: 22 }, (_, i) => ({
 
 const Index = () => {
   return (
-    <div className="min-h-screen py-10 px-4">
+    <div className="min-h-screen py-10 px-4 bg-cover bg-center bg-fixed bg-no-repeat" style={{ backgroundImage: `url(${casinoBg})` }}>
+      <div className="absolute inset-0 bg-background/80 -z-0 fixed" />
+      <div className="relative z-10">
       <header className="text-center mb-12">
         <h1 className="text-4xl md:text-5xl tracking-widest uppercase font-bold text-destructive-foreground bg-inherit" style={{ fontFamily: "'Orbitron', sans-serif" }}>
           All Casinos BG
