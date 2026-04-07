@@ -39,6 +39,9 @@ const Index = () => {
         <h1 className="text-4xl md:text-5xl tracking-widest uppercase font-bold text-destructive-foreground bg-inherit" style={{ fontFamily: "'Orbitron', sans-serif" }}>
           All Casinos BG
         </h1>
+        <p className="mt-4 text-base md:text-lg text-muted-foreground">
+          Всички лицензирани онлайн казина в България на едно място.
+        </p>
       </header>
 
       <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -48,7 +51,7 @@ const Index = () => {
             href={casino.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex flex-col items-center gap-3 rounded-2xl px-4 py-4 transition-all duration-300 hover:scale-[1.03] hover:shadow-[var(--pill-glow)]"
+            className="group flex flex-col items-center gap-3 rounded-2xl px-4 py-4 transition-all duration-300 hover:scale-[1.03] hover:shadow-[var(--pill-glow)] hover:border-primary"
             style={{
               background: "var(--pill-bg)",
               border: "1px solid var(--pill-border)",
