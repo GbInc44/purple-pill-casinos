@@ -51,7 +51,7 @@ const Index = () => {
             href={casino.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex flex-col items-center gap-3 rounded-2xl px-4 py-4 transition-all duration-300 hover:scale-[1.03] hover:shadow-[var(--pill-glow)]"
+            className="group flex flex-col items-center gap-3 rounded-2xl px-4 py-4 transition-all duration-300 hover:scale-[1.03] hover:shadow-[var(--pill-glow)] hover:border-primary"
             style={{
               background: "var(--pill-bg)",
               border: "1px solid var(--pill-border)",
