@@ -23,79 +23,117 @@ import betvamLogo from "@/assets/betvam-logo.jpg";
 import betwildLogo from "@/assets/betwild-logo.png";
 import pokerstarsLogo from "@/assets/pokerstars-logo.png";
 
-const casinos = Array.from({ length: 22 }, (_, i) => ({
+const logos = [
+  efbetLogo, winbetLogo, logo8888, palmsbetLogo, sesameLogo, inbetLogo,
+  alphawinLogo, mrbitLogo, cbetLogo, betanoLogo, bet365Logo, bwinLogo,
+  topwinLogo, elitbetLogo, bethubLogo, everbetLogo, magicbetLogo, slotinoLogo,
+  admiralbetLogo, betvamLogo, betwildLogo, pokerstarsLogo,
+];
+
+const names = [
+  "Efbet", "Winbet", "8888", "Palms Bet", "Sesame", "Inbet",
+  "Alphawin", "MrBit", "BET.bg", "Betano", "Bet365", "Bwin",
+  "Topwin", "Elitbet", "BetHub", "Everbet", "Magic Bet", "Slotino",
+  "Admiral Bet", "BetVam", "Betwild", "PokerStars",
+];
+
+const casinos = names.map((name, i) => ({
   id: i + 1,
-  name: i === 0 ? "Efbet" : i === 1 ? "Winbet" : i === 2 ? "8888" : i === 3 ? "Palms Bet" : i === 4 ? "Sesame" : i === 5 ? "Inbet" : i === 6 ? "Alphawin" : i === 7 ? "MrBit" : i === 8 ? "BET.bg" : i === 9 ? "Betano" : i === 10 ? "Bet365" : i === 11 ? "Bwin" : i === 12 ? "Topwin" : i === 13 ? "Elitbet" : i === 14 ? "BetHub" : i === 15 ? "Everbet" : i === 16 ? "Magic Bet" : i === 17 ? "Slotino" : i === 18 ? "Admiral Bet" : i === 19 ? "BetVam" : i === 20 ? "Betwild" : i === 21 ? "PokerStars" : `Casino ${i + 1}`,
+  name,
   url: "#",
-  logo: i === 0 ? efbetLogo : i === 1 ? winbetLogo : i === 2 ? logo8888 : i === 3 ? palmsbetLogo : i === 4 ? sesameLogo : i === 5 ? inbetLogo : i === 6 ? alphawinLogo : i === 7 ? mrbitLogo : i === 8 ? cbetLogo : i === 9 ? betanoLogo : i === 10 ? bet365Logo : i === 11 ? bwinLogo : i === 12 ? topwinLogo : i === 13 ? elitbetLogo : i === 14 ? bethubLogo : i === 15 ? everbetLogo : i === 16 ? magicbetLogo : i === 17 ? slotinoLogo : i === 18 ? admiralbetLogo : i === 19 ? betvamLogo : i === 20 ? betwildLogo : i === 21 ? pokerstarsLogo : "/placeholder.svg",
+  logo: logos[i],
 }));
 
 const Index = () => {
   return (
-    <div className="min-h-screen py-10 px-4 bg-cover bg-center bg-fixed bg-no-repeat relative" style={{ backgroundImage: `url(${casinoBg})` }}>
-      <div className="fixed inset-0 bg-background/40" />
-      <div className="relative z-10">
-      <header className="text-center mb-12">
-        <h1 className="text-4xl md:text-5xl tracking-widest uppercase font-bold text-destructive-foreground bg-inherit" style={{ fontFamily: "'Orbitron', sans-serif" }}>
-          All Casinos BG
-        </h1>
-        <p className="mt-4 md:text-lg font-medium font-mono text-lg text-[#fcfaff]">
-          Всички лицензирани онлайн казина в България на едно място.
-        </p>
-      </header>
+    <div
+      className="min-h-screen bg-cover bg-center bg-fixed bg-no-repeat relative"
+      style={{ backgroundImage: `url(${casinoBg})` }}
+    >
+      {/* Animated gradient overlay */}
+      <div className="fixed inset-0 animated-overlay pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {casinos.map((casino) => (
-          <a
-            key={casino.id}
-            href={casino.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex flex-col items-center gap-3 rounded-2xl px-4 py-4 transition-all duration-300 hover:scale-[1.03] hover:shadow-[var(--pill-glow)] hover:border-primary"
-            style={{
-              background: "var(--pill-bg)",
-              border: "1px solid var(--pill-border)",
-            }}
+      <div className="relative z-10 py-10 px-4">
+        {/* Header */}
+        <header className="text-center mb-4">
+          <h1
+            className="text-4xl md:text-6xl tracking-widest uppercase font-black neon-text"
+            style={{ fontFamily: "'Orbitron', sans-serif", color: "#fff" }}
           >
-            <div className="h-20 w-full rounded-xl bg-muted flex items-center justify-center overflow-hidden">
-              <img
-                src={casino.logo}
-                alt={casino.name}
-                className="h-full w-full object-cover opacity-60 group-hover:opacity-100 transition-opacity"
-              />
-            </div>
+            All Casinos BG
+          </h1>
+          <p className="mt-4 md:text-lg font-medium font-mono text-lg text-[#fcfaff]/80">
+            Всички лицензирани онлайн казина в България на едно място.
+          </p>
+        </header>
 
-            <span className="text-sm font-semibold text-primary">
-              {casino.name}
-            </span>
+        {/* Neon divider */}
+        <div className="neon-divider max-w-md mx-auto mb-12 rounded-full" />
 
-            <span className="rounded-full bg-primary px-4 py-1.5 text-xs font-bold text-primary-foreground transition-colors group-hover:bg-accent">
-              Visit Site
-            </span>
-          </a>
-        ))}
-      </div>
+        {/* Casino grid */}
+        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {casinos.map((casino, index) => (
+            <a
+              key={casino.id}
+              href={casino.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group glass-card card-animate rounded-2xl px-5 py-5 flex flex-col items-center gap-4 relative"
+              style={{ animationDelay: `${index * 0.05}s` }}
+            >
+              {/* Ranking badge */}
+              <div className="ranking-badge absolute top-3 left-3">
+                {casino.id}
+              </div>
 
-      <footer className="max-w-6xl mx-auto mt-16 mb-8 text-center text-muted-foreground text-xs leading-relaxed">
-        <div className="flex items-center justify-center gap-2 mb-2">
-          <span className="inline-flex items-center justify-center h-8 w-8 rounded-full border-2 border-destructive text-destructive font-bold text-sm">
-            18+
-          </span>
-          <span className="font-semibold">Отговорна игра</span>
+              {/* Logo container */}
+              <div className="h-24 w-full rounded-xl bg-black/40 flex items-center justify-center overflow-hidden border border-white/5">
+                <img
+                  src={casino.logo}
+                  alt={casino.name}
+                  className="h-full w-full object-cover opacity-50 group-hover:opacity-100 transition-opacity duration-400"
+                />
+              </div>
+
+              {/* Casino name */}
+              <span className="text-base font-bold tracking-wide text-white/90 group-hover:text-white transition-colors">
+                {casino.name}
+              </span>
+
+              {/* Visit button */}
+              <span className="btn-gradient rounded-full px-6 py-2 text-xs font-bold text-white tracking-wider uppercase transition-all group-hover:shadow-[0_0_20px_hsla(270,100%,65%,0.5)]">
+                Visit Site
+              </span>
+            </a>
+          ))}
         </div>
-        <p>Сайтът е предназначен само за лица над 18 години. Хазартът крие риск от зависимост. Играйте отговорно.</p>
-        <p className="mt-1">
-          Помощ:{" "}
-          <a
-            href="https://www.begambleaware.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-primary underline hover:text-accent transition-colors"
-          >
-            https://www.begambleaware.org/
-          </a>
-        </p>
-      </footer>
+
+        {/* Footer */}
+        <footer className="max-w-6xl mx-auto mt-16 mb-8">
+          <div className="neon-divider rounded-full mb-8" />
+          <div className="glass-panel rounded-2xl px-6 py-6 text-center text-muted-foreground text-xs leading-relaxed">
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <span className="inline-flex items-center justify-center h-8 w-8 rounded-full border-2 border-destructive text-destructive font-bold text-sm">
+                18+
+              </span>
+              <span className="font-semibold text-white/70">Отговорна игра</span>
+            </div>
+            <p className="text-white/50">
+              Сайтът е предназначен само за лица над 18 години. Хазартът крие риск от зависимост. Играйте отговорно.
+            </p>
+            <p className="mt-1 text-white/50">
+              Помощ:{" "}
+              <a
+                href="https://www.begambleaware.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary underline hover:text-accent transition-colors"
+              >
+                begambleaware.org
+              </a>
+            </p>
+          </div>
+        </footer>
       </div>
     </div>
   );

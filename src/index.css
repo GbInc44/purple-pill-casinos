@@ -35,9 +35,14 @@
     --radius: 0.5rem;
 
     --gradient-bg: linear-gradient(135deg, hsl(270, 100%, 3%) 0%, hsl(270, 40%, 10%) 50%, hsl(270, 100%, 3%) 100%);
-    --pill-bg: linear-gradient(135deg, hsla(270, 20%, 10%, 0.92) 0%, hsla(270, 15%, 6%, 0.95) 100%);
-    --pill-border: hsl(270, 40%, 30%);
-    --pill-glow: 0 0 28px hsla(270, 90%, 55%, 0.7), 0 0 12px hsla(270, 100%, 60%, 0.4);
+    --glass-bg: rgba(255, 255, 255, 0.04);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-highlight: rgba(255, 255, 255, 0.12);
+    --neon-purple: hsl(270, 100%, 65%);
+    --neon-pink: hsl(320, 100%, 60%);
+    --neon-blue: hsl(240, 100%, 70%);
+    --gold: hsl(45, 100%, 50%);
+    --gold-dark: hsl(45, 80%, 35%);
   }
 }
 
@@ -51,4 +56,131 @@
     color: hsl(var(--foreground));
     min-height: 100vh;
   }
+}
+
+@layer utilities {
+  .glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glass-card:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: var(--neon-purple);
+    box-shadow:
+      0 0 20px hsla(270, 100%, 65%, 0.3),
+      0 0 60px hsla(270, 100%, 65%, 0.1),
+      inset 0 1px 0 var(--glass-highlight);
+    transform: translateY(-6px) scale(1.02);
+  }
+
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+  }
+
+  .neon-text {
+    text-shadow:
+      0 0 10px hsla(270, 100%, 65%, 0.8),
+      0 0 40px hsla(270, 100%, 65%, 0.4),
+      0 0 80px hsla(270, 100%, 65%, 0.2);
+  }
+
+  .btn-gradient {
+    background: linear-gradient(135deg, var(--neon-purple), var(--neon-pink));
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-gradient::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      45deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.15) 50%,
+      transparent 70%
+    );
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+  }
+
+  .glass-card:hover .btn-gradient::after {
+    transform: translateX(100%);
+  }
+
+  .ranking-badge {
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: hsl(270, 100%, 3%);
+    font-weight: 800;
+    font-size: 0.7rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px hsla(45, 100%, 50%, 0.4);
+  }
+}
+
+/* Animated background overlay */
+@keyframes bg-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animated-overlay {
+  background: linear-gradient(
+    270deg,
+    hsla(270, 100%, 5%, 0.6),
+    hsla(280, 60%, 8%, 0.4),
+    hsla(260, 80%, 5%, 0.6),
+    hsla(270, 100%, 5%, 0.6)
+  );
+  background-size: 400% 400%;
+  animation: bg-shift 20s ease infinite;
+}
+
+/* Card entrance animation */
+@keyframes card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.card-animate {
+  animation: card-enter 0.5s ease-out both;
+}
+
+/* Neon divider */
+.neon-divider {
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--neon-purple),
+    var(--neon-pink),
+    var(--neon-purple),
+    transparent
+  );
+  box-shadow: 0 0 12px hsla(270, 100%, 65%, 0.5);
 }
