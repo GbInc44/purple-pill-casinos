@@ -39,7 +39,7 @@ const Index = () => {
         <h1 className="text-4xl md:text-5xl tracking-widest uppercase font-bold text-destructive-foreground bg-inherit" style={{ fontFamily: "'Orbitron', sans-serif" }}>
           All Casinos BG
         </h1>
-        <p className="mt-4 text-base md:text-lg text-muted-foreground">
+        <p className="mt-4 md:text-lg font-medium font-mono text-lg text-[#fcfaff]">
           Всички лицензирани онлайн казина в България на едно място.
         </p>
       </header>
