@@ -100,7 +100,7 @@ const Index = () => {
 
               {/* Bonus banner (Efbet only) */}
               {casino.name === "Efbet" && (
-                <div className="w-full rounded-lg py-1.5 text-center text-xs font-bold tracking-wide text-white"
+                <div className="w-full rounded-lg py-1.5 text-center font-bold tracking-wide text-white text-base"
                   style={{ background: 'linear-gradient(135deg, hsl(270,100%,55%), hsl(220,100%,55%))' }}>
                   Бонус до 1500 €
                 </div>
