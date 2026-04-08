@@ -138,7 +138,7 @@ const Index = () => {
 
               {/* Visit button */}
               <span className="btn-gradient rounded-full px-6 py-2 text-xs font-bold text-white tracking-wider uppercase transition-all group-hover:shadow-[0_0_20px_hsla(270,100%,65%,0.5)]">
-                Visit Site
+                Посети сайта
               </span>
             </a>
           ))}
