@@ -37,6 +37,21 @@ const names = [
   "Admiral Bet", "BetVam", "Betwild", "PokerStars",
 ];
 
+const bonuses: Record<string, string> = {
+  "Efbet": "Бонус до 1500 €",
+  "Winbet": "Бонус 200% до 100 €",
+  "8888": "Бонус до 500 € + до 300 FS",
+  "Palms Bet": "Бонус до 1000 € + до 300 FS",
+  "Sesame": "Бонус до 1500 €",
+  "Inbet": "Бонус 100 € без депозит",
+  "Alphawin": "Бонус до 2000 €",
+  "MrBit": "Бонус до 1000 € + до 100 FS",
+  "BET.bg": "Бонус до 1500 €",
+  "Betano": "Бонус до 1500 €",
+  "Bet365": "Бонус 100% до 200 €",
+  "Bwin": "Персонализиран бонус",
+};
+
 const casinos = names.map((name, i) => ({
   id: i + 1,
   name,
