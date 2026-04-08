@@ -50,6 +50,16 @@ const bonuses: Record<string, string> = {
   "Betano": "Бонус до 1500 €",
   "Bet365": "Бонус 100% до 200 €",
   "Bwin": "Персонализиран бонус",
+  "Topwin": "Бонус до 1000 € + до 50 FS",
+  "Elitbet": "Бонус до 1500 €",
+  "BetHub": "Бонус до 1280 €",
+  "Everbet": "Бонус до 2000 FS или до 100 € без депозит",
+  "Magic Bet": "Бонус до 2000 €",
+  "Slotino": "Бонус до 1250 €",
+  "Admiral Bet": "Бонус 200% до 100 € + 100 FS",
+  "BetVam": "Бонус 500% до 1000 € + до 500 FS",
+  "Betwild": "Очаквайте скоро",
+  "PokerStars": "Осребряване на точки в пари",
 };
 
 const casinos = names.map((name, i) => ({
