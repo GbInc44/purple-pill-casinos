@@ -1,25 +1,30 @@
 
 
-## Make Casino Cards Vibrant by Default, Purple Glow on Hover
+## Add Navigation Bar
 
 ### What changes
 
-Swap the current visual states: cards will look "active" (bright, colorful) by default, and on hover only the border glows purple -- no lift, no scale, no background change.
+Add a fixed/sticky navigation bar at the top of the page with:
+- Left side: Three buttons — "Нови Казина", "Печалби", "Бонуси"
+- Center: The "ALL CASINOS BG" header text (moved from current position)
+- Background: The same neon purple used for card hover borders (`hsl(270, 100%, 65%)`)
 
 ### Changes
 
-**`src/index.css`** -- Update `.glass-card` and `.glass-card:hover`:
-
-- **Default state**: Use the current hover background (`rgba(255, 255, 255, 0.07)`), add subtle border visibility
-- **Hover state**: Keep same background, only add purple border color and purple glow box-shadow. Remove `transform` (no lift/scale). Remove background change.
-
 **`src/pages/Index.tsx`**:
+- Add a `<nav>` element at the top, before the current content
+- Move the "ALL CASINOS BG" title into the nav bar, centered
+- Add three navigation buttons on the left side with text: "Нови Казина", "Печалби", "Бонуси"
+- Keep the subtitle paragraph below the nav bar in its current position
+- Use flexbox: `justify-between` with left buttons group, centered title, and an empty right spacer for balance
 
-- Change logo `opacity-50 group-hover:opacity-100` to just `opacity-100` (logos always visible)
-- Change `text-white/90 group-hover:text-white` to just `text-white` (name always bright)
+**`src/index.css`**:
+- Add a `.nav-bar` utility class with the purple background (`hsl(270, 100%, 65%)`) matching `--neon-purple`, slight transparency, backdrop blur, and a subtle bottom glow/shadow
+- Style nav buttons with a semi-transparent hover state
 
-### Summary of visual behavior
-
-- **Before hover**: Cards are bright, logos fully visible, text white
-- **On hover**: Only a purple neon border glow appears around the card, button shimmer still plays
+### Visual result
+- A purple navigation bar spans the full width at the top
+- "Нови Казина | Печалби | Бонуси" buttons sit on the left
+- "ALL CASINOS BG" is centered in the bar
+- The bar color matches the purple glow used on card borders
 
