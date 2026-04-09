@@ -70,6 +70,8 @@ const casinos = names.map((name, i) => ({
 }));
 
 const Index = () => {
+  const [menuOpen, setMenuOpen] = React.useState(false);
+
   return (
     <div
       className="min-h-screen bg-cover bg-center bg-fixed bg-no-repeat relative"
@@ -79,19 +81,41 @@ const Index = () => {
       <div className="fixed inset-0 animated-overlay pointer-events-none" />
 
       {/* Navigation Bar */}
-      <nav className="nav-bar sticky top-0 z-50 w-full px-4 py-3 flex items-center">
-        <div className="flex items-center gap-2">
-          <button className="nav-btn">Нови Казина</button>
-          <button className="nav-btn">Печалби</button>
-          <button className="nav-btn">Бонуси</button>
+      <nav className="nav-bar sticky top-0 z-50 w-full px-4 py-3">
+        <div className="flex items-center relative">
+          {/* Desktop buttons */}
+          <div className="hidden md:flex items-center gap-2">
+            <button className="nav-btn">Нови Казина</button>
+            <button className="nav-btn">Печалби</button>
+            <button className="nav-btn">Бонуси</button>
+          </div>
+
+          {/* Mobile hamburger */}
+          <button
+            className="md:hidden text-white p-1"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+
+          <h1
+            className="absolute left-1/2 -translate-x-1/2 text-xl md:text-3xl tracking-widest uppercase font-black text-white"
+            style={{ fontFamily: "'Orbitron', sans-serif" }}
+          >
+            All Casinos BG
+          </h1>
+          <div className="flex-1" />
         </div>
-        <h1
-          className="absolute left-1/2 -translate-x-1/2 text-xl md:text-3xl tracking-widest uppercase font-black text-white"
-          style={{ fontFamily: "'Orbitron', sans-serif" }}
-        >
-          All Casinos BG
-        </h1>
-        <div className="flex-1" />
+
+        {/* Mobile dropdown */}
+        {menuOpen && (
+          <div className="md:hidden flex flex-col gap-2 mt-3 pb-1">
+            <button className="nav-btn text-left">Нови Казина</button>
+            <button className="nav-btn text-left">Печалби</button>
+            <button className="nav-btn text-left">Бонуси</button>
+          </div>
+        )}
       </nav>
 
       <div className="relative z-10 py-10 px-4">
