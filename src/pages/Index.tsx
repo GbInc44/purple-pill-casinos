@@ -119,7 +119,7 @@ const Index = () => {
                 <img
                   src={casino.logo}
                   alt={casino.name}
-                  className="h-full w-full object-cover opacity-50 group-hover:opacity-100 transition-opacity duration-400"
+                  className="h-full w-full object-cover opacity-100"
                 />
               </div>
 
@@ -132,7 +132,7 @@ const Index = () => {
               )}
 
               {/* Casino name */}
-              <span className="text-base font-bold tracking-wide text-white/90 group-hover:text-white transition-colors">
+              <span className="text-base font-bold tracking-wide text-white">
                 {casino.name}
               </span>
 
