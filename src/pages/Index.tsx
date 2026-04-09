@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
 import casinoBg from "@/assets/casino-bg.png";
 import efbetLogo from "@/assets/efbet-logo.png";
 import winbetLogo from "@/assets/winbet-logo.png";
