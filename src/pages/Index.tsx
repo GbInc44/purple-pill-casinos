@@ -72,7 +72,7 @@ const casinos = names.map((name, i) => ({
 }));
 
 const Index = () => {
-  const [menuOpen, setMenuOpen] = React.useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <div
