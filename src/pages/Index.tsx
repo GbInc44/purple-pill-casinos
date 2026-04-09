@@ -78,17 +78,27 @@ const Index = () => {
       {/* Animated gradient overlay */}
       <div className="fixed inset-0 animated-overlay pointer-events-none" />
 
+      {/* Navigation Bar */}
+      <nav className="nav-bar sticky top-0 z-50 w-full px-4 py-3 flex items-center">
+        <div className="flex items-center gap-2">
+          <button className="nav-btn">Нови Казина</button>
+          <button className="nav-btn">Печалби</button>
+          <button className="nav-btn">Бонуси</button>
+        </div>
+        <h1
+          className="absolute left-1/2 -translate-x-1/2 text-xl md:text-3xl tracking-widest uppercase font-black text-white"
+          style={{ fontFamily: "'Orbitron', sans-serif" }}
+        >
+          All Casinos BG
+        </h1>
+        <div className="flex-1" />
+      </nav>
+
       <div className="relative z-10 py-10 px-4">
-        {/* Header */}
+        {/* Subtitle */}
         <header className="text-center mb-4">
-          <h1
-            className="text-4xl md:text-6xl tracking-widest uppercase font-black neon-text"
-            style={{ fontFamily: "'Orbitron', sans-serif", color: "#fff" }}
-          >
-            All Casinos BG
-          </h1>
           <p
-            className="mt-4 text-xl md:text-2xl font-bold tracking-wide text-[#fcfaff] neon-text"
+            className="text-xl md:text-2xl font-bold tracking-wide text-[#fcfaff] neon-text"
             style={{ fontFamily: "'Orbitron', sans-serif", textShadow: '0 0 8px hsla(270,100%,65%,0.6), 0 0 30px hsla(270,100%,65%,0.3)' }}
           >
             Всички лицензирани онлайн казина в България на едно място.
