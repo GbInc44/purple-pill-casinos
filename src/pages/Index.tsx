@@ -84,10 +84,10 @@ const Index = () => {
       <div className="fixed inset-0 animated-overlay pointer-events-none" />
 
       {/* Navigation Bar */}
-      <nav className="nav-bar sticky top-0 z-50 w-full px-4 py-3">
+      <nav className="nav-bar sticky top-0 z-50 w-full px-4 py-2">
         <div className="flex items-center justify-between">
           {/* Logo (left) */}
-          <img src={allBetLogo} alt="All Bet" className="h-16 md:h-20 w-auto" />
+          <img src={allBetLogo} alt="All Bet" className="h-10 md:h-12 w-auto" />
 
           {/* Desktop buttons (right) */}
           <div className="hidden md:flex items-center gap-2">
