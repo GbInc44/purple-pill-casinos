@@ -27,10 +27,10 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid" }: Props) => {
     >
       <div className="fixed inset-0 animated-overlay pointer-events-none" />
 
-      <nav className="nav-bar sticky top-0 z-50 w-full px-4 py-2 overflow-visible">
-        <div className="flex items-center justify-between">
+      <nav className="nav-bar sticky top-0 z-50 w-full max-w-full px-3 sm:px-4 py-2 overflow-visible">
+        <div className="flex items-center justify-between w-full max-w-full gap-2">
           <Link to="/" className="shrink-0">
-            <img src={allBetLogo} alt="All Bet" className="h-12 md:h-14 w-auto -my-2" />
+            <img src={allBetLogo} alt="All Bet" className="h-10 sm:h-12 md:h-14 w-auto -my-1 sm:-my-2" />
           </Link>
 
           <div className="hidden md:flex items-center gap-2">
@@ -40,7 +40,7 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid" }: Props) => {
           </div>
 
           <button
-            className="md:hidden text-white p-1"
+            className="md:hidden text-white p-2 shrink-0"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
           >
@@ -49,7 +49,7 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid" }: Props) => {
         </div>
 
         {menuOpen && (
-          <div className="md:hidden flex flex-col gap-2 mt-3 pb-1">
+          <div className="md:hidden flex flex-col gap-2 mt-3 pb-1 w-full">
             <button className="nav-btn text-left" onClick={() => go("/novi-kazina")}>Нови Казина</button>
             <button className="nav-btn text-left" onClick={() => go("/")}>ТОП 10</button>
             <button className="nav-btn text-left">Печалби</button>
