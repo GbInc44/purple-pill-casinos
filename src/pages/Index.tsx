@@ -92,8 +92,8 @@ const Index = () => {
           {/* Desktop buttons (right) */}
           <div className="hidden md:flex items-center gap-2">
             <button className="nav-btn">Нови Казина</button>
+            <button className="nav-btn">ТОП 10</button>
             <button className="nav-btn">Печалби</button>
-            <button className="nav-btn">Бонуси</button>
           </div>
 
           {/* Mobile hamburger (right) */}
@@ -110,8 +110,8 @@ const Index = () => {
         {menuOpen && (
           <div className="md:hidden flex flex-col gap-2 mt-3 pb-1">
             <button className="nav-btn text-left">Нови Казина</button>
+            <button className="nav-btn text-left">ТОП 10</button>
             <button className="nav-btn text-left">Печалби</button>
-            <button className="nav-btn text-left">Бонуси</button>
           </div>
         )}
       </nav>
