@@ -27,10 +27,10 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid" }: Props) => {
     >
       <div className="fixed inset-0 animated-overlay pointer-events-none" />
 
-      <nav className="nav-bar sticky top-0 z-50 w-full px-4 py-2">
+      <nav className="nav-bar sticky top-0 z-50 w-full px-4 py-2 overflow-visible">
         <div className="flex items-center justify-between">
-          <Link to="/">
-            <img src={allBetLogo} alt="All Bet" className="h-10 md:h-12 w-auto" />
+          <Link to="/" className="shrink-0">
+            <img src={allBetLogo} alt="All Bet" className="h-16 md:h-20 w-auto -my-3" />
           </Link>
 
           <div className="hidden md:flex items-center gap-2">
