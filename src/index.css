@@ -141,7 +141,7 @@
     font-size: 0.8rem;
     font-weight: 700;
     color: #F0EAD6;
-    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    background: hsl(45, 100%, 50%);
     transition: background 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
     text-transform: uppercase;
     letter-spacing: 0.05em;
