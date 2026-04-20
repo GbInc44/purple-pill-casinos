@@ -1,41 +1,21 @@
 
 
 ## Goal
-Redesign the casino cards on `/novi-kazina` into a full-width, horizontal layout — one card per row — while keeping the existing TOP 10 grid layout on `/` untouched.
+Display the All Bet logo at its full size in the nav bar without increasing the nav bar's height.
 
-## New card layout (novi-kazina only)
+## Approach
+The logo is currently constrained by the nav bar's vertical padding (`py-2`), which clips/shrinks it. We'll let the logo overflow the bar vertically while keeping the bar itself slim.
 
-```text
-┌─────────────────────────────────────────────────────────────────────────┐
-│ [#]  ┌────────┐                                                         │
-│      │  LOGO  │           ┌──────────────────┐         ┌──────────────┐ │
-│      │        │           │   BONUS BANNER   │         │ ПОСЕТИ САЙТА │ │
-│      └────────┘           └──────────────────┘         └──────────────┘ │
-│       Casino Name                                                       │
-└─────────────────────────────────────────────────────────────────────────┘
-```
+## Changes
 
-- **Left zone**: ranking badge (top-left of card), logo box, casino name directly under the logo.
-- **Center zone**: bonus banner, horizontally centered within the card.
-- **Right zone**: "Посети сайта" CTA button.
-- One card per row, full width of the existing `max-w-6xl` container.
-- Cards stacked vertically with the same spacing rhythm as today.
+**`src/components/CasinoLayout.tsx`** — nav bar element:
+- Allow the logo to render larger than the bar's content box without expanding the bar.
+- Add `overflow-visible` to the `<nav>` so the logo isn't clipped.
+- Increase the logo's height (e.g. `h-14 md:h-16`) and add a small negative vertical margin (`-my-3`) so it visually overflows the bar symmetrically while the bar's layout height stays the same.
+- Keep `w-auto` so aspect ratio is preserved.
 
-## Responsive behavior
-
-- **Desktop / tablet (≥640px)**: horizontal 3-zone layout as drawn above using flexbox.
-- **Mobile (<640px)**: zones stack vertically (logo + name on top, bonus in the middle, button at the bottom) so nothing gets squeezed. Card still spans full width.
-
-## Implementation approach
-
-1. **`CasinoLayout.tsx`** — add an optional `variant` prop (`"grid" | "list"`, default `"grid"`).
-   - `grid` keeps the current `grid-cols-1 sm:grid-cols-2 lg:grid-cols-3` rendering (used by `/`).
-   - `list` renders a single-column `flex flex-col gap-6` of full-width horizontal cards (used by `/novi-kazina`).
-2. **`NewCasinos.tsx`** — pass `variant="list"`.
-3. Preserve all existing styling: `glass-card`, hover neon border, ranking badge, gold badge gradient, button shimmer, entrance animation, referral link behavior (`href`, `target="_blank"`).
-4. No changes to `Index.tsx`, `casinos.ts`, `App.tsx`, or `index.css` required (Tailwind utilities cover the new layout).
+No other files need changes. Nav button sizes, spacing, and mobile menu behavior remain identical.
 
 ## Files touched
-- `src/components/CasinoLayout.tsx` — add `variant` prop and the new horizontal card markup branch.
-- `src/pages/NewCasinos.tsx` — pass `variant="list"`.
+- `src/components/CasinoLayout.tsx`
 
