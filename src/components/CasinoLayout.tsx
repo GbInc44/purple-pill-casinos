@@ -120,7 +120,7 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid" }: Props) => {
                 <div className="ranking-badge absolute top-3 left-3">{index + 1}</div>
 
                 {/* Left: logo + name */}
-                <div className="flex flex-col items-center gap-2 sm:w-56 shrink-0">
+                <div className="flex flex-col items-center gap-2 w-full sm:w-56 shrink-0">
                   <div className="h-24 w-full sm:w-48 rounded-xl bg-black/40 flex items-center justify-center overflow-hidden border border-white/5">
                     <img src={casino.logo} alt={casino.name} className="h-full w-full object-cover opacity-100" />
                   </div>
