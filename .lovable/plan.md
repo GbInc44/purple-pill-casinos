@@ -1,30 +1,38 @@
 
 
-## Add Navigation Bar
+## Replace Title with Logo (Logo Left, Buttons Right)
 
 ### What changes
 
-Add a fixed/sticky navigation bar at the top of the page with:
-- Left side: Three buttons — "Нови Казина", "Печалби", "Бонуси"
-- Center: The "ALL CASINOS BG" header text (moved from current position)
-- Background: The same neon purple used for card hover borders (`hsl(270, 100%, 65%)`)
+Replace the centered "ALL CASINOS BG" text with the uploaded "All Bet" logo. Logo goes on the **left**, buttons on the **right**. On mobile, the hamburger menu moves to the **right** side.
 
-### Changes
+### Steps
 
-**`src/pages/Index.tsx`**:
-- Add a `<nav>` element at the top, before the current content
-- Move the "ALL CASINOS BG" title into the nav bar, centered
-- Add three navigation buttons on the left side with text: "Нови Казина", "Печалби", "Бонуси"
-- Keep the subtitle paragraph below the nav bar in its current position
-- Use flexbox: `justify-between` with left buttons group, centered title, and an empty right spacer for balance
+1. **Save the logo**: Copy `user-uploads://All_Bet-removebg-preview_1.png` to `src/assets/all-bet-logo.png`.
 
-**`src/index.css`**:
-- Add a `.nav-bar` utility class with the purple background (`hsl(270, 100%, 65%)`) matching `--neon-purple`, slight transparency, backdrop blur, and a subtle bottom glow/shadow
-- Style nav buttons with a semi-transparent hover state
+2. **`src/pages/Index.tsx`** — restructure the nav layout:
+   - Import the logo: `import allBetLogo from "@/assets/all-bet-logo.png";`
+   - Remove the absolute-centered `<h1>` "All Casinos BG" and the `flex-1` spacer
+   - Change the nav inner container from `flex items-center relative` to `flex items-center justify-between`
+   - **Left side**: `<img src={allBetLogo} alt="All Bet" className="h-10 w-auto" />`
+   - **Right side (desktop)**: the three buttons group (`hidden md:flex items-center gap-2`)
+   - **Right side (mobile)**: the hamburger toggle button (`md:hidden`)
+   - Mobile dropdown stays below as-is
+
+### Recommended logo sizing
+
+The nav bar is ~56–64px tall. The logo will display at:
+- **Desktop**: 40px tall (`h-10`)
+- **Mobile**: same 40px (looks good at this size given the horizontal aspect)
+
+For best crispness on retina displays, the source PNG should be **at least 80px tall** (2x). The uploaded image is already a good horizontal aspect ratio (~4:3), so it will fit nicely without stretching the bar.
 
 ### Visual result
-- A purple navigation bar spans the full width at the top
-- "Нови Казина | Печалби | Бонуси" buttons sit on the left
-- "ALL CASINOS BG" is centered in the bar
-- The bar color matches the purple glow used on card borders
+
+```text
+Desktop:  [LOGO] ............... [Нови Казина] [Печалби] [Бонуси]
+Mobile:   [LOGO] ............................................ [☰]
+```
+
+No CSS changes needed — existing `.nav-bar` and `.nav-btn` styles are reused.
 
