@@ -8,9 +8,10 @@ import { Casino } from "@/data/casinos";
 interface Props {
   subtitle: ReactNode;
   casinos: Casino[];
+  variant?: "grid" | "list";
 }
 
-const CasinoLayout = ({ subtitle, casinos }: Props) => {
+const CasinoLayout = ({ subtitle, casinos, variant = "grid" }: Props) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -71,39 +72,83 @@ const CasinoLayout = ({ subtitle, casinos }: Props) => {
 
         <div className="neon-divider max-w-md mx-auto mb-12 rounded-full" />
 
-        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {casinos.map((casino, index) => (
-            <a
-              key={casino.name}
-              href={casino.url ?? "#"}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group glass-card card-animate rounded-2xl px-5 py-5 flex flex-col items-center gap-4 relative"
-              style={{ animationDelay: `${index * 0.05}s` }}
-            >
-              <div className="ranking-badge absolute top-3 left-3">{index + 1}</div>
+        {variant === "grid" ? (
+          <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {casinos.map((casino, index) => (
+              <a
+                key={casino.name}
+                href={casino.url ?? "#"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group glass-card card-animate rounded-2xl px-5 py-5 flex flex-col items-center gap-4 relative"
+                style={{ animationDelay: `${index * 0.05}s` }}
+              >
+                <div className="ranking-badge absolute top-3 left-3">{index + 1}</div>
 
-              <div className="h-24 w-full rounded-xl bg-black/40 flex items-center justify-center overflow-hidden border border-white/5">
-                <img src={casino.logo} alt={casino.name} className="h-full w-full object-cover opacity-100" />
-              </div>
-
-              {casino.bonus && (
-                <div
-                  className="w-full rounded-lg py-1.5 text-center font-bold tracking-wide text-white text-base"
-                  style={{ background: "linear-gradient(135deg, hsl(270,100%,55%), hsl(220,100%,55%))" }}
-                >
-                  {casino.bonus}
+                <div className="h-24 w-full rounded-xl bg-black/40 flex items-center justify-center overflow-hidden border border-white/5">
+                  <img src={casino.logo} alt={casino.name} className="h-full w-full object-cover opacity-100" />
                 </div>
-              )}
 
-              <span className="text-base font-bold tracking-wide text-white">{casino.name}</span>
+                {casino.bonus && (
+                  <div
+                    className="w-full rounded-lg py-1.5 text-center font-bold tracking-wide text-white text-base"
+                    style={{ background: "linear-gradient(135deg, hsl(270,100%,55%), hsl(220,100%,55%))" }}
+                  >
+                    {casino.bonus}
+                  </div>
+                )}
 
-              <span className="btn-gradient rounded-full px-6 py-2 text-xs font-bold text-white tracking-wider uppercase transition-all group-hover:shadow-[0_0_20px_hsla(270,100%,65%,0.5)]">
-                Посети сайта
-              </span>
-            </a>
-          ))}
-        </div>
+                <span className="text-base font-bold tracking-wide text-white">{casino.name}</span>
+
+                <span className="btn-gradient rounded-full px-6 py-2 text-xs font-bold text-white tracking-wider uppercase transition-all group-hover:shadow-[0_0_20px_hsla(270,100%,65%,0.5)]">
+                  Посети сайта
+                </span>
+              </a>
+            ))}
+          </div>
+        ) : (
+          <div className="max-w-6xl mx-auto flex flex-col gap-6">
+            {casinos.map((casino, index) => (
+              <a
+                key={casino.name}
+                href={casino.url ?? "#"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group glass-card card-animate rounded-2xl px-5 py-5 sm:px-8 sm:py-6 flex flex-col sm:flex-row items-center gap-6 relative"
+                style={{ animationDelay: `${index * 0.05}s` }}
+              >
+                <div className="ranking-badge absolute top-3 left-3">{index + 1}</div>
+
+                {/* Left: logo + name */}
+                <div className="flex flex-col items-center gap-2 sm:w-56 shrink-0">
+                  <div className="h-24 w-full sm:w-48 rounded-xl bg-black/40 flex items-center justify-center overflow-hidden border border-white/5">
+                    <img src={casino.logo} alt={casino.name} className="h-full w-full object-cover opacity-100" />
+                  </div>
+                  <span className="text-base font-bold tracking-wide text-white">{casino.name}</span>
+                </div>
+
+                {/* Center: bonus */}
+                <div className="flex-1 flex justify-center w-full">
+                  {casino.bonus && (
+                    <div
+                      className="w-full sm:max-w-sm rounded-lg py-2 px-4 text-center font-bold tracking-wide text-white text-base"
+                      style={{ background: "linear-gradient(135deg, hsl(270,100%,55%), hsl(220,100%,55%))" }}
+                    >
+                      {casino.bonus}
+                    </div>
+                  )}
+                </div>
+
+                {/* Right: CTA */}
+                <div className="shrink-0 sm:ml-auto">
+                  <span className="btn-gradient inline-block rounded-full px-6 py-2 text-xs font-bold text-white tracking-wider uppercase transition-all group-hover:shadow-[0_0_20px_hsla(270,100%,65%,0.5)]">
+                    Посети сайта
+                  </span>
+                </div>
+              </a>
+            ))}
+          </div>
+        )}
 
         <footer className="max-w-6xl mx-auto mt-16 mb-8">
           <div className="neon-divider rounded-full mb-8" />
