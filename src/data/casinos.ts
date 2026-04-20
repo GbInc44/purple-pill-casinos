@@ -61,4 +61,7 @@ export const newCasinos: Casino[] = [
   byName("BetHub"),
   byName("Topwin"),
   byName("Everbet"),
+  byName("Slotino"),
+  byName("Admiral Bet"),
+  byName("Magic Bet"),
 ];
