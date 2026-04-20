@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import casinoBg from "@/assets/casino-bg.png";
+import allBetLogo from "@/assets/all-bet-logo.png";
 import efbetLogo from "@/assets/efbet-logo.png";
 import winbetLogo from "@/assets/winbet-logo.png";
 import logo8888 from "@/assets/logo-8888-v2.jpg";
@@ -84,15 +85,18 @@ const Index = () => {
 
       {/* Navigation Bar */}
       <nav className="nav-bar sticky top-0 z-50 w-full px-4 py-3">
-        <div className="flex items-center relative">
-          {/* Desktop buttons */}
+        <div className="flex items-center justify-between">
+          {/* Logo (left) */}
+          <img src={allBetLogo} alt="All Bet" className="h-10 w-auto" />
+
+          {/* Desktop buttons (right) */}
           <div className="hidden md:flex items-center gap-2">
             <button className="nav-btn">Нови Казина</button>
             <button className="nav-btn">Печалби</button>
             <button className="nav-btn">Бонуси</button>
           </div>
 
-          {/* Mobile hamburger */}
+          {/* Mobile hamburger (right) */}
           <button
             className="md:hidden text-white p-1"
             onClick={() => setMenuOpen(!menuOpen)}
@@ -100,14 +104,6 @@ const Index = () => {
           >
             {menuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
-
-          <h1
-            className="absolute left-1/2 -translate-x-1/2 text-xl md:text-3xl tracking-widest uppercase font-black text-white"
-            style={{ fontFamily: "'Orbitron', sans-serif" }}
-          >
-            All Casinos BG
-          </h1>
-          <div className="flex-1" />
         </div>
 
         {/* Mobile dropdown */}
