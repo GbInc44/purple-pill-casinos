@@ -1,38 +1,35 @@
 
 
-## Replace Title with Logo (Logo Left, Buttons Right)
+## Make the Logo Larger in the Nav Bar
 
 ### What changes
 
-Replace the centered "ALL CASINOS BG" text with the uploaded "All Bet" logo. Logo goes on the **left**, buttons on the **right**. On mobile, the hamburger menu moves to the **right** side.
+Your 500x500 source PNG has plenty of resolution — the limit is the CSS height we apply. Currently it's `h-14 md:h-16` (56px / 64px). I'll increase it so the logo reads clearly without overpowering the bar.
 
-### Steps
+### Recommended sizes
 
-1. **Save the logo**: Copy `user-uploads://All_Bet-removebg-preview_1.png` to `src/assets/all-bet-logo.png`.
+Since the logo is square (500x500), height = width on screen. To keep the nav bar balanced:
 
-2. **`src/pages/Index.tsx`** — restructure the nav layout:
-   - Import the logo: `import allBetLogo from "@/assets/all-bet-logo.png";`
-   - Remove the absolute-centered `<h1>` "All Casinos BG" and the `flex-1` spacer
-   - Change the nav inner container from `flex items-center relative` to `flex items-center justify-between`
-   - **Left side**: `<img src={allBetLogo} alt="All Bet" className="h-10 w-auto" />`
-   - **Right side (desktop)**: the three buttons group (`hidden md:flex items-center gap-2`)
-   - **Right side (mobile)**: the hamburger toggle button (`md:hidden`)
-   - Mobile dropdown stays below as-is
+- **Mobile**: `h-16` (64px) — leaves room next to the hamburger
+- **Desktop**: `h-20` (80px) — prominent but not dominant
 
-### Recommended logo sizing
+The nav bar will grow slightly to accommodate the taller logo (it auto-sizes from `py-3` padding + content height). This is fine — it stays compact.
 
-The nav bar is ~56–64px tall. The logo will display at:
-- **Desktop**: 40px tall (`h-10`)
-- **Mobile**: same 40px (looks good at this size given the horizontal aspect)
+### Change
 
-For best crispness on retina displays, the source PNG should be **at least 80px tall** (2x). The uploaded image is already a good horizontal aspect ratio (~4:3), so it will fit nicely without stretching the bar.
+**`src/pages/Index.tsx`** — single line update:
 
-### Visual result
-
-```text
-Desktop:  [LOGO] ............... [Нови Казина] [Печалби] [Бонуси]
-Mobile:   [LOGO] ............................................ [☰]
+```tsx
+<img src={allBetLogo} alt="All Bet" className="h-16 md:h-20 w-auto" />
 ```
 
-No CSS changes needed — existing `.nav-bar` and `.nav-btn` styles are reused.
+(was `h-14 md:h-16`)
+
+### If you want it even bigger
+
+Quick reference for alternatives:
+- `h-20 md:h-24` → 80px / 96px (large)
+- `h-24 md:h-28` → 96px / 112px (very large, nav bar becomes a banner)
+
+I'll go with **`h-16 md:h-20`** as the balanced default. Tell me after you see it if you want to bump it up further.
 
