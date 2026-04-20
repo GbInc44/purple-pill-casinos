@@ -141,15 +141,15 @@
     font-size: 0.8rem;
     font-weight: 700;
     color: #F0EAD6;
-    background: #FFD700;
-    transition: background 0.2s ease, box-shadow 0.2s ease;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    transition: background 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
     text-transform: uppercase;
     letter-spacing: 0.05em;
   }
 
   .nav-btn:hover {
-    background: #FFC700;
-    box-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
+    filter: brightness(1.1);
+    box-shadow: 0 0 12px hsla(45, 100%, 50%, 0.6);
   }
 }
 
