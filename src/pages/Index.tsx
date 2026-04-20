@@ -86,17 +86,14 @@ const Index = () => {
       {/* Navigation Bar */}
       <nav className="nav-bar sticky top-0 z-50 w-full px-4 py-3">
         <div className="flex items-center justify-between">
-          {/* Logo (left) */}
-          <img src={allBetLogo} alt="All Bet" className="h-20 md:h-28 w-auto" />
-
-          {/* Desktop buttons (right) */}
+          {/* Desktop buttons (left) */}
           <div className="hidden md:flex items-center gap-2">
             <button className="nav-btn">Нови Казина</button>
             <button className="nav-btn">Печалби</button>
             <button className="nav-btn">Бонуси</button>
           </div>
 
-          {/* Mobile hamburger (right) */}
+          {/* Mobile hamburger (left) */}
           <button
             className="md:hidden text-white p-1"
             onClick={() => setMenuOpen(!menuOpen)}
@@ -104,6 +101,9 @@ const Index = () => {
           >
             {menuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
+
+          {/* Logo (right) */}
+          <img src={allBetLogo} alt="All Bet" className="h-20 md:h-28 w-auto" />
         </div>
 
         {/* Mobile dropdown */}
