@@ -26,6 +26,8 @@ export type Casino = {
   logo: string;
   bonus?: string;
   url?: string;
+  pros?: string[];
+  cons?: string[];
 };
 
 export const allCasinos: Casino[] = [
@@ -39,7 +41,13 @@ export const allCasinos: Casino[] = [
   { name: "MrBit", logo: mrbitLogo, bonus: "Бонус до 1000 € + до 100 FS" },
   { name: "BET.bg", logo: cbetLogo, bonus: "Бонус до 1500 €" },
   { name: "Betano", logo: betanoLogo, bonus: "Бонус до 1500 €" },
-  { name: "Bet365", logo: bet365Logo, bonus: "Бонус 100% до 200 €" },
+  {
+    name: "Bet365",
+    logo: bet365Logo,
+    bonus: "Бонус 100% до 200 €",
+    pros: ["Бърз кешаут", "Голям избор слотове", "24/7 поддръжка"],
+    cons: ["Ограничен бонус", "Няма крипто"],
+  },
   { name: "Bwin", logo: bwinLogo, bonus: "Персонализиран бонус" },
   { name: "Topwin", logo: topwinLogo, bonus: "Бонус до 1000 € + до 50 FS" },
   { name: "Elitbet", logo: elitbetLogo, bonus: "Бонус до 1500 €" },
