@@ -51,7 +51,7 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid" }: Props) => {
         {menuOpen && (
           <div className="md:hidden flex flex-col gap-2 mt-3 pb-1 w-full">
             <button className="nav-btn text-left" onClick={() => go("/novi-kazina")}>Нови Казина</button>
-            <button className="nav-btn text-left" onClick={() => go("/")}>ТОП 10</button>
+            <button className="nav-btn text-left" onClick={() => go("/top-10")}>ТОП 10</button>
             <button className="nav-btn text-left">Печалби</button>
           </div>
         )}
