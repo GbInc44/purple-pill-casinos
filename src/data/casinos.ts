@@ -31,8 +31,20 @@ export type Casino = {
 };
 
 export const allCasinos: Casino[] = [
-  { name: "Efbet", logo: efbetLogo, bonus: "Бонус до 1500 €" },
-  { name: "Winbet", logo: winbetLogo, bonus: "Бонус 200% до 100 €" },
+  {
+    name: "Efbet",
+    logo: efbetLogo,
+    bonus: "Бонус до 1500 €",
+    pros: ["Обновен уебсайт и приложение", "Високи коефициенти и редовни бонуси", "Опит в пазари в чужбина"],
+    cons: ["Липса на покер на живо"],
+  },
+  {
+    name: "Winbet",
+    logo: winbetLogo,
+    bonus: "Бонус 200% до 100 €",
+    pros: ["Бърз депозит и теглене", "Разнообразие от над 300 ротативки", "Игри с крупиета на живо и видео покер"],
+    cons: ["Не много висок начален бонус"],
+  },
   { name: "8888", logo: logo8888, bonus: "Бонус до 500 € + до 300 FS" },
   { name: "Palms Bet", logo: palmsbetLogo, bonus: "Бонус до 1000 € + до 300 FS" },
   { name: "Sesame", logo: sesameLogo, bonus: "Бонус до 1500 €" },
