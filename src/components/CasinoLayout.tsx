@@ -9,9 +9,10 @@ interface Props {
   subtitle: ReactNode;
   casinos: Casino[];
   variant?: "grid" | "list";
+  showProsCons?: boolean;
 }
 
-const CasinoLayout = ({ subtitle, casinos, variant = "grid" }: Props) => {
+const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = false }: Props) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
 
