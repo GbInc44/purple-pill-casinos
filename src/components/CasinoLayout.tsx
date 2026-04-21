@@ -157,7 +157,7 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
                           <ul className="flex flex-col gap-1.5">
                             {casino.cons.map((c) => (
                               <li key={c} className="flex items-center gap-2 text-white text-sm">
-                                <span className="h-5 w-5 rounded-full flex items-center justify-center shrink-0 bg-red-500 text-white">
+                                <span className="h-5 w-5 rounded-full flex items-center justify-center shrink-0 bg-red-500/20 text-red-400">
                                   <Minus className="h-4 w-4" strokeWidth={3} />
                                 </span>
                                 <span>{c}</span>
