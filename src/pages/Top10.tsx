@@ -23,6 +23,7 @@ const Top10 = () => (
     subtitle="ТОП 10 онлайн казина в България."
     casinos={top10Casinos}
     variant="list"
+    showProsCons
   />
 );
 

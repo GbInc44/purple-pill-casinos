@@ -9,9 +9,10 @@ interface Props {
   subtitle: ReactNode;
   casinos: Casino[];
   variant?: "grid" | "list";
+  showProsCons?: boolean;
 }
 
-const CasinoLayout = ({ subtitle, casinos, variant = "grid" }: Props) => {
+const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = false }: Props) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -127,62 +128,81 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid" }: Props) => {
                   <span className="text-base font-bold tracking-wide text-white">{casino.name}</span>
                 </div>
 
-                {/* Center: pros/cons */}
-                {(casino.pros?.length || casino.cons?.length) ? (
-                  <div className="flex-1 w-full grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {casino.pros?.length ? (
-                      <div className="flex flex-col gap-2">
-                        <h4 className="text-white font-bold text-sm tracking-wide font-['Orbitron'] border-b border-[hsla(270,100%,65%,0.4)] pb-1">
-                          Плюсове
-                        </h4>
-                        <ul className="flex flex-col gap-1.5">
-                          {casino.pros.map((p) => (
-                            <li key={p} className="flex items-center gap-2 text-white text-sm">
-                              <span className="h-5 w-5 rounded-full flex items-center justify-center shrink-0 bg-green-500/20 text-green-400">
-                                <Check className="h-4 w-4" strokeWidth={3} />
-                              </span>
-                              <span>{p}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ) : null}
-                    {casino.cons?.length ? (
-                      <div className="flex flex-col gap-2">
-                        <h4 className="text-white font-bold text-sm tracking-wide font-['Orbitron'] border-b border-[hsla(270,100%,65%,0.4)] pb-1">
-                          Минуси
-                        </h4>
-                        <ul className="flex flex-col gap-1.5">
-                          {casino.cons.map((c) => (
-                            <li key={c} className="flex items-center gap-2 text-white text-sm">
-                              <span className="h-5 w-5 rounded-full flex items-center justify-center shrink-0 bg-red-500 text-white">
-                                <Minus className="h-4 w-4" strokeWidth={3} />
-                              </span>
-                              <span>{c}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ) : null}
-                  </div>
+                {/* Center: pros/cons (top-10 only) or bonus (default) */}
+                {showProsCons ? (
+                  (casino.pros?.length || casino.cons?.length) ? (
+                    <div className="flex-1 w-full grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      {casino.pros?.length ? (
+                        <div className="flex flex-col gap-2">
+                          <h4 className="text-white font-bold text-sm tracking-wide font-['Orbitron'] border-b border-[hsla(270,100%,65%,0.4)] pb-1">
+                            Плюсове
+                          </h4>
+                          <ul className="flex flex-col gap-1.5">
+                            {casino.pros.map((p) => (
+                              <li key={p} className="flex items-center gap-2 text-white text-sm">
+                                <span className="h-5 w-5 rounded-full flex items-center justify-center shrink-0 bg-green-500/20 text-green-400">
+                                  <Check className="h-4 w-4" strokeWidth={3} />
+                                </span>
+                                <span>{p}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ) : null}
+                      {casino.cons?.length ? (
+                        <div className="flex flex-col gap-2">
+                          <h4 className="text-white font-bold text-sm tracking-wide font-['Orbitron'] border-b border-[hsla(270,100%,65%,0.4)] pb-1">
+                            Минуси
+                          </h4>
+                          <ul className="flex flex-col gap-1.5">
+                            {casino.cons.map((c) => (
+                              <li key={c} className="flex items-center gap-2 text-white text-sm">
+                                <span className="h-5 w-5 rounded-full flex items-center justify-center shrink-0 bg-red-500 text-white">
+                                  <Minus className="h-4 w-4" strokeWidth={3} />
+                                </span>
+                                <span>{c}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ) : null}
+                    </div>
+                  ) : (
+                    <div className="flex-1" />
+                  )
                 ) : (
-                  <div className="flex-1" />
+                  <div className="flex-1 w-full flex items-center justify-center">
+                    {casino.bonus && (
+                      <div
+                        className="w-full max-w-xs rounded-lg py-2 px-4 text-center font-bold tracking-wide text-white text-base"
+                        style={{ background: "linear-gradient(135deg, hsl(270,100%,55%), hsl(220,100%,55%))" }}
+                      >
+                        {casino.bonus}
+                      </div>
+                    )}
+                  </div>
                 )}
 
-                {/* Right: CTA + bonus stacked */}
-                <div className="flex flex-col gap-2 w-full sm:w-44 items-stretch shrink-0">
-                  <span className="btn-gradient block w-full text-center rounded-full px-6 py-2 text-xs font-bold text-white tracking-wider uppercase transition-all group-hover:shadow-[0_0_20px_hsla(270,100%,65%,0.5)]">
+                {/* Right: CTA (+ bonus stacked when showProsCons) */}
+                {showProsCons ? (
+                  <div className="flex flex-col gap-2 w-full sm:w-44 items-stretch shrink-0">
+                    <span className="btn-gradient block w-full text-center rounded-full px-6 py-2 text-xs font-bold text-white tracking-wider uppercase transition-all group-hover:shadow-[0_0_20px_hsla(270,100%,65%,0.5)]">
+                      Посети сайта
+                    </span>
+                    {casino.bonus && (
+                      <div
+                        className="w-full rounded-full py-1.5 px-3 text-center font-bold tracking-wide text-white text-sm"
+                        style={{ background: "linear-gradient(135deg, hsl(270,100%,55%), hsl(220,100%,55%))" }}
+                      >
+                        {casino.bonus}
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <span className="btn-gradient shrink-0 rounded-full px-6 py-2 text-xs font-bold text-white tracking-wider uppercase transition-all group-hover:shadow-[0_0_20px_hsla(270,100%,65%,0.5)]">
                     Посети сайта
                   </span>
-                  {casino.bonus && (
-                    <div
-                      className="w-full rounded-full py-1.5 px-3 text-center font-bold tracking-wide text-white text-sm"
-                      style={{ background: "linear-gradient(135deg, hsl(270,100%,55%), hsl(220,100%,55%))" }}
-                    >
-                      {casino.bonus}
-                    </div>
-                  )}
-                </div>
+                )}
               </a>
             ))}
           </div>
