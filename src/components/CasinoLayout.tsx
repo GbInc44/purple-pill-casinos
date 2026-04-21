@@ -1,5 +1,5 @@
 import { ReactNode, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Check, Minus } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import casinoBg from "@/assets/casino-bg.png";
 import allBetLogo from "@/assets/all-bet-logo.png";
@@ -127,23 +127,61 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid" }: Props) => {
                   <span className="text-base font-bold tracking-wide text-white">{casino.name}</span>
                 </div>
 
-                {/* Center: bonus */}
-                <div className="flex-1 flex justify-center w-full">
+                {/* Center: pros/cons */}
+                {(casino.pros?.length || casino.cons?.length) ? (
+                  <div className="flex-1 w-full grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {casino.pros?.length ? (
+                      <div className="flex flex-col gap-2">
+                        <h4 className="text-white font-bold text-sm tracking-wide font-['Orbitron'] border-b border-[hsla(270,100%,65%,0.4)] pb-1">
+                          Плюсове
+                        </h4>
+                        <ul className="flex flex-col gap-1.5">
+                          {casino.pros.map((p) => (
+                            <li key={p} className="flex items-center gap-2 text-white text-sm">
+                              <span className="h-5 w-5 rounded-full flex items-center justify-center shrink-0 bg-green-500/20 text-green-400">
+                                <Check className="h-4 w-4" strokeWidth={3} />
+                              </span>
+                              <span>{p}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ) : null}
+                    {casino.cons?.length ? (
+                      <div className="flex flex-col gap-2">
+                        <h4 className="text-white font-bold text-sm tracking-wide font-['Orbitron'] border-b border-[hsla(270,100%,65%,0.4)] pb-1">
+                          Минуси
+                        </h4>
+                        <ul className="flex flex-col gap-1.5">
+                          {casino.cons.map((c) => (
+                            <li key={c} className="flex items-center gap-2 text-white text-sm">
+                              <span className="h-5 w-5 rounded-full flex items-center justify-center shrink-0 bg-red-500 text-white">
+                                <Minus className="h-4 w-4" strokeWidth={3} />
+                              </span>
+                              <span>{c}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ) : null}
+                  </div>
+                ) : (
+                  <div className="flex-1" />
+                )}
+
+                {/* Right: CTA + bonus stacked */}
+                <div className="flex flex-col gap-2 w-full sm:w-44 items-stretch shrink-0">
+                  <span className="btn-gradient block w-full text-center rounded-full px-6 py-2 text-xs font-bold text-white tracking-wider uppercase transition-all group-hover:shadow-[0_0_20px_hsla(270,100%,65%,0.5)]">
+                    Посети сайта
+                  </span>
                   {casino.bonus && (
                     <div
-                      className="w-full sm:max-w-sm rounded-lg py-2 px-4 text-center font-bold tracking-wide text-white text-base"
+                      className="w-full rounded-full py-1.5 px-3 text-center font-bold tracking-wide text-white text-sm"
                       style={{ background: "linear-gradient(135deg, hsl(270,100%,55%), hsl(220,100%,55%))" }}
                     >
                       {casino.bonus}
                     </div>
                   )}
-                </div>
-
-                {/* Right: CTA */}
-                <div className="shrink-0 sm:ml-auto">
-                  <span className="btn-gradient inline-block rounded-full px-6 py-2 text-xs font-bold text-white tracking-wider uppercase transition-all group-hover:shadow-[0_0_20px_hsla(270,100%,65%,0.5)]">
-                    Посети сайта
-                  </span>
                 </div>
               </a>
             ))}
