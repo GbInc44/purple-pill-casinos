@@ -1,6 +1,6 @@
 import { ReactNode, useState } from "react";
 import { Menu, X, Check, Minus } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import casinoBg from "@/assets/casino-bg.png";
 import allBetLogo from "@/assets/all-bet-logo.png";
 import { Casino } from "@/data/casinos";
@@ -15,11 +15,15 @@ interface Props {
 const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = false }: Props) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const { pathname } = useLocation();
 
   const go = (path: string) => {
     setMenuOpen(false);
     navigate(path);
   };
+
+  const navBtnClass = (path: string, extra = "") =>
+    `nav-btn border border-white ${pathname === path ? "nav-btn-active" : ""} ${extra}`.trim();
 
   return (
     <div
@@ -35,9 +39,9 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
           </Link>
 
           <div className="hidden md:flex items-center gap-2">
-            <button className="nav-btn" onClick={() => go("/novi-kazina")}>Нови Казина</button>
-            <button className="nav-btn" onClick={() => go("/top-10")}>ТОП 10</button>
-            <button className="nav-btn">Печалби</button>
+            <button className={navBtnClass("/novi-kazina")} onClick={() => go("/novi-kazina")}>Нови Казина</button>
+            <button className={navBtnClass("/top-10")} onClick={() => go("/top-10")}>ТОП 10</button>
+            <button className="nav-btn border border-white">Печалби</button>
           </div>
 
           <button
@@ -51,9 +55,9 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
 
         {menuOpen && (
           <div className="md:hidden flex flex-col gap-2 mt-3 pb-1 w-full">
-            <button className="nav-btn text-left" onClick={() => go("/novi-kazina")}>Нови Казина</button>
-            <button className="nav-btn text-left" onClick={() => go("/top-10")}>ТОП 10</button>
-            <button className="nav-btn text-left">Печалби</button>
+            <button className={navBtnClass("/novi-kazina", "text-left")} onClick={() => go("/novi-kazina")}>Нови Казина</button>
+            <button className={navBtnClass("/top-10", "text-left")} onClick={() => go("/top-10")}>ТОП 10</button>
+            <button className="nav-btn border border-white text-left">Печалби</button>
           </div>
         )}
       </nav>
