@@ -3,6 +3,7 @@ import { allCasinos } from "@/data/casinos";
 
 const Index = () => (
   <CasinoLayout
+    showDivider={false}
     subtitle={
       <>
         Всички лицензирани онлайн казина в България на едно място.

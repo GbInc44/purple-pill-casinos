@@ -76,7 +76,7 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
           </p>
         </header>
 
-        <div className="neon-divider max-w-md mx-auto mb-12 rounded-full" />
+        {showDivider && <div className="neon-divider max-w-md mx-auto mb-12 rounded-full" />}
 
         {variant === "grid" ? (
           <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
