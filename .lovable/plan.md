@@ -1,20 +1,27 @@
 
 
 ## Goal
-On the landing page only: add breathing room between the secondary tagline and the casino cards (replacing the removed neon divider with invisible spacing), and make the secondary text more structured/aligned so it sits cleanly under the main header.
+Restyle the navigation buttons (Нови Казина, ТОП 10, Печалби) so they have a transparent inner fill (showing the nav bar behind them) with a yellow border and yellow text, instead of the current solid gold gradient fill.
 
 ## Changes
 
-**`src/components/CasinoLayout.tsx`**
-- Currently when `showDivider={false}` (landing page), the header sits directly above the cards with only `mb-4` of space. Replace this gap with an invisible spacer of comparable height to the previous neon divider block (`mb-12`).
-- Implementation: when `showDivider` is false, render an invisible spacer `<div className="max-w-md mx-auto mb-12" aria-hidden />` in place of the divider so the vertical rhythm matches the other pages.
+**`src/index.css`** — update `.nav-btn` and `.nav-btn-active` utility classes:
 
-**`src/pages/Index.tsx`** — improve secondary text structure
-- Constrain the secondary tagline to a readable measure so it doesn't stretch full-width under the shorter main title.
-- Apply: `max-w-2xl mx-auto`, `leading-relaxed`, slightly increased top margin (`mt-3`), and balanced text wrapping (`text-balance` / `[text-wrap:balance]`) so the two lines break evenly under the main header.
-- Keep current Orbitron font, neon glow, and `text-sm md:text-lg` sizes (per the user's previous explicit class choice).
+- `.nav-btn`:
+  - Replace gold gradient `background` with `background: transparent;`
+  - Change `color` from cream (`#F0EAD6`) to yellow (`hsl(45, 100%, 55%)`)
+  - Add `border: 1px solid hsl(45, 100%, 55%);`
+  - Remove the inset highlight/shadow layers (they assume a filled button); keep a subtle outer glow only
+  - Hover: keep transparent background, intensify yellow glow (`box-shadow: 0 0 14px hsla(45, 100%, 55%, 0.55)`), slightly brighten border/text via `filter: brightness(1.1)`
+  - Active (pressed): subtle inset shadow, no fill change
+
+- `.nav-btn-active` (current page indicator):
+  - Keep transparent background as well, but use a stronger/brighter yellow glow and a slightly thicker visual weight (e.g. `border-color` brighter + stronger `box-shadow`) so the active page is still distinguishable
+  - Yellow text remains
+
+**`src/components/CasinoLayout.tsx`** — no structural changes needed. The existing inline `border border-white` Tailwind classes on the nav buttons currently override the CSS border. Remove `border border-white` from the three nav button `className` strings (both desktop and mobile menu) so the new yellow border from `.nav-btn` is visible.
 
 ## Scope
-- Landing page (`/`) only for the spacing + text alignment refinements.
-- No changes to `/novi-kazina`, `/top-10`, casino cards, nav, or footer.
+- Affects nav buttons on all pages (landing, /top-10, /novi-kazina) since they share `CasinoLayout`.
+- No changes to CTA buttons (`btn-gradient`), cards, or any other styling.
 
