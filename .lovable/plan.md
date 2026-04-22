@@ -1,27 +1,22 @@
 
 
 ## Goal
-Restyle the navigation buttons (Нови Казина, ТОП 10, Печалби) so they have a transparent inner fill (showing the nav bar behind them) with a yellow border and yellow text, instead of the current solid gold gradient fill.
+Darken the casino cards across all pages (landing, /top-10, /novi-kazina) to a metallic glass-grey tone while preserving the glass blur effect and keeping all inner content (logos, text, bonus pills, CTAs, pros/cons) untouched.
 
 ## Changes
 
-**`src/index.css`** — update `.nav-btn` and `.nav-btn-active` utility classes:
+**`src/index.css`** — update the `.glass-card` utility only:
+- Replace the current near-transparent white background (`rgba(255, 255, 255, 0.07)`) with a darker, neutral metallic-grey gradient, e.g.:
+  - `background: linear-gradient(135deg, rgba(40, 42, 50, 0.72), rgba(22, 24, 30, 0.78));`
+- Keep `backdrop-filter: blur(16px)` and `-webkit-backdrop-filter` so the glass blur effect is preserved.
+- Slightly strengthen the border for a metallic edge: `border: 1px solid rgba(255, 255, 255, 0.10);`
+- Keep the existing hover state (purple neon border + glow) unchanged.
 
-- `.nav-btn`:
-  - Replace gold gradient `background` with `background: transparent;`
-  - Change `color` from cream (`#F0EAD6`) to yellow (`hsl(45, 100%, 55%)`)
-  - Add `border: 1px solid hsl(45, 100%, 55%);`
-  - Remove the inset highlight/shadow layers (they assume a filled button); keep a subtle outer glow only
-  - Hover: keep transparent background, intensify yellow glow (`box-shadow: 0 0 14px hsla(45, 100%, 55%, 0.55)`), slightly brighten border/text via `filter: brightness(1.1)`
-  - Active (pressed): subtle inset shadow, no fill change
+No changes to:
+- Card inner elements (logo wrapper `bg-black/40`, bonus pill gradient, text, CTA buttons, ranking badge).
+- `.glass-panel` (footer panel).
+- Layout, spacing, or any page files.
 
-- `.nav-btn-active` (current page indicator):
-  - Keep transparent background as well, but use a stronger/brighter yellow glow and a slightly thicker visual weight (e.g. `border-color` brighter + stronger `box-shadow`) so the active page is still distinguishable
-  - Yellow text remains
-
-**`src/components/CasinoLayout.tsx`** — no structural changes needed. The existing inline `border border-white` Tailwind classes on the nav buttons currently override the CSS border. Remove `border border-white` from the three nav button `className` strings (both desktop and mobile menu) so the new yellow border from `.nav-btn` is visible.
-
-## Scope
-- Affects nav buttons on all pages (landing, /top-10, /novi-kazina) since they share `CasinoLayout`.
-- No changes to CTA buttons (`btn-gradient`), cards, or any other styling.
+## Result
+Cards take on a darker, brushed-metal glass look that increases contrast against inner content (white text, gradient bonus pills, gold ranking badge become more readable), while the overall glassmorphism aesthetic and hover behavior stay intact.
 
