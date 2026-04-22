@@ -10,9 +10,10 @@ interface Props {
   casinos: Casino[];
   variant?: "grid" | "list";
   showProsCons?: boolean;
+  showDivider?: boolean;
 }
 
-const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = false }: Props) => {
+const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = false, showDivider = true }: Props) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
   const { pathname } = useLocation();
