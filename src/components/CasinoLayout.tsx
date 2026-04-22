@@ -236,6 +236,9 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
               </a>
             </p>
           </div>
+          <p className="mt-4 text-center text-white text-xs leading-relaxed">
+            AllBet е независим източник на информация, свързана с онлайн казината в България. AllBet не се управлява от никой от хазартните оператори.
+          </p>
         </footer>
       </div>
     </div>
