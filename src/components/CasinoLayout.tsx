@@ -40,14 +40,14 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
             <img src={allBetLogo} alt="All Bet" className="h-10 sm:h-12 md:h-14 w-auto -my-1 sm:-my-2" />
           </Link>
 
-          <div className="hidden md:flex items-center gap-2">
+          <div className="hidden lg:flex items-center gap-2">
             <button className={navBtnClass("/novi-kazina")} onClick={() => go("/novi-kazina")}>Нови Казина</button>
             <button className={navBtnClass("/top-10")} onClick={() => go("/top-10")}>ТОП 10</button>
             <button className="nav-btn">Печалби</button>
           </div>
 
           <button
-            className="md:hidden text-white p-2 shrink-0"
+            className="lg:hidden text-white p-2 shrink-0"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
           >
@@ -56,7 +56,7 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
         </div>
 
         {menuOpen && (
-          <div className="md:hidden flex flex-col gap-2 mt-3 pb-1 w-full">
+          <div className="lg:hidden flex flex-col gap-2 mt-3 pb-1 w-full">
             <button className={navBtnClass("/novi-kazina", "text-left")} onClick={() => go("/novi-kazina")}>Нови Казина</button>
             <button className={navBtnClass("/top-10", "text-left")} onClick={() => go("/top-10")}>ТОП 10</button>
             <button className="nav-btn text-left">Печалби</button>
@@ -129,14 +129,14 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
                 href={casino.url ?? "#"}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group glass-card card-animate rounded-2xl px-5 py-5 sm:px-8 sm:py-6 flex flex-col sm:flex-row items-center gap-6 relative"
+                className="group glass-card card-animate rounded-2xl px-5 py-5 sm:px-8 sm:py-6 flex flex-col lg:flex-row items-center gap-6 relative"
                 style={{ animationDelay: `${index * 0.05}s` }}
               >
                 <div className="ranking-badge absolute top-3 left-3">{index + 1}</div>
 
                 {/* Left: logo + name */}
-                <div className="flex flex-col items-center gap-2 w-full sm:w-56 shrink-0">
-                  <div className="h-24 w-full sm:w-48 rounded-xl bg-black/40 flex items-center justify-center overflow-hidden border border-white/5">
+                <div className="flex flex-col items-center gap-2 w-full lg:w-56 shrink-0">
+                  <div className="h-24 w-full sm:max-w-xs lg:w-48 lg:max-w-none rounded-xl bg-black/40 flex items-center justify-center overflow-hidden border border-white/5">
                     <img src={casino.logo} alt={casino.name} className="h-full w-full object-cover opacity-100" />
                   </div>
                   <span className="text-base font-bold tracking-wide text-white">{casino.name}</span>
@@ -145,7 +145,7 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
                 {/* Center: pros/cons (top-10 only) or bonus (default) */}
                 {showProsCons ? (
                   (casino.pros?.length || casino.cons?.length) ? (
-                    <div className="flex-1 w-full grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="flex-1 w-full grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-4">
                       {casino.pros?.length ? (
                         <div className="flex flex-col gap-2">
                           <h4 className="text-white font-bold text-sm tracking-wide font-['Orbitron'] border-b border-[hsla(270,100%,65%,0.4)] pb-1">
@@ -199,7 +199,7 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
 
                 {/* Right: CTA (+ bonus stacked when showProsCons) */}
                 {showProsCons ? (
-                  <div className="flex flex-col gap-2 w-full sm:w-44 items-stretch shrink-0">
+                  <div className="flex flex-col gap-2 w-full lg:w-44 items-stretch shrink-0">
                     <span className="btn-gradient block w-full text-center rounded-full px-6 py-2 text-xs font-bold text-white tracking-wider uppercase transition-all group-hover:shadow-[0_0_20px_hsla(270,100%,65%,0.5)]">
                       Посети сайта
                     </span>
