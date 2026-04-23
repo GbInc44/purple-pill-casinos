@@ -7,7 +7,7 @@ const Index = () => (
     cleanSubtitle
     subtitle={
       <>
-        <h1 className="md:text-5xl font-extrabold tracking-tight text-white text-2xl">
+        <h1 className="font-extrabold tracking-tight text-white text-2xl md:text-4xl">
           Всички лицензирани онлайн казина в България на едно място.
         </h1>
         <span className="block mt-4 md:text-base max-w-2xl mx-auto leading-relaxed [text-wrap:balance] text-center text-base font-medium text-slate-200">
