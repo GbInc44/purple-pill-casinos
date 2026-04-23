@@ -199,7 +199,7 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
 
                 {/* Right: CTA (+ bonus stacked when showProsCons) */}
                 {showProsCons ? (
-                  <div className="flex flex-col gap-2 w-full sm:w-44 items-stretch shrink-0">
+                  <div className="flex flex-col gap-2 w-full lg:w-44 items-stretch shrink-0">
                     <span className="btn-gradient block w-full text-center rounded-full px-6 py-2 text-xs font-bold text-white tracking-wider uppercase transition-all group-hover:shadow-[0_0_20px_hsla(270,100%,65%,0.5)]">
                       Посети сайта
                     </span>
