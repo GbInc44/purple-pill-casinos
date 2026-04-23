@@ -11,9 +11,10 @@ interface Props {
   variant?: "grid" | "list";
   showProsCons?: boolean;
   showDivider?: boolean;
+  cleanSubtitle?: boolean;
 }
 
-const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = false, showDivider = true }: Props) => {
+const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = false, showDivider = true, cleanSubtitle = false }: Props) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
   const { pathname } = useLocation();
@@ -65,15 +66,19 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
 
       <div className="relative z-10 py-10 px-4">
         <header className="text-center mb-4">
-          <p
-            className="text-xl md:text-2xl font-bold tracking-wide text-[#fcfaff] neon-text"
-            style={{
-              fontFamily: "'Orbitron', sans-serif",
-              textShadow: "0 0 8px hsla(270,100%,65%,0.6), 0 0 30px hsla(270,100%,65%,0.3)",
-            }}
-          >
-            {subtitle}
-          </p>
+          {cleanSubtitle ? (
+            <div className="text-center">{subtitle}</div>
+          ) : (
+            <p
+              className="text-xl md:text-2xl font-bold tracking-wide text-[#fcfaff] neon-text"
+              style={{
+                fontFamily: "'Orbitron', sans-serif",
+                textShadow: "0 0 8px hsla(270,100%,65%,0.6), 0 0 30px hsla(270,100%,65%,0.3)",
+              }}
+            >
+              {subtitle}
+            </p>
+          )}
         </header>
 
         {showDivider ? (
