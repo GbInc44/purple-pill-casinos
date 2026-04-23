@@ -1,0 +1,147 @@
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import casinoBg from "@/assets/casino-bg.png";
+import allBetLogo from "@/assets/all-bet-logo.png";
+import bigJoker from "@/assets/big-joker.png";
+
+interface Winning {
+  casino: string;
+  date: string;
+  win: string;
+  bet: string;
+  game: string;
+  image: string;
+}
+
+const winnings: Winning[] = [
+  {
+    casino: "Palms Bet",
+    date: "17/04/26",
+    win: "34 850.81 €",
+    bet: "0.10 €",
+    game: "Big Joker",
+    image: bigJoker,
+  },
+];
+
+const Winnings = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+
+  const go = (path: string) => {
+    setMenuOpen(false);
+    navigate(path);
+  };
+
+  const navBtnClass = (path: string, extra = "") =>
+    `nav-btn ${pathname === path ? "nav-btn-active" : ""} ${extra}`.trim();
+
+  return (
+    <div
+      className="min-h-screen bg-cover bg-center bg-fixed bg-no-repeat relative"
+      style={{ backgroundImage: `url(${casinoBg})` }}
+    >
+      <div className="fixed inset-0 animated-overlay pointer-events-none" />
+
+      <nav className="nav-bar sticky top-0 z-50 w-full max-w-full px-3 sm:px-4 py-2 overflow-visible">
+        <div className="flex items-center justify-between w-full max-w-full gap-2">
+          <Link to="/" className="shrink-0">
+            <img src={allBetLogo} alt="All Bet" className="h-10 sm:h-12 md:h-14 w-auto -my-1 sm:-my-2" />
+          </Link>
+
+          <div className="hidden lg:flex items-center gap-2">
+            <button className={navBtnClass("/novi-kazina")} onClick={() => go("/novi-kazina")}>Нови Казина</button>
+            <button className={navBtnClass("/top-10")} onClick={() => go("/top-10")}>ТОП 10</button>
+            <button className={navBtnClass("/pechalbi")} onClick={() => go("/pechalbi")}>Печалби</button>
+          </div>
+
+          <button
+            className="lg:hidden text-white p-2 shrink-0"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+
+        {menuOpen && (
+          <div className="lg:hidden flex flex-col gap-2 mt-3 pb-1 w-full">
+            <button className={navBtnClass("/novi-kazina", "text-left")} onClick={() => go("/novi-kazina")}>Нови Казина</button>
+            <button className={navBtnClass("/top-10", "text-left")} onClick={() => go("/top-10")}>ТОП 10</button>
+            <button className={navBtnClass("/pechalbi", "text-left")} onClick={() => go("/pechalbi")}>Печалби</button>
+          </div>
+        )}
+      </nav>
+
+      <div className="relative z-10 py-10 px-4">
+        <header className="text-center mb-4">
+          <div className="text-center">
+            <h1 className="font-extrabold tracking-tight text-white text-2xl md:text-4xl">
+              Обявени печалби
+            </h1>
+            <span className="block mt-3 max-w-2xl md:max-w-4xl mx-auto leading-snug [text-wrap:balance] text-center text-lg md:text-xl font-medium text-white">
+              Актуални печалби от различни видове игри, обявени от казината в техните информационни портали.
+            </span>
+          </div>
+        </header>
+
+        <div className="max-w-md mx-auto mb-12" aria-hidden />
+
+        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {winnings.map((w, index) => (
+            <div
+              key={index}
+              className="glass-card card-animate rounded-2xl px-5 py-5 flex flex-col items-center gap-4"
+              style={{ animationDelay: `${index * 0.05}s` }}
+            >
+              <div className="w-full text-center font-bold text-white text-base tracking-wide">
+                {w.casino} {w.date}
+              </div>
+
+              <div className="w-full rounded-xl overflow-hidden border border-white/5 bg-black/40 flex items-center justify-center">
+                <img src={w.image} alt={w.game} className="w-full h-auto object-contain" />
+              </div>
+
+              <div className="w-full text-center text-white text-sm md:text-base font-semibold">
+                Печалба {w.win} / Залог {w.bet} | {w.game}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <footer className="max-w-6xl mx-auto mt-16 mb-8">
+          <div className="neon-divider rounded-full mb-8" />
+          <div className="glass-panel rounded-2xl px-6 py-6 text-center text-muted-foreground text-xs leading-relaxed">
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <span className="inline-flex items-center justify-center h-8 w-8 rounded-full border-2 border-destructive text-destructive font-bold text-sm">
+                18+
+              </span>
+              <span className="font-semibold text-white/70">Отговорна игра</span>
+            </div>
+            <p className="text-white/50">
+              Сайтът е предназначен само за лица над 18 години. Хазартът крие риск от зависимост. Играйте отговорно.
+            </p>
+            <p className="mt-1 text-white/50">
+              Помощ:{" "}
+              <a
+                href="https://www.begambleaware.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary underline hover:text-accent transition-colors"
+              >
+                begambleaware.org
+              </a>
+            </p>
+          </div>
+          <p className="mt-4 text-center text-white text-xs leading-relaxed">
+            AllBet е независим източник на информация, свързана с онлайн казината в България. AllBet не се управлява от никой от хазартните оператори.
+          </p>
+        </footer>
+      </div>
+    </div>
+  );
+};
+
+export default Winnings;
