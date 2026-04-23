@@ -40,14 +40,14 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
             <img src={allBetLogo} alt="All Bet" className="h-10 sm:h-12 md:h-14 w-auto -my-1 sm:-my-2" />
           </Link>
 
-          <div className="hidden md:flex items-center gap-2">
+          <div className="hidden lg:flex items-center gap-2">
             <button className={navBtnClass("/novi-kazina")} onClick={() => go("/novi-kazina")}>Нови Казина</button>
             <button className={navBtnClass("/top-10")} onClick={() => go("/top-10")}>ТОП 10</button>
             <button className="nav-btn">Печалби</button>
           </div>
 
           <button
-            className="md:hidden text-white p-2 shrink-0"
+            className="lg:hidden text-white p-2 shrink-0"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
           >
@@ -56,7 +56,7 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
         </div>
 
         {menuOpen && (
-          <div className="md:hidden flex flex-col gap-2 mt-3 pb-1 w-full">
+          <div className="lg:hidden flex flex-col gap-2 mt-3 pb-1 w-full">
             <button className={navBtnClass("/novi-kazina", "text-left")} onClick={() => go("/novi-kazina")}>Нови Казина</button>
             <button className={navBtnClass("/top-10", "text-left")} onClick={() => go("/top-10")}>ТОП 10</button>
             <button className="nav-btn text-left">Печалби</button>
