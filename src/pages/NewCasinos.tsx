@@ -17,6 +17,7 @@ const NewCasinos = () => (
     }
     casinos={newCasinos}
     variant="list"
+    showProsCons
   />
 );
 
