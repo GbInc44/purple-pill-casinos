@@ -7,10 +7,10 @@ const Index = () => (
     cleanSubtitle
     subtitle={
       <>
-        <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white">
+        <h1 className="md:text-5xl font-extrabold tracking-tight text-white text-2xl">
           Всички лицензирани онлайн казина в България на едно място.
         </h1>
-        <span className="block mt-4 text-sm md:text-base font-normal text-white/70 max-w-2xl mx-auto leading-relaxed [text-wrap:balance] text-center">
+        <span className="block mt-4 md:text-base max-w-2xl mx-auto leading-relaxed [text-wrap:balance] text-center text-base font-medium text-slate-200">
           Актуален списък с легални онлайн казина, лицензирани за българския пазар. Всичко необходимо, за да направите информиран избор.
         </span>
       </>
