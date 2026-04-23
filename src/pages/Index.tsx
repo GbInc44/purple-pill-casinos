@@ -4,10 +4,13 @@ import { allCasinos } from "@/data/casinos";
 const Index = () => (
   <CasinoLayout
     showDivider={false}
+    cleanSubtitle
     subtitle={
       <>
-        Всички лицензирани онлайн казина в България на едно място.
-        <span className="block mt-3 md:text-lg neon-text md:max-w-4xl max-w-2xl mx-auto leading-relaxed [text-wrap:balance] text-xs text-center" style={{ fontFamily: "'Orbitron', sans-serif", textShadow: "0 0 8px hsla(270,100%,65%,0.6), 0 0 30px hsla(270,100%,65%,0.3)" }}>
+        <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white">
+          Всички лицензирани онлайн казина в България на едно място.
+        </h1>
+        <span className="block mt-4 text-sm md:text-base font-normal text-white/70 max-w-2xl mx-auto leading-relaxed [text-wrap:balance] text-center">
           Актуален списък с легални онлайн казина, лицензирани за българския пазар. Всичко необходимо, за да направите информиран избор.
         </span>
       </>
