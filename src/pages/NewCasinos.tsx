@@ -4,10 +4,13 @@ import { newCasinos } from "@/data/casinos";
 const NewCasinos = () => (
   <CasinoLayout
     showDivider={false}
+    cleanSubtitle
     subtitle={
       <>
-        Най-новите онлайн казина в България.
-        <span className="block mt-3 md:text-lg neon-text md:max-w-4xl max-w-2xl mx-auto leading-relaxed [text-wrap:balance] text-xs text-center" style={{ fontFamily: "'Orbitron', sans-serif", textShadow: "0 0 8px hsla(270,100%,65%,0.6), 0 0 30px hsla(270,100%,65%,0.3)" }}>
+        <h1 className="font-extrabold tracking-tight text-white text-2xl md:text-4xl">
+          Най-новите онлайн казина в България.
+        </h1>
+        <span className="block mt-3 max-w-2xl md:max-w-4xl mx-auto leading-snug [text-wrap:balance] text-center text-lg md:text-xl font-medium text-white">
           Бъдете сред първите, които откриват новите лицензирани платформи на българския пазар.
         </span>
       </>
