@@ -145,7 +145,7 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
                 {/* Center: pros/cons (top-10 only) or bonus (default) */}
                 {showProsCons ? (
                   (casino.pros?.length || casino.cons?.length) ? (
-                    <div className="flex-1 w-full grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="flex-1 w-full grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-4">
                       {casino.pros?.length ? (
                         <div className="flex flex-col gap-2">
                           <h4 className="text-white font-bold text-sm tracking-wide font-['Orbitron'] border-b border-[hsla(270,100%,65%,0.4)] pb-1">
