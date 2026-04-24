@@ -22,6 +22,7 @@ import betwildLogo from "@/assets/betwild-logo.png";
 import pokerstarsLogo from "@/assets/pokerstars-logo.png";
 import bethubFs from "@/assets/bethub-fs.png";
 import betvamSport from "@/assets/betvam-sport.png";
+import topwinFs from "@/assets/topwin-fs.png";
 
 export type Casino = {
   name: string;
@@ -107,7 +108,13 @@ export const allCasinos: Casino[] = [
     cons: ["Не много висок начален бонус"],
   },
   { name: "Bwin", logo: bwinLogo, bonus: "Персонализиран бонус" },
-  { name: "Topwin", logo: topwinLogo, bonus: "Бонус до 1000 € + до 50 FS" },
+  {
+    name: "Topwin",
+    logo: topwinLogo,
+    bonus: "Бонус до 1000 € + до 50 FS",
+    centerImage: topwinFs,
+    centerCaption: "20 FS при регистрация",
+  },
   { name: "Elitbet", logo: elitbetLogo, bonus: "Бонус до 1500 €" },
   {
     name: "BetHub",
