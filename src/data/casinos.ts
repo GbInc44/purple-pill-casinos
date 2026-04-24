@@ -25,6 +25,7 @@ import betvamSport from "@/assets/betvam-sport.png";
 import topwinFs from "@/assets/topwin-fs.png";
 import everbetFs from "@/assets/everbet-fs.png";
 import slotinoNk from "@/assets/slotino-nk.png";
+import admiralbetNk from "@/assets/admiralbet-nk.png";
 
 export type Casino = {
   name: string;
@@ -140,7 +141,13 @@ export const allCasinos: Casino[] = [
     centerImage: slotinoNk,
     centerCaption: "Персонални Оферти",
   },
-  { name: "Admiral Bet", logo: admiralbetLogo, bonus: "Бонус 200% до 100 € + 100 FS" },
+  {
+    name: "Admiral Bet",
+    logo: admiralbetLogo,
+    bonus: "Бонус 200% до 100 € + 100 FS",
+    centerImage: admiralbetNk,
+    centerCaption: "Завишени коефициенти",
+  },
   {
     name: "BetVam",
     logo: betvamLogo,
