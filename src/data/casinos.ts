@@ -20,6 +20,7 @@ import admiralbetLogo from "@/assets/admiralbet-logo.jpg";
 import betvamLogo from "@/assets/betvam-logo.jpg";
 import betwildLogo from "@/assets/betwild-logo.png";
 import pokerstarsLogo from "@/assets/pokerstars-logo.png";
+import bethubFs from "@/assets/bethub-fs.png";
 
 export type Casino = {
   name: string;
@@ -28,6 +29,8 @@ export type Casino = {
   url?: string;
   pros?: string[];
   cons?: string[];
+  centerImage?: string;
+  centerCaption?: string;
 };
 
 export const allCasinos: Casino[] = [
@@ -105,7 +108,13 @@ export const allCasinos: Casino[] = [
   { name: "Bwin", logo: bwinLogo, bonus: "Персонализиран бонус" },
   { name: "Topwin", logo: topwinLogo, bonus: "Бонус до 1000 € + до 50 FS" },
   { name: "Elitbet", logo: elitbetLogo, bonus: "Бонус до 1500 €" },
-  { name: "BetHub", logo: bethubLogo, bonus: "Бонус до 1280 €" },
+  {
+    name: "BetHub",
+    logo: bethubLogo,
+    bonus: "Бонус до 1280 €",
+    centerImage: bethubFs,
+    centerCaption: "До 1000 FS БЕЗ ДЕПОЗИТ",
+  },
   { name: "Everbet", logo: everbetLogo, bonus: "Бонус до 2000 FS или до 100 € без депозит" },
   { name: "Magic Bet", logo: magicbetLogo, bonus: "Бонус до 2000 €" },
   { name: "Slotino", logo: slotinoLogo, bonus: "Бонус до 1250 €" },
