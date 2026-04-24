@@ -182,7 +182,20 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
                       ) : null}
                     </div>
                   ) : (
-                    <div className="flex-1" />
+                    <div className="flex-1 w-full flex flex-col items-center justify-center gap-3">
+                      {casino.centerImage && (
+                        <img
+                          src={casino.centerImage}
+                          alt={casino.name}
+                          className="max-h-40 w-auto object-contain rounded-lg"
+                        />
+                      )}
+                      {casino.centerCaption && (
+                        <div className="text-center font-bold tracking-wide text-white text-base">
+                          {casino.centerCaption}
+                        </div>
+                      )}
+                    </div>
                   )
                 ) : (
                   <div className="flex-1 w-full flex items-center justify-center">
