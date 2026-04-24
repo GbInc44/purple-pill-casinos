@@ -26,6 +26,7 @@ import topwinFs from "@/assets/topwin-fs.png";
 import everbetFs from "@/assets/everbet-fs.png";
 import slotinoNk from "@/assets/slotino-nk.png";
 import admiralbetNk from "@/assets/admiralbet-nk.png";
+import magicbetNk from "@/assets/magicbet-nk.png";
 
 export type Casino = {
   name: string;
@@ -133,7 +134,13 @@ export const allCasinos: Casino[] = [
     centerImage: everbetFs,
     centerCaption: "ДО 2000 FS ИЛИ ДО 100 € БЕЗ ДЕПОЗИТ",
   },
-  { name: "Magic Bet", logo: magicbetLogo, bonus: "Бонус до 2000 €" },
+  {
+    name: "Magic Bet",
+    logo: magicbetLogo,
+    bonus: "Бонус до 2000 €",
+    centerImage: magicbetNk,
+    centerCaption: "Начален бонус СПОРТ",
+  },
   {
     name: "Slotino",
     logo: slotinoLogo,
