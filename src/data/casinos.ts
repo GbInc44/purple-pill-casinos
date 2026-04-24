@@ -21,6 +21,7 @@ import betvamLogo from "@/assets/betvam-logo.jpg";
 import betwildLogo from "@/assets/betwild-logo.png";
 import pokerstarsLogo from "@/assets/pokerstars-logo.png";
 import bethubFs from "@/assets/bethub-fs.png";
+import betvamSport from "@/assets/betvam-sport.png";
 
 export type Casino = {
   name: string;
@@ -119,7 +120,13 @@ export const allCasinos: Casino[] = [
   { name: "Magic Bet", logo: magicbetLogo, bonus: "Бонус до 2000 €" },
   { name: "Slotino", logo: slotinoLogo, bonus: "Бонус до 1250 €" },
   { name: "Admiral Bet", logo: admiralbetLogo, bonus: "Бонус 200% до 100 € + 100 FS" },
-  { name: "BetVam", logo: betvamLogo, bonus: "Бонус 500% до 1000 € + до 500 FS" },
+  {
+    name: "BetVam",
+    logo: betvamLogo,
+    bonus: "Бонус 500% до 1000 € + до 500 FS",
+    centerImage: betvamSport,
+    centerCaption: "Начален бонус СПОРТ",
+  },
   { name: "Betwild", logo: betwildLogo, bonus: "Очаквайте скоро" },
   { name: "PokerStars", logo: pokerstarsLogo, bonus: "Осребряване на точки в пари" },
 ];
