@@ -78,10 +78,16 @@ const Winnings = () => {
       <div className="relative z-10 py-10 px-4">
         <header className="text-center mb-4">
           <div className="text-center">
-            <h1 className="font-extrabold tracking-tight text-white text-2xl md:text-4xl">
+            <h1
+              className="font-extrabold tracking-tight text-white text-2xl md:text-4xl"
+              style={{ textShadow: "0 3px 10px rgba(0,0,0,0.95), 0 2px 4px rgba(0,0,0,0.9), 0 0 24px hsla(270,100%,65%,0.55)" }}
+            >
               Обявени печалби
             </h1>
-            <span className="block mt-3 max-w-2xl md:max-w-4xl mx-auto leading-snug [text-wrap:balance] text-center text-lg md:text-xl font-medium text-white">
+            <span
+              className="block mt-3 max-w-2xl md:max-w-4xl mx-auto leading-snug [text-wrap:balance] text-center text-lg md:text-xl font-medium text-white"
+              style={{ textShadow: "0 2px 8px rgba(0,0,0,0.9), 0 0 16px hsla(270,100%,65%,0.4)" }}
+            >
               Актуални печалби от различни видове игри, обявени от казината в техните информационни портали.
             </span>
           </div>
