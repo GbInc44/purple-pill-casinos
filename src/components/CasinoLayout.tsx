@@ -215,13 +215,13 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
 
                 {/* Right: CTA (+ bonus stacked when showProsCons) */}
                 {showProsCons ? (
-                  <div className="flex flex-col gap-1.5 w-full lg:w-40 items-stretch shrink-0">
-                    <span className="btn-gradient block w-full text-center rounded-full px-5 py-1.5 text-xs font-bold text-white tracking-wider uppercase transition-all group-hover:shadow-[0_0_20px_hsla(270,100%,65%,0.5)]">
+                  <div className={`flex flex-col w-full items-stretch shrink-0 ${compact ? "gap-1.5 lg:w-40" : "gap-2 lg:w-44"}`}>
+                    <span className={`btn-gradient block w-full text-center rounded-full ${compact ? "px-5 py-1.5" : "px-6 py-2"} text-xs font-bold text-white tracking-wider uppercase transition-all group-hover:shadow-[0_0_20px_hsla(270,100%,65%,0.5)]`}>
                       Посети сайта
                     </span>
                     {casino.bonus && (
                       <div
-                        className="w-full rounded-full py-1 px-3 text-center font-bold tracking-wide text-white text-xs"
+                        className={`w-full rounded-full text-center font-bold tracking-wide text-white ${compact ? "py-1 px-3 text-xs" : "py-1.5 px-3 text-sm"}`}
                         style={{ background: "linear-gradient(135deg, hsl(270,100%,55%), hsl(220,100%,55%))" }}
                       >
                         {casino.bonus}
