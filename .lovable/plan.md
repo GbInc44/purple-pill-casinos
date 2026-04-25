@@ -1,52 +1,21 @@
 ## Goal
+Make the H1 ("Всички лицензирани онлайн казина...") and the subtitle line directly below it on the landing page (`/`) easier to read against the busy casino background — without changing the overall look.
 
-Tighten the casino cards on the **Нови Казина** page so they're narrower (don't stretch full page width) and have less empty space between the logo, banner image, caption, bonus pill, and CTA button — both on desktop and mobile.
+## Approach
+Apply a subtle dark text-shadow to both the H1 and the subtitle `<span>` in `src/pages/Index.tsx`. This lifts the white text off the background image so the letters read crisply, while staying minimal and not introducing any glow or panel.
 
 ## Changes
 
-All changes happen in `src/components/CasinoLayout.tsx`, in the `variant === "list"` branch (used by NewCasinos via `showProsCons`). NewCasinos.tsx and the data file stay unchanged.
+**File:** `src/pages/Index.tsx`
 
-### 1. Narrower container
+- Add an inline `style` with a layered dark text-shadow to the H1:
+  - `textShadow: "0 2px 6px rgba(0,0,0,0.7), 0 1px 2px rgba(0,0,0,0.9)"`
+- Add the same (slightly lighter) shadow to the subtitle `<span>`:
+  - `textShadow: "0 1px 4px rgba(0,0,0,0.75)"`
 
-- Change the list wrapper from `max-w-6xl` → `max-w-3xl` so cards no longer span the full width.
-- Reduce vertical gap between cards from `gap-6` → `gap-4`.
-
-### 2. Tighter card padding
-
-- Card padding: `px-5 py-5 sm:px-8 sm:py-6` → `px-4 py-4 sm:px-5 sm:py-4`.
-- Inner flex gap: `gap-6` → `gap-4`.
-
-### 3. Smaller left column (logo + name)
-
-- Width: `lg:w-56` → `lg:w-40`.
-- Logo box height: `h-24` → `h-20`, and `lg:w-48` → `lg:w-36`.
-- Reduce stack spacing `gap-2` → `gap-1.5`.
-
-### 4. Tighter center column (image + caption)
-
-In the `centerImage` / `centerCaption` block (the one used by Everbet, Slotino, Admiral Bet, Magic Bet, Betwild):
-- Outer wrapper: `gap-3 py-2` → `gap-2 py-0`.
-- Image box: `h-24` → `h-20`, `max-w-xs` → `max-w-[260px]`.
-- Caption text size: `text-sm sm:text-base` → `text-xs sm:text-sm` and reduce its top spacing implicitly via the smaller gap.
-
-### 5. Tighter right column (CTA + bonus pill)
-
-- Width: `lg:w-44` → `lg:w-40`.
-- Stack gap: `gap-2` → `gap-1.5`.
-- CTA padding: `px-6 py-2` → `px-5 py-1.5`.
-- Bonus pill: `py-1.5 px-3 text-sm` → `py-1 px-3 text-xs`.
-
-### 6. Ranking badge
-
-Keep position but nudge inside the new tighter padding (no class change needed; `top-3 left-3` still works).
-
-## Result
-
-- Cards become a centered, narrower column (~768px max) instead of full 1152px.
-- Logo, banner image, caption, bonus, and CTA sit closer together vertically and horizontally.
-- Mobile stacking remains, but with reduced row gaps so each card feels more compact.
+Two stacked shadows (a tight one + a soft one) give clean edges plus a gentle halo, which is what makes white text legible over photographic backgrounds.
 
 ## Out of scope
-
-- No changes to the `/top-10` page layout (it uses pros/cons branch, untouched).
-- No changes to card content or imagery.
+- No changes to other pages (Top 10, New Casinos, Winnings).
+- No changes to colors, fonts, sizes, or the background.
+- No new CSS utilities — kept inline so it only affects the landing page header.
