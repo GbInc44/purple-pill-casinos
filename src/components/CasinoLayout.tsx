@@ -122,21 +122,21 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
             ))}
           </div>
         ) : (
-          <div className="max-w-6xl mx-auto flex flex-col gap-6">
+          <div className="max-w-3xl mx-auto flex flex-col gap-4">
             {casinos.map((casino, index) => (
               <a
                 key={casino.name}
                 href={casino.url ?? "#"}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group glass-card card-animate rounded-2xl px-5 py-5 sm:px-8 sm:py-6 flex flex-col lg:flex-row items-center gap-6 relative"
+                className="group glass-card card-animate rounded-2xl px-4 py-4 sm:px-5 sm:py-4 flex flex-col lg:flex-row items-center gap-4 relative"
                 style={{ animationDelay: `${index * 0.05}s` }}
               >
                 <div className="ranking-badge absolute top-3 left-3">{index + 1}</div>
 
                 {/* Left: logo + name */}
-                <div className="flex flex-col items-center gap-2 w-full lg:w-56 shrink-0">
-                  <div className="h-24 w-full sm:max-w-xs lg:w-48 lg:max-w-none rounded-xl bg-black/40 flex items-center justify-center overflow-hidden border border-white/5">
+                <div className="flex flex-col items-center gap-1.5 w-full lg:w-40 shrink-0">
+                  <div className="h-20 w-full sm:max-w-xs lg:w-36 lg:max-w-none rounded-xl bg-black/40 flex items-center justify-center overflow-hidden border border-white/5">
                     <img src={casino.logo} alt={casino.name} className="h-full w-full object-cover opacity-100" />
                   </div>
                   <span className="text-base font-bold tracking-wide text-white">{casino.name}</span>
@@ -182,9 +182,9 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
                       ) : null}
                     </div>
                   ) : (
-                    <div className="flex-1 w-full flex flex-col items-center justify-center gap-3 py-2">
+                    <div className="flex-1 w-full flex flex-col items-center justify-center gap-2">
                       {casino.centerImage && (
-                        <div className="h-24 w-full max-w-xs rounded-xl overflow-hidden border border-white/5 bg-black/40 flex items-center justify-center">
+                        <div className="h-20 w-full max-w-[260px] rounded-xl overflow-hidden border border-white/5 bg-black/40 flex items-center justify-center">
                           <img
                             src={casino.centerImage}
                             alt={casino.name}
@@ -193,7 +193,7 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
                         </div>
                       )}
                       {casino.centerCaption && (
-                        <div className="text-center font-bold tracking-wide text-white text-sm sm:text-base">
+                        <div className="text-center font-bold tracking-wide text-white text-xs sm:text-sm">
                           {casino.centerCaption}
                         </div>
                       )}
@@ -214,13 +214,13 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
 
                 {/* Right: CTA (+ bonus stacked when showProsCons) */}
                 {showProsCons ? (
-                  <div className="flex flex-col gap-2 w-full lg:w-44 items-stretch shrink-0">
-                    <span className="btn-gradient block w-full text-center rounded-full px-6 py-2 text-xs font-bold text-white tracking-wider uppercase transition-all group-hover:shadow-[0_0_20px_hsla(270,100%,65%,0.5)]">
+                  <div className="flex flex-col gap-1.5 w-full lg:w-40 items-stretch shrink-0">
+                    <span className="btn-gradient block w-full text-center rounded-full px-5 py-1.5 text-xs font-bold text-white tracking-wider uppercase transition-all group-hover:shadow-[0_0_20px_hsla(270,100%,65%,0.5)]">
                       Посети сайта
                     </span>
                     {casino.bonus && (
                       <div
-                        className="w-full rounded-full py-1.5 px-3 text-center font-bold tracking-wide text-white text-sm"
+                        className="w-full rounded-full py-1 px-3 text-center font-bold tracking-wide text-white text-xs"
                         style={{ background: "linear-gradient(135deg, hsl(270,100%,55%), hsl(220,100%,55%))" }}
                       >
                         {casino.bonus}
