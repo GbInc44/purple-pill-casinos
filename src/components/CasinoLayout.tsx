@@ -122,21 +122,21 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
             ))}
           </div>
         ) : (
-          <div className="max-w-6xl mx-auto flex flex-col gap-6">
+          <div className="max-w-3xl mx-auto flex flex-col gap-4">
             {casinos.map((casino, index) => (
               <a
                 key={casino.name}
                 href={casino.url ?? "#"}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group glass-card card-animate rounded-2xl px-5 py-5 sm:px-8 sm:py-6 flex flex-col lg:flex-row items-center gap-6 relative"
+                className="group glass-card card-animate rounded-2xl px-4 py-4 sm:px-5 sm:py-4 flex flex-col lg:flex-row items-center gap-4 relative"
                 style={{ animationDelay: `${index * 0.05}s` }}
               >
                 <div className="ranking-badge absolute top-3 left-3">{index + 1}</div>
 
                 {/* Left: logo + name */}
-                <div className="flex flex-col items-center gap-2 w-full lg:w-56 shrink-0">
-                  <div className="h-24 w-full sm:max-w-xs lg:w-48 lg:max-w-none rounded-xl bg-black/40 flex items-center justify-center overflow-hidden border border-white/5">
+                <div className="flex flex-col items-center gap-1.5 w-full lg:w-40 shrink-0">
+                  <div className="h-20 w-full sm:max-w-xs lg:w-36 lg:max-w-none rounded-xl bg-black/40 flex items-center justify-center overflow-hidden border border-white/5">
                     <img src={casino.logo} alt={casino.name} className="h-full w-full object-cover opacity-100" />
                   </div>
                   <span className="text-base font-bold tracking-wide text-white">{casino.name}</span>
