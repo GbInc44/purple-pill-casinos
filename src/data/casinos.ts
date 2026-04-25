@@ -27,6 +27,7 @@ import everbetFs from "@/assets/everbet-fs.png";
 import slotinoNk from "@/assets/slotino-nk.png";
 import admiralbetNk from "@/assets/admiralbet-nk.png";
 import magicbetNk from "@/assets/magicbet-nk.png";
+import betwildNk from "@/assets/betwild-nk.png";
 
 export type Casino = {
   name: string;
@@ -162,7 +163,13 @@ export const allCasinos: Casino[] = [
     centerImage: betvamSport,
     centerCaption: "Начален бонус СПОРТ",
   },
-  { name: "Betwild", logo: betwildLogo, bonus: "Очаквайте скоро" },
+  {
+    name: "Betwild",
+    logo: betwildLogo,
+    bonus: "Очаквайте скоро",
+    centerImage: betwildNk,
+    centerCaption: "Очаквайте скоро",
+  },
   { name: "PokerStars", logo: pokerstarsLogo, bonus: "Осребряване на точки в пари" },
 ];
 
