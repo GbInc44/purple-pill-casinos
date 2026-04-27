@@ -18,15 +18,6 @@ interface Winning {
 
 const winnings: Winning[] = [
   {
-    casino: "Palms Bet",
-    date: "17/04/26",
-    win: "34 850.81 €",
-    bet: "0.10 €",
-    game: "Big Joker",
-    image: bigJoker,
-    url: "https://news.palmsbet.com/hot-luck-major-big-joker/",
-  },
-  {
     casino: "Winbet",
     date: "18/04/26",
     win: "3 139 280 €",
@@ -34,6 +25,15 @@ const winnings: Winning[] = [
     game: "40 Burning Hot",
     image: burningHot,
     url: "https://news.winbet.bg/articles/breaking-news-nov-rekord-za-dzhakpot-pechalba-na-sayta-na-winbet/",
+  },
+  {
+    casino: "Palms Bet",
+    date: "17/04/26",
+    win: "34 850.81 €",
+    bet: "0.10 €",
+    game: "Big Joker",
+    image: bigJoker,
+    url: "https://news.palmsbet.com/hot-luck-major-big-joker/",
   },
 ];
 
@@ -117,15 +117,15 @@ const Winnings = () => {
               <Tag
                 key={index}
                 {...linkProps}
-                className={`group glass-card card-animate rounded-2xl px-5 py-5 flex flex-col items-center gap-4 ${w.url ? "cursor-pointer" : ""}`}
+                className={`group glass-card card-animate rounded-2xl px-5 py-5 flex flex-col items-center gap-4 h-full ${w.url ? "cursor-pointer" : ""}`}
                 style={{ animationDelay: `${index * 0.05}s` }}
               >
                 <div className="w-full text-center font-bold text-white text-base tracking-wide">
                   {w.casino} {w.date}
                 </div>
 
-                <div className="w-full rounded-xl overflow-hidden border border-white/5 bg-black/40 flex items-center justify-center">
-                  <img src={w.image} alt={w.game} className="w-full h-auto object-contain" />
+                <div className="w-full aspect-video rounded-xl overflow-hidden border border-white/5 bg-black/40 flex items-center justify-center">
+                  <img src={w.image} alt={w.game} className="w-full h-full object-cover" />
                 </div>
 
                 <div className="w-full text-center text-white text-sm md:text-base font-semibold">
@@ -134,7 +134,7 @@ const Winnings = () => {
 
                 {w.url && (
                   <span
-                    className="mt-1 inline-block rounded-full px-6 py-2 text-xs font-bold text-white tracking-wider uppercase transition-all group-hover:shadow-[0_0_20px_hsla(270,100%,65%,0.5)]"
+                    className="mt-auto inline-block rounded-full px-6 py-2 text-xs font-bold text-white tracking-wider uppercase transition-all group-hover:shadow-[0_0_20px_hsla(270,100%,65%,0.5)]"
                     style={{ background: "linear-gradient(135deg, hsl(270,100%,55%), hsl(220,100%,55%))" }}
                   >
                     Виж повече
