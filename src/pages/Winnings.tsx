@@ -107,25 +107,32 @@ const Winnings = () => {
         <div className="max-w-md mx-auto mb-12" aria-hidden />
 
         <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {winnings.map((w, index) => (
-            <div
-              key={index}
-              className="glass-card card-animate rounded-2xl px-5 py-5 flex flex-col items-center gap-4"
-              style={{ animationDelay: `${index * 0.05}s` }}
-            >
-              <div className="w-full text-center font-bold text-white text-base tracking-wide">
-                {w.casino} {w.date}
-              </div>
+          {winnings.map((w, index) => {
+            const Tag: any = w.url ? "a" : "div";
+            const linkProps = w.url
+              ? { href: w.url, target: "_blank", rel: "noopener noreferrer" }
+              : {};
+            return (
+              <Tag
+                key={index}
+                {...linkProps}
+                className={`glass-card card-animate rounded-2xl px-5 py-5 flex flex-col items-center gap-4 ${w.url ? "cursor-pointer" : ""}`}
+                style={{ animationDelay: `${index * 0.05}s` }}
+              >
+                <div className="w-full text-center font-bold text-white text-base tracking-wide">
+                  {w.casino} {w.date}
+                </div>
 
-              <div className="w-full rounded-xl overflow-hidden border border-white/5 bg-black/40 flex items-center justify-center">
-                <img src={w.image} alt={w.game} className="w-full h-auto object-contain" />
-              </div>
+                <div className="w-full rounded-xl overflow-hidden border border-white/5 bg-black/40 flex items-center justify-center">
+                  <img src={w.image} alt={w.game} className="w-full h-auto object-contain" />
+                </div>
 
-              <div className="w-full text-center text-white text-sm md:text-base font-semibold">
-                Печалба {w.win} / Залог {w.bet} | {w.game}
-              </div>
-            </div>
-          ))}
+                <div className="w-full text-center text-white text-sm md:text-base font-semibold">
+                  Печалба {w.win} / Залог {w.bet} | {w.game}
+                </div>
+              </Tag>
+            );
+          })}
         </div>
 
         <footer className="max-w-6xl mx-auto mt-16 mb-8">
