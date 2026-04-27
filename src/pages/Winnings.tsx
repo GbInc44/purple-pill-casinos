@@ -5,6 +5,7 @@ import casinoBg from "@/assets/casino-bg.png";
 import allBetLogo from "@/assets/all-bet-logo.png";
 import bigJoker from "@/assets/big-joker.png";
 import burningHot from "@/assets/40-burning-hot.png";
+import keshShans from "@/assets/kesh-shans.webp";
 
 interface Winning {
   casino: string;
@@ -34,6 +35,15 @@ const winnings: Winning[] = [
     game: "Big Joker",
     image: bigJoker,
     url: "https://news.palmsbet.com/hot-luck-major-big-joker/",
+  },
+  {
+    casino: "Winbet",
+    date: "30/03/26",
+    win: "50 000 €",
+    bet: "",
+    game: "КЕШ ШАНС",
+    image: keshShans,
+    url: "https://news.winbet.bg/articles/breaking-news-otnovo-golyama-nagrada-za-50-000-evro-v-kesh-shans-na-winbet/",
   },
 ];
 
@@ -129,7 +139,7 @@ const Winnings = () => {
                 </div>
 
                 <div className="w-full text-center text-white text-sm md:text-base font-semibold">
-                  Печалба {w.win} / Залог {w.bet} | {w.game}
+                  {w.bet ? `Печалба ${w.win} / Залог ${w.bet} | ${w.game}` : `Печалба ${w.win} | ${w.game}`}
                 </div>
 
                 {w.url && (
