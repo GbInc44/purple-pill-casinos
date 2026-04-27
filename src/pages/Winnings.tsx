@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import casinoBg from "@/assets/casino-bg.png";
 import allBetLogo from "@/assets/all-bet-logo.png";
 import bigJoker from "@/assets/big-joker.png";
+import burningHot from "@/assets/40-burning-hot.png";
 
 interface Winning {
   casino: string;
@@ -12,9 +13,19 @@ interface Winning {
   bet: string;
   game: string;
   image: string;
+  url?: string;
 }
 
 const winnings: Winning[] = [
+  {
+    casino: "Winbet",
+    date: "18/04/26",
+    win: "3 139 280 €",
+    bet: "10 €",
+    game: "40 Burning Hot",
+    image: burningHot,
+    url: "https://news.winbet.bg/articles/breaking-news-nov-rekord-za-dzhakpot-pechalba-na-sayta-na-winbet/",
+  },
   {
     casino: "Palms Bet",
     date: "17/04/26",
