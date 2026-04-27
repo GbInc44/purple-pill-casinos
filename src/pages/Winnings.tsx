@@ -18,15 +18,6 @@ interface Winning {
 
 const winnings: Winning[] = [
   {
-    casino: "Palms Bet",
-    date: "17/04/26",
-    win: "34 850.81 €",
-    bet: "0.10 €",
-    game: "Big Joker",
-    image: bigJoker,
-    url: "https://news.palmsbet.com/hot-luck-major-big-joker/",
-  },
-  {
     casino: "Winbet",
     date: "18/04/26",
     win: "3 139 280 €",
@@ -34,6 +25,15 @@ const winnings: Winning[] = [
     game: "40 Burning Hot",
     image: burningHot,
     url: "https://news.winbet.bg/articles/breaking-news-nov-rekord-za-dzhakpot-pechalba-na-sayta-na-winbet/",
+  },
+  {
+    casino: "Palms Bet",
+    date: "17/04/26",
+    win: "34 850.81 €",
+    bet: "0.10 €",
+    game: "Big Joker",
+    image: bigJoker,
+    url: "https://news.palmsbet.com/hot-luck-major-big-joker/",
   },
 ];
 
