@@ -118,7 +118,7 @@ const Winnings = () => {
         </div>
 
         <footer className="max-w-6xl mx-auto mt-16 mb-8">
-          <div className="neon-divider rounded-full mb-8" />
+          <div className="mb-8" aria-hidden />
           <div className="glass-panel rounded-2xl px-6 py-6 text-center text-muted-foreground text-xs leading-relaxed">
             <div className="flex items-center justify-center gap-2 mb-2">
               <span className="inline-flex items-center justify-center h-8 w-8 rounded-full border-2 border-destructive text-destructive font-bold text-sm">
