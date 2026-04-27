@@ -1,6 +1,8 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import casinoBg from "@/assets/casino-bg.png";
 import allBetLogo from "@/assets/all-bet-logo.png";
 import bigJoker from "@/assets/big-joker.png";
@@ -89,22 +91,30 @@ const Winnings = () => {
             <button className={navBtnClass("/pechalbi")} onClick={() => go("/pechalbi")}>Печалби</button>
           </div>
 
-          <button
-            className="lg:hidden text-white p-2 shrink-0"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle menu"
-          >
-            {menuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
+            <SheetTrigger asChild>
+              <button
+                className="lg:hidden text-white p-2 shrink-0"
+                aria-label="Toggle menu"
+              >
+                <Menu size={24} />
+              </button>
+            </SheetTrigger>
+            <SheetContent
+              side="right"
+              className="w-72 sm:w-80 border-l border-[hsla(270,100%,65%,0.35)] bg-[hsla(270,50%,6%,0.98)] backdrop-blur-xl p-6"
+            >
+              <VisuallyHidden>
+                <SheetTitle>Навигация</SheetTitle>
+              </VisuallyHidden>
+              <div className="flex flex-col gap-3 mt-10">
+                <button className={navBtnClass("/novi-kazina", "text-left")} onClick={() => go("/novi-kazina")}>Нови Казина</button>
+                <button className={navBtnClass("/top-10", "text-left")} onClick={() => go("/top-10")}>ТОП 10</button>
+                <button className={navBtnClass("/pechalbi", "text-left")} onClick={() => go("/pechalbi")}>Печалби</button>
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
-
-        {menuOpen && (
-          <div className="lg:hidden flex flex-col gap-2 mt-3 pb-1 w-full">
-            <button className={navBtnClass("/novi-kazina", "text-left")} onClick={() => go("/novi-kazina")}>Нови Казина</button>
-            <button className={navBtnClass("/top-10", "text-left")} onClick={() => go("/top-10")}>ТОП 10</button>
-            <button className={navBtnClass("/pechalbi", "text-left")} onClick={() => go("/pechalbi")}>Печалби</button>
-          </div>
-        )}
       </nav>
 
       <div className="relative z-10 py-10 px-4">
