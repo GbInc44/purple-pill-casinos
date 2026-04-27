@@ -6,6 +6,7 @@ import allBetLogo from "@/assets/all-bet-logo.png";
 import bigJoker from "@/assets/big-joker.png";
 import burningHot from "@/assets/40-burning-hot.png";
 import keshShans from "@/assets/kesh-shans.webp";
+import olympusGlory from "@/assets/olympus-glory.png";
 
 interface Winning {
   casino: string;
@@ -35,6 +36,15 @@ const winnings: Winning[] = [
     game: "Big Joker",
     image: bigJoker,
     url: "https://news.palmsbet.com/hot-luck-major-big-joker/",
+  },
+  {
+    casino: "Palms Bet",
+    date: "03/04/26",
+    win: "15 187.50 €",
+    bet: "15 €",
+    game: "Olympus glory",
+    image: olympusGlory,
+    url: "https://news.palmsbet.com/olympus-glory-win/",
   },
   {
     casino: "Winbet",
