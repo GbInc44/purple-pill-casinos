@@ -139,7 +139,7 @@ const Winnings = () => {
                 </div>
 
                 <div className="w-full text-center text-white text-sm md:text-base font-semibold">
-                  Печалба {w.win} / Залог {w.bet} | {w.game}
+                  {w.bet ? `Печалба ${w.win} / Залог ${w.bet} | ${w.game}` : `Печалба ${w.win} | ${w.game}`}
                 </div>
 
                 {w.url && (
