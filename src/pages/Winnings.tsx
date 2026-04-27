@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { Menu } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from "@/components/ui/sheet";
 import casinoBg from "@/assets/casino-bg.png";
 import allBetLogo from "@/assets/all-bet-logo.png";
 import bigJoker from "@/assets/big-joker.png";
@@ -104,9 +103,8 @@ const Winnings = () => {
               side="right"
               className="w-72 sm:w-80 border-l border-[hsla(270,100%,65%,0.35)] bg-[hsla(270,50%,6%,0.98)] backdrop-blur-xl p-6"
             >
-              <VisuallyHidden>
-                <SheetTitle>Навигация</SheetTitle>
-              </VisuallyHidden>
+              <SheetTitle className="sr-only">Навигация</SheetTitle>
+              <SheetDescription className="sr-only">Меню за навигация</SheetDescription>
               <div className="flex flex-col gap-3 mt-10">
                 <button className={navBtnClass("/novi-kazina", "text-left")} onClick={() => go("/novi-kazina")}>Нови Казина</button>
                 <button className={navBtnClass("/top-10", "text-left")} onClick={() => go("/top-10")}>ТОП 10</button>
