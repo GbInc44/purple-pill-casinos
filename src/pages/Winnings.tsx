@@ -24,6 +24,7 @@ const winnings: Winning[] = [
     bet: "0.10 €",
     game: "Big Joker",
     image: bigJoker,
+    url: "https://news.palmsbet.com/hot-luck-major-big-joker/",
   },
   {
     casino: "Winbet",
