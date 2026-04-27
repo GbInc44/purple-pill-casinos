@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import casinoBg from "@/assets/casino-bg.png";
 import allBetLogo from "@/assets/all-bet-logo.png";
 import { Casino } from "@/data/casinos";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 interface Props {
   subtitle: ReactNode;
