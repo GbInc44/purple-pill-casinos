@@ -8,6 +8,7 @@ import bigJoker from "@/assets/big-joker.png";
 import burningHot from "@/assets/40-burning-hot.png";
 import keshShans from "@/assets/kesh-shans.webp";
 import olympusGlory from "@/assets/olympus-glory.png";
+import megaSlotDiamondTree from "@/assets/20-mega-slot-diamond-tree.png";
 
 interface Winning {
   casino: string;
