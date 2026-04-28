@@ -100,6 +100,7 @@ const winnings: Winning[] = [
 
 const Winnings = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(6);
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
@@ -176,7 +177,7 @@ const Winnings = () => {
         <div className="max-w-md mx-auto mb-12" aria-hidden />
 
         <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {winnings.map((w, index) => {
+          {winnings.slice(0, visibleCount).map((w, index) => {
             const Tag: any = w.url ? "a" : "div";
             const linkProps = w.url
               ? { href: w.url, target: "_blank", rel: "noopener noreferrer" }
