@@ -9,6 +9,7 @@ import burningHot from "@/assets/40-burning-hot.png";
 import keshShans from "@/assets/kesh-shans.webp";
 import olympusGlory from "@/assets/olympus-glory.png";
 import megaSlotDiamondTree from "@/assets/20-mega-slot-diamond-tree.png";
+import superHot20 from "@/assets/20-super-hot.webp";
 
 interface Winning {
   casino: string;
@@ -21,6 +22,15 @@ interface Winning {
 }
 
 const winnings: Winning[] = [
+  {
+    casino: "Palms Bet",
+    date: "25/04/26",
+    win: "50 300.00 €",
+    bet: "100 €",
+    game: "20 Super Hot",
+    image: superHot20,
+    url: "https://news.palmsbet.com/20-super-hot-pechalba/",
+  },
   {
     casino: "Palms Bet",
     date: "24/04/26",
