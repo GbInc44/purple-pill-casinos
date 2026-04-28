@@ -214,6 +214,18 @@ const Winnings = () => {
           })}
         </div>
 
+        {visibleCount < winnings.length && (
+          <div className="flex justify-center mt-10">
+            <button
+              onClick={() => setVisibleCount((c) => c + 6)}
+              className="rounded-full px-8 py-3 text-sm font-bold text-white tracking-wider uppercase transition-all hover:shadow-[0_0_24px_hsla(270,100%,65%,0.6)]"
+              style={{ background: "linear-gradient(135deg, hsl(270,100%,55%), hsl(220,100%,55%))" }}
+            >
+              ПОКАЖИ ОЩЕ
+            </button>
+          </div>
+        )}
+
         <footer className="max-w-6xl mx-auto mt-16 mb-8">
           <div className="mb-8" aria-hidden />
           <div className="glass-panel rounded-2xl px-6 py-6 text-center text-muted-foreground text-xs leading-relaxed">
