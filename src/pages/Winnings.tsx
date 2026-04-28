@@ -22,6 +22,15 @@ interface Winning {
 
 const winnings: Winning[] = [
   {
+    casino: "Palms Bet",
+    date: "24/04/26",
+    win: "22 085.79 €",
+    bet: "0.60 €",
+    game: "20 Mega Slot Diamond Tree JP",
+    image: megaSlotDiamondTree,
+    url: "https://news.palmsbet.com/20-mega-slot-diamond-tree/",
+  },
+  {
     casino: "Winbet",
     date: "18/04/26",
     win: "3 139 280 €",
