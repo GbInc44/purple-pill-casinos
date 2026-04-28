@@ -8,6 +8,7 @@ import bigJoker from "@/assets/big-joker.png";
 import burningHot from "@/assets/40-burning-hot.png";
 import keshShans from "@/assets/kesh-shans.webp";
 import olympusGlory from "@/assets/olympus-glory.png";
+import megaSlotDiamondTree from "@/assets/20-mega-slot-diamond-tree.png";
 
 interface Winning {
   casino: string;
@@ -20,6 +21,15 @@ interface Winning {
 }
 
 const winnings: Winning[] = [
+  {
+    casino: "Palms Bet",
+    date: "24/04/26",
+    win: "22 085.79 €",
+    bet: "0.60 €",
+    game: "20 Mega Slot Diamond Tree JP",
+    image: megaSlotDiamondTree,
+    url: "https://news.palmsbet.com/20-mega-slot-diamond-tree/",
+  },
   {
     casino: "Winbet",
     date: "18/04/26",
