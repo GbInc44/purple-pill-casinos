@@ -11,6 +11,7 @@ import olympusGlory from "@/assets/olympus-glory.png";
 import megaSlotDiamondTree from "@/assets/20-mega-slot-diamond-tree.png";
 import superHot20 from "@/assets/20-super-hot.webp";
 import keshShans2 from "@/assets/kesh-shans-2.webp";
+import burningHot2 from "@/assets/40-burning-hot-2.png";
 
 interface Winning {
   casino: string;
@@ -76,6 +77,15 @@ const winnings: Winning[] = [
     game: "КЕШ ШАНС",
     image: keshShans,
     url: "https://news.winbet.bg/articles/breaking-news-otnovo-golyama-nagrada-za-50-000-evro-v-kesh-shans-na-winbet/",
+  },
+  {
+    casino: "Palms Bet",
+    date: "27/03/26",
+    win: "18 000.00 €",
+    bet: "6 €",
+    game: "40 Burning Hot",
+    image: burningHot2,
+    url: "https://news.palmsbet.com/40-burning-hot-win-3/",
   },
   {
     casino: "Winbet",
