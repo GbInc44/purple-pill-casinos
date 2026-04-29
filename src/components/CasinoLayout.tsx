@@ -43,6 +43,7 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
           </Link>
 
           <div className="hidden lg:flex items-center gap-2">
+            <button className={navBtnClass("/")} onClick={() => go("/")}>Начало</button>
             <button className={navBtnClass("/novi-kazina")} onClick={() => go("/novi-kazina")}>Нови Казина</button>
             <button className={navBtnClass("/top-10")} onClick={() => go("/top-10")}>ТОП 10</button>
             <button className={navBtnClass("/pechalbi")} onClick={() => go("/pechalbi")}>Печалби</button>
@@ -62,6 +63,7 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
               className="w-72 sm:w-80 border-l border-[hsla(270,100%,65%,0.35)] bg-[hsla(270,50%,6%,0.98)] backdrop-blur-xl p-6"
             >
               <div className="flex flex-col gap-3 mt-10">
+                <button className={navBtnClass("/", "text-left")} onClick={() => go("/")}>Начало</button>
                 <button className={navBtnClass("/novi-kazina", "text-left")} onClick={() => go("/novi-kazina")}>Нови Казина</button>
                 <button className={navBtnClass("/top-10", "text-left")} onClick={() => go("/top-10")}>ТОП 10</button>
                 <button className={navBtnClass("/pechalbi", "text-left")} onClick={() => go("/pechalbi")}>Печалби</button>
