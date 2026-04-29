@@ -9,6 +9,7 @@ import Top10 from "./pages/Top10.tsx";
 import Winnings from "./pages/Winnings.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import ScrollToTop from "./components/ScrollToTop.tsx";
+import ScrollToTopButton from "./components/ScrollToTopButton.tsx";
 
 const queryClient = new QueryClient();
 
@@ -19,6 +20,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <ScrollToTop />
+        <ScrollToTopButton />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/novi-kazina" element={<NewCasinos />} />
