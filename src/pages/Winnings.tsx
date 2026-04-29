@@ -126,6 +126,7 @@ const Winnings = () => {
           </Link>
 
           <div className="hidden lg:flex items-center gap-2">
+            <button className={navBtnClass("/")} onClick={() => go("/")}>Начало</button>
             <button className={navBtnClass("/novi-kazina")} onClick={() => go("/novi-kazina")}>Нови Казина</button>
             <button className={navBtnClass("/top-10")} onClick={() => go("/top-10")}>ТОП 10</button>
             <button className={navBtnClass("/pechalbi")} onClick={() => go("/pechalbi")}>Печалби</button>
@@ -147,6 +148,7 @@ const Winnings = () => {
               <SheetTitle className="sr-only">Навигация</SheetTitle>
               <SheetDescription className="sr-only">Меню за навигация</SheetDescription>
               <div className="flex flex-col gap-3 mt-10">
+                <button className={navBtnClass("/", "text-left")} onClick={() => go("/")}>Начало</button>
                 <button className={navBtnClass("/novi-kazina", "text-left")} onClick={() => go("/novi-kazina")}>Нови Казина</button>
                 <button className={navBtnClass("/top-10", "text-left")} onClick={() => go("/top-10")}>ТОП 10</button>
                 <button className={navBtnClass("/pechalbi", "text-left")} onClick={() => go("/pechalbi")}>Печалби</button>
