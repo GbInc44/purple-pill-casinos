@@ -286,6 +286,30 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
           </p>
         </footer>
       </div>
+
+      <Dialog open={comingSoonOpen} onOpenChange={setComingSoonOpen}>
+        <DialogContent
+          className="border border-[hsla(270,100%,65%,0.5)] bg-[hsla(270,50%,6%,0.98)] backdrop-blur-xl shadow-[0_0_40px_hsla(270,100%,65%,0.35)] rounded-2xl sm:max-w-md p-8 [&>button]:hidden"
+        >
+          <DialogClose
+            className="absolute right-4 top-4 rounded-full p-1.5 text-white/80 hover:text-white hover:bg-[hsla(270,100%,65%,0.2)] transition-colors focus:outline-none focus:ring-2 focus:ring-[hsla(270,100%,65%,0.6)]"
+            aria-label="Затвори"
+          >
+            <X className="h-5 w-5" />
+          </DialogClose>
+          <div className="flex items-center justify-center py-6">
+            <h2
+              className="text-center text-2xl md:text-3xl font-bold tracking-wide text-white"
+              style={{
+                fontFamily: "'Orbitron', sans-serif",
+                textShadow: "0 0 8px hsla(270,100%,65%,0.6), 0 0 30px hsla(270,100%,65%,0.3)",
+              }}
+            >
+              Очаквайте скоро
+            </h2>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
