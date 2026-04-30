@@ -137,6 +137,7 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
               <a
                 key={casino.name}
                 href={casino.url ?? "#"}
+                onClick={(e) => { if (!casino.url) e.preventDefault(); }}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`group glass-card card-animate rounded-2xl ${compact ? "px-4 py-4 sm:px-5 sm:py-4 gap-4" : "px-5 py-5 sm:px-8 sm:py-6 gap-6"} flex flex-col lg:flex-row items-center relative`}
