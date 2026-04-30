@@ -5,6 +5,7 @@ import casinoBg from "@/assets/casino-bg.png";
 import allBetLogo from "@/assets/all-bet-logo.png";
 import { Casino } from "@/data/casinos";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Dialog, DialogContent, DialogClose } from "@/components/ui/dialog";
 
 interface Props {
   subtitle: ReactNode;
@@ -18,7 +19,15 @@ interface Props {
 
 const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = false, showDivider = true, cleanSubtitle = false, compact = false }: Props) => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [comingSoonOpen, setComingSoonOpen] = useState(false);
   const navigate = useNavigate();
+
+  const handleCardClick = (e: React.MouseEvent, casino: Casino) => {
+    if (!casino.url) {
+      e.preventDefault();
+      setComingSoonOpen(true);
+    }
+  };
   const { pathname } = useLocation();
 
   const go = (path: string) => {
@@ -102,7 +111,7 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
               <a
                 key={casino.name}
                 href={casino.url ?? "#"}
-                onClick={(e) => { if (!casino.url) e.preventDefault(); }}
+                onClick={(e) => handleCardClick(e, casino)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group glass-card card-animate rounded-2xl px-5 py-5 flex flex-col items-center gap-4 relative"
@@ -137,7 +146,7 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
               <a
                 key={casino.name}
                 href={casino.url ?? "#"}
-                onClick={(e) => { if (!casino.url) e.preventDefault(); }}
+                onClick={(e) => handleCardClick(e, casino)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`group glass-card card-animate rounded-2xl ${compact ? "px-4 py-4 sm:px-5 sm:py-4 gap-4" : "px-5 py-5 sm:px-8 sm:py-6 gap-6"} flex flex-col lg:flex-row items-center relative`}
@@ -277,6 +286,30 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
           </p>
         </footer>
       </div>
+
+      <Dialog open={comingSoonOpen} onOpenChange={setComingSoonOpen}>
+        <DialogContent
+          className="border border-[hsla(270,100%,65%,0.5)] bg-[hsla(270,50%,6%,0.98)] backdrop-blur-xl shadow-[0_0_40px_hsla(270,100%,65%,0.35)] rounded-2xl sm:max-w-md p-8 [&>button]:hidden"
+        >
+          <DialogClose
+            className="absolute right-4 top-4 rounded-full p-1.5 text-white/80 hover:text-white hover:bg-[hsla(270,100%,65%,0.2)] transition-colors focus:outline-none focus:ring-2 focus:ring-[hsla(270,100%,65%,0.6)]"
+            aria-label="Затвори"
+          >
+            <X className="h-5 w-5" />
+          </DialogClose>
+          <div className="flex items-center justify-center py-6">
+            <h2
+              className="text-center text-2xl md:text-3xl font-bold tracking-wide text-white"
+              style={{
+                fontFamily: "'Orbitron', sans-serif",
+                textShadow: "0 0 8px hsla(270,100%,65%,0.6), 0 0 30px hsla(270,100%,65%,0.3)",
+              }}
+            >
+              Очаквайте скоро
+            </h2>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
