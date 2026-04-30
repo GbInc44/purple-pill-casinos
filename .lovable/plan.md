@@ -1,31 +1,41 @@
 ## Goal
-When the user clicks the Betwild card on either the landing page (`/`) or the New Casinos page (`/novi-kazina`), show a styled popup with the text "Очаквайте скоро" and an X close button in the top-right corner. The popup should match the site's glassmorphism / neon aesthetic.
+Make the AllBet logo at the top-left of every page (desktop and mobile) link to the landing page (`/`), but limit the clickable area to **only the visible "All Bet" artwork** — not the transparent space to its right.
+
+## Why the current logo is "too wide" to click
+The logo file `src/assets/all-bet-logo.png` is 500×60 pixels, but the visible artwork only occupies the left ~179px (about 36% of the width). The remaining ~64% is transparent padding baked into the PNG. The `<Link>` in `src/components/CasinoLayout.tsx` currently wraps the whole `<img>`, so clicks on that empty padded area still navigate to `/`.
+
+It already links to `/` — that part works. The issue is purely the clickable surface area.
 
 ## Approach
+Constrain the `<Link>` (and its inner `<img>`) to the width of the visible artwork by:
+1. Setting a fixed aspect-ratio-based width on the link that matches the visible portion of the PNG.
+2. Letting the image fill that constrained box via `object-contain` and `object-left`, so the visible logo stays the same size but no transparent area is included in the clickable region.
 
-Replace Betwild's current "do nothing" behavior with a click handler that opens a modal. We'll use the existing shadcn `Dialog` component (already in the project) and re-style its content panel to match the glass-card / neon style used across the site.
+Visible artwork ratio: 179 / 60 ≈ **2.98**, so width ≈ height × 2.98.
+
+```text
+Before:                                 After:
+┌──────────────────────────────────┐   ┌──────────┐
+│ [AllBet]   <— all clickable —>   │   │ [AllBet] │  <— only this clickable
+└──────────────────────────────────┘   └──────────┘
+```
 
 ## Changes
 
-### 1. `src/components/CasinoLayout.tsx`
-- Add local state: `const [comingSoonOpen, setComingSoonOpen] = useState(false)`.
-- Import `Dialog`, `DialogContent` from `@/components/ui/dialog` and the `X` icon from `lucide-react` (Menu and X are already imported).
-- For both the grid and list `<a>` renderings of the casino cards, update the `onClick` handler:
-  - If `casino.name === "Betwild"` (or, equivalently, no `url`): `e.preventDefault(); setComingSoonOpen(true);`
-  - Existing behavior for cards with `url` is unchanged.
-- Render a single `<Dialog open={comingSoonOpen} onOpenChange={setComingSoonOpen}>` near the end of the layout (inside the relative container).
-  - Use a custom `DialogContent` className that mirrors the glass-card look:
-    - `glass-panel` background, `rounded-2xl`, neon purple border (`border border-[hsla(270,100%,65%,0.5)]`), backdrop blur, purple glow shadow.
-    - Centered content with the text "Очаквайте скоро" styled with the Orbitron font and neon purple text-shadow (matching headers used elsewhere in the layout).
-  - The default shadcn `DialogContent` already includes a top-right X close button — we'll keep it but ensure its color contrasts against the dark panel (white/neon).
+### `src/components/CasinoLayout.tsx`
+Update the logo `<Link>` (currently the only place the logo is rendered — it's used by every page via `CasinoLayout`):
 
-### 2. No changes to `src/data/casinos.ts`
-- The Betwild entry stays without a `url`; the click handler distinguishes it.
+- Add `inline-block` and `aspect-[179/60]` to the `<Link>` so its width is locked to the visible artwork's aspect ratio at each responsive height.
+- Keep the existing responsive heights (`h-10 sm:h-12 md:h-14`) on the `<Link>` instead of the `<img>`, so the link element itself defines the click target size.
+- On the `<img>`, use `h-full w-full object-contain object-left` so the logo renders identically to today (same visible size, same left alignment, same `-my-1 sm:-my-2` vertical nudge preserved on the link).
 
-## Style details
-- Panel: `bg-[hsla(270,50%,6%,0.98)] backdrop-blur-xl border-[hsla(270,100%,65%,0.5)] shadow-[0_0_40px_hsla(270,100%,65%,0.35)]`
-- Heading text: `font-['Orbitron'] text-2xl md:text-3xl font-bold text-white` with `textShadow: "0 0 8px hsla(270,100%,65%,0.6), 0 0 30px hsla(270,100%,65%,0.3)"`
-- X button: inherits from `DialogContent` (top-right). Override classes to `text-white hover:text-[hsl(270,100%,75%)]` so it remains visible on the dark glass.
+Result: clicking anywhere on the "All Bet" graphic navigates to `/`; clicking to the right of it does nothing (the area is no longer part of the link).
 
-## Pages affected automatically
-Both `/` (Index) and `/novi-kazina` (NewCasinos) render through `CasinoLayout`, so the single change covers both. The `/top-10` and `/pechalbi` pages don't include Betwild, so they're unaffected.
+### No other files need changes
+- `Index.tsx`, `NewCasinos.tsx`, `Top10.tsx`, `Winnings.tsx`, `NotFound.tsx` all render through `CasinoLayout`, so a single edit covers desktop and mobile across every page.
+- The mobile hamburger menu and the rest of the nav are untouched.
+
+## Verification
+After the change, on `/`, `/novi-kazina`, `/top-10`, and `/pechalbi`, at both desktop and mobile widths:
+- Clicking the visible "All Bet" logo navigates to `/`.
+- Clicking in the empty space immediately to the right of the logo (but still left of the desktop nav buttons / mobile menu icon) does nothing.
