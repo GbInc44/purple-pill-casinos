@@ -5,7 +5,7 @@ import casinoBg from "@/assets/casino-bg.png";
 import allBetLogo from "@/assets/all-bet-logo.png";
 import { Casino } from "@/data/casinos";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Dialog, DialogContent, DialogClose } from "@/components/ui/dialog";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 interface Props {
   subtitle: ReactNode;
