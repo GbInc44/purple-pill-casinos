@@ -1,41 +1,60 @@
-## Goal
-Make the AllBet logo at the top-left of every page (desktop and mobile) link to the landing page (`/`), but limit the clickable area to **only the visible "All Bet" artwork** — not the transparent space to its right.
+## Problem
 
-## Why the current logo is "too wide" to click
-The logo file `src/assets/all-bet-logo.png` is 500×60 pixels, but the visible artwork only occupies the left ~179px (about 36% of the width). The remaining ~64% is transparent padding baked into the PNG. The `<Link>` in `src/components/CasinoLayout.tsx` currently wraps the whole `<img>`, so clicks on that empty padded area still navigate to `/`.
+When the "Очаквайте скоро" pop-up opens (clicking the Betwild card, or any card without a `url`), the whole page appears to get slightly wider, then snaps back when it closes.
 
-It already links to `/` — that part works. The issue is purely the clickable surface area.
+### Root cause
 
-## Approach
-Constrain the `<Link>` (and its inner `<img>`) to the width of the visible artwork by:
-1. Setting a fixed aspect-ratio-based width on the link that matches the visible portion of the PNG.
-2. Letting the image fill that constrained box via `object-contain` and `object-left`, so the visible logo stays the same size but no transparent area is included in the clickable region.
+Radix UI's Dialog (used by `src/components/ui/dialog.tsx`) locks body scroll while the dialog is open. To prevent the layout from jumping when the vertical scrollbar disappears, Radix adds inline styles to `<body>`:
 
-Visible artwork ratio: 179 / 60 ≈ **2.98**, so width ≈ height × 2.98.
+- `overflow: hidden`
+- `padding-right: <scrollbar-width>px` (typically ~15px on desktop, 0 on mobile where scrollbars overlay)
 
-```text
-Before:                                 After:
-┌──────────────────────────────────┐   ┌──────────┐
-│ [AllBet]   <— all clickable —>   │   │ [AllBet] │  <— only this clickable
-└──────────────────────────────────┘   └──────────┘
+In our layout this padding is visible as a "widening" because:
+
+1. The page background is `bg-fixed` on the root container (`CasinoLayout.tsx` line 43). The fixed background does not shift, but the content area gets the extra right padding — making the visible content area look offset/wider.
+2. The nav is `sticky` and full-width; combined with the body padding it visually shifts.
+3. On mobile (overlay scrollbars) the same Radix logic can still briefly toggle styles, producing a subtle reflow.
+
+So this is not a Betwild-specific bug — it happens for any card that triggers `setComingSoonOpen(true)`. The user just notices it on Betwild because that's the card they click.
+
+## Fix
+
+Neutralize Radix's scrollbar compensation globally so the body width stays identical whether a dialog is open or not. This is a one-line CSS rule that overrides the inline styles Radix injects.
+
+### Change
+
+**`src/index.css`** — add a small global rule:
+
+```css
+/* Prevent layout shift when Radix Dialog/Sheet locks body scroll.
+   Radix sets padding-right on <body> to compensate for the scrollbar;
+   because our layout uses bg-fixed + sticky nav, that compensation
+   reads as a visible "widening" of the page. We pin it to 0. */
+body[data-scroll-locked] {
+  margin-right: 0 !important;
+  padding-right: 0 !important;
+  overflow: hidden !important;
+}
 ```
 
-## Changes
+The `overflow: hidden` part keeps Radix's scroll-lock behavior (so the background page doesn't scroll while the dialog is open) — we only cancel the width-changing padding.
 
-### `src/components/CasinoLayout.tsx`
-Update the logo `<Link>` (currently the only place the logo is rendered — it's used by every page via `CasinoLayout`):
+### Why this is safe
 
-- Add `inline-block` and `aspect-[179/60]` to the `<Link>` so its width is locked to the visible artwork's aspect ratio at each responsive height.
-- Keep the existing responsive heights (`h-10 sm:h-12 md:h-14`) on the `<Link>` instead of the `<img>`, so the link element itself defines the click target size.
-- On the `<img>`, use `h-full w-full object-contain object-left` so the logo renders identically to today (same visible size, same left alignment, same `-my-1 sm:-my-2` vertical nudge preserved on the link).
+- Modern desktop browsers always show a scrollbar gutter on this page (content is taller than the viewport), so removing the compensation does NOT cause a separate "scrollbar disappears" jump — the gutter simply stays put.
+- Mobile uses overlay scrollbars, so there's nothing to compensate for anyway.
+- Applies only while a Radix overlay is open (`[data-scroll-locked]`), so normal page behavior is unaffected.
+- The same fix automatically benefits the mobile `Sheet` menu (which uses the same Radix scroll-lock), if it ever exhibits a similar twitch.
 
-Result: clicking anywhere on the "All Bet" graphic navigates to `/`; clicking to the right of it does nothing (the area is no longer part of the link).
+### Files touched
 
-### No other files need changes
-- `Index.tsx`, `NewCasinos.tsx`, `Top10.tsx`, `Winnings.tsx`, `NotFound.tsx` all render through `CasinoLayout`, so a single edit covers desktop and mobile across every page.
-- The mobile hamburger menu and the rest of the nav are untouched.
+- `src/index.css` — add the rule above (no other changes).
+
+No changes to `CasinoLayout.tsx`, the dialog component, or any page.
 
 ## Verification
-After the change, on `/`, `/novi-kazina`, `/top-10`, and `/pechalbi`, at both desktop and mobile widths:
-- Clicking the visible "All Bet" logo navigates to `/`.
-- Clicking in the empty space immediately to the right of the logo (but still left of the desktop nav buttons / mobile menu icon) does nothing.
+
+After the change:
+1. Click a card without a URL (Betwild) on `/` and `/novi-kazina` at desktop width — page edges and nav must stay perfectly still on open and close.
+2. Same on mobile viewport.
+3. Open the mobile hamburger menu — should still lock background scroll correctly.

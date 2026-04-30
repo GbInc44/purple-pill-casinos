@@ -227,3 +227,14 @@
   );
   box-shadow: 0 0 12px hsla(270, 100%, 65%, 0.5);
 }
+
+/* Prevent layout shift when Radix Dialog/Sheet locks body scroll.
+   Radix sets padding-right on <body> to compensate for the scrollbar gutter;
+   because our layout uses bg-fixed + sticky nav, that compensation reads as
+   a visible "widening" of the page. Pin the compensation to 0 while keeping
+   scroll-lock behavior so the page underneath doesn't scroll. */
+body[data-scroll-locked] {
+  margin-right: 0 !important;
+  padding-right: 0 !important;
+  overflow: hidden !important;
+}
