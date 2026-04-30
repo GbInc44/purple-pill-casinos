@@ -289,7 +289,7 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
 
       <Dialog open={comingSoonOpen} onOpenChange={setComingSoonOpen}>
         <DialogContent
-          className="border border-[hsla(270,100%,65%,0.5)] bg-[hsla(270,50%,6%,0.98)] backdrop-blur-xl shadow-[0_0_40px_hsla(270,100%,65%,0.35)] rounded-2xl sm:max-w-md p-8 [&>button]:opacity-100 [&>button]:text-white [&>button]:hover:text-white [&>button]:focus:ring-[hsla(270,100%,65%,0.6)] [&>button>svg]:h-5 [&>button>svg]:w-5"
+          className="border border-[hsla(270,100%,65%,0.5)] bg-[hsla(270,50%,6%,0.98)] backdrop-blur-xl shadow-[0_0_40px_hsla(270,100%,65%,0.35)] rounded-2xl sm:max-w-md p-8 duration-300 ease-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-90 data-[state=open]:zoom-in-90 [&>button]:opacity-100 [&>button]:text-white [&>button]:hover:text-white [&>button]:focus:ring-[hsla(270,100%,65%,0.6)] [&>button>svg]:h-5 [&>button>svg]:w-5"
         >
           <div className="flex items-center justify-center py-6">
             <h2
