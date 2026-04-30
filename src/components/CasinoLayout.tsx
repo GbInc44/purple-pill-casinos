@@ -49,13 +49,13 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
         <div className="flex items-center justify-between w-full max-w-full gap-2">
           <Link
             to="/"
-            className="shrink-0 inline-block aspect-[179/60] h-10 sm:h-12 md:h-14 -my-1 sm:-my-2"
+            className="shrink-0 inline-block relative aspect-[179/60] h-10 sm:h-12 md:h-14 -my-1 sm:-my-2 overflow-visible"
             aria-label="All Bet — към началната страница"
           >
             <img
               src={allBetLogo}
               alt="All Bet"
-              className="h-full w-full object-contain object-left"
+              className="absolute left-0 top-0 h-full w-auto max-w-none pointer-events-none"
             />
           </Link>
 
