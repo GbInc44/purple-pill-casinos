@@ -121,8 +121,16 @@ const Winnings = () => {
 
       <nav className="nav-bar sticky top-0 z-50 w-full max-w-full px-3 sm:px-4 py-2 overflow-visible">
         <div className="flex items-center justify-between w-full max-w-full gap-2">
-          <Link to="/" className="shrink-0">
-            <img src={allBetLogo} alt="All Bet" className="h-10 sm:h-12 md:h-14 w-auto -my-1 sm:-my-2" />
+          <Link
+            to="/"
+            className="shrink-0 inline-block relative aspect-[179/60] h-10 sm:h-12 md:h-14 -my-1 sm:-my-2 overflow-visible"
+            aria-label="All Bet — към началната страница"
+          >
+            <img
+              src={allBetLogo}
+              alt="All Bet"
+              className="absolute left-0 top-0 h-full w-auto max-w-none pointer-events-none"
+            />
           </Link>
 
           <div className="hidden lg:flex items-center gap-2">
