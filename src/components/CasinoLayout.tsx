@@ -19,7 +19,15 @@ interface Props {
 
 const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = false, showDivider = true, cleanSubtitle = false, compact = false }: Props) => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [comingSoonOpen, setComingSoonOpen] = useState(false);
   const navigate = useNavigate();
+
+  const handleCardClick = (e: React.MouseEvent, casino: Casino) => {
+    if (!casino.url) {
+      e.preventDefault();
+      setComingSoonOpen(true);
+    }
+  };
   const { pathname } = useLocation();
 
   const go = (path: string) => {
