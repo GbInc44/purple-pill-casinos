@@ -1,5 +1,6 @@
 import CasinoLayout from "@/components/CasinoLayout";
 import { allCasinos } from "@/data/casinos";
+import { useCanonicalUrl } from "@/hooks/useCanonicalUrl";
 
 const order = [
   "Bet365",
@@ -18,7 +19,9 @@ const top10Casinos = order
   .map((name) => allCasinos.find((c) => c.name === name))
   .filter((c): c is NonNullable<typeof c> => Boolean(c));
 
-const Top10 = () => (
+const Top10 = () => {
+  useCanonicalUrl("/top-10");
+  return (
   <CasinoLayout
     showDivider={false}
     cleanSubtitle
@@ -42,6 +45,7 @@ const Top10 = () => (
     variant="list"
     showProsCons
   />
-);
+  );
+};
 
 export default Top10;

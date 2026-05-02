@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Menu } from "lucide-react";
+import { useCanonicalUrl } from "@/hooks/useCanonicalUrl";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from "@/components/ui/sheet";
 import casinoBg from "@/assets/casino-bg.png";
@@ -99,6 +100,7 @@ const winnings: Winning[] = [
 ];
 
 const Winnings = () => {
+  useCanonicalUrl("/pechalbi");
   const [menuOpen, setMenuOpen] = useState(false);
   const [visibleCount, setVisibleCount] = useState(6);
   const navigate = useNavigate();
