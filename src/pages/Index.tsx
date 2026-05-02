@@ -26,6 +26,7 @@ const Index = () => {
     }
     casinos={allCasinos}
   />
-);
+  );
+};
 
 export default Index;
