@@ -1,35 +1,27 @@
-## Plan: Deploy to GitHub Pages via GitHub Actions
+The `dist` folder is not supposed to exist in the repository. It is generated only inside GitHub Actions during `npm run build`, then uploaded to GitHub Pages. Since the workflow failed, GitHub never received that generated `dist` artifact, so the site can stay blank or unavailable.
 
-Make your site build and deploy automatically to GitHub Pages on every push to `main`, so opening `www.allbetbg.com` shows your app instead of a blank page.
+The message you pasted is a GitHub Actions runtime warning/deprecation, but we can update the workflow to opt into Node.js 24 compatibility and also make the deployment more reliable.
 
-### Files to create
+Plan:
 
-1. **`.github/workflows/deploy.yml`** — GitHub Actions workflow that:
-   - Triggers on every push to `main` (and supports manual runs)
-   - Installs dependencies with `npm ci`
-   - Builds the Vite app with `npm run build`
-   - Copies the existing `CNAME` file into `dist/` so the custom domain stays bound
-   - Uploads `dist/` as a Pages artifact and deploys it to the `github-pages` environment
-   - Uses official actions: `actions/checkout@v4`, `actions/setup-node@v4` (Node 20), `actions/configure-pages@v5`, `actions/upload-pages-artifact@v3`, `actions/deploy-pages@v4`
-   - Has correct permissions (`pages: write`, `id-token: write`) and concurrency control
+1. Update `.github/workflows/deploy.yml`
+   - Add `FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true` at the workflow level so GitHub actions run with the new Node 24 runtime now.
+   - Keep the app build itself on a stable Node version supported by this Vite project, likely Node 22 LTS.
+   - Use `npm ci` and `npm run build` as before.
+   - Keep uploading `./dist` to GitHub Pages.
+   - Keep copying the root `CNAME` into `dist/CNAME` so `www.allbetbg.com` remains attached after each deployment.
 
-2. **`public/404.html`** — Copy of `index.html`. GitHub Pages does NOT auto-fallback to `index.html` for client-side routes, so without this, refreshing on `/novi-kazina`, `/top-10`, or `/pechalbi` would 404. With this file at `dist/404.html`, GitHub serves it for unmatched paths and React Router takes over.
+2. Add small deployment checks to the workflow
+   - After build, verify that `dist/index.html` exists.
+   - Verify that `dist/assets` exists.
+   - List the generated `dist` contents in the Actions log, so if it fails again we can immediately see whether the build output was created.
 
-### What stays the same
+3. Update SPA fallback handling
+   - Ensure the GitHub Pages deployed artifact includes a correct `404.html` fallback.
+   - Rather than relying only on the static `public/404.html`, add a workflow step that copies the freshly built `dist/index.html` to `dist/404.html`. This guarantees the fallback always has the same built asset references as the actual production `index.html`.
 
-- `vite.config.ts` — default `base: '/'` is correct for a custom domain at root
-- `CNAME` — already at repo root ✓
-- `index.html`, `sitemap.xml`, `robots.txt` — already configured for `https://www.allbetbg.com`
+4. Optional cleanup if needed
+   - Leave `public/404.html` in place or replace it later; the workflow-generated `dist/404.html` will be the important file for GitHub Pages.
+   - No committed `/dist` folder will be added, because committing build output is not needed for GitHub Actions Pages deployment.
 
-### What you do in GitHub after this deploys
-
-1. Repo → **Settings → Pages**
-2. Change **Source** from "Deploy from a branch" to **"GitHub Actions"**
-3. Save. The workflow runs automatically on the next push (or trigger manually from the Actions tab)
-4. After ~1–2 min, your site is live at `www.allbetbg.com`
-5. Once GitHub provisions SSL, tick **"Enforce HTTPS"** (currently greyed out in your screenshot)
-
-### Notes
-
-- Every Lovable edit auto-syncs to GitHub `main`, which auto-triggers a deploy — no manual steps per change.
-- Build time ~1–2 min per deploy. Free for public repos.
+After implementation, you will need to push/sync the changes to GitHub. Then check GitHub → Actions → `Deploy to GitHub Pages`. If it passes, GitHub Pages should serve the generated `dist` artifact automatically.
