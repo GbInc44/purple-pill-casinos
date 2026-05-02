@@ -1,27 +1,26 @@
-The `dist` folder is not supposed to exist in the repository. It is generated only inside GitHub Actions during `npm run build`, then uploaded to GitHub Pages. Since the workflow failed, GitHub never received that generated `dist` artifact, so the site can stay blank or unavailable.
+I checked the current workflow and dependency files. The red error shown in the screenshot is the overall job failure; the Node.js 20 message is a warning, not necessarily the thing that caused `exit code 1`.
 
-The message you pasted is a GitHub Actions runtime warning/deprecation, but we can update the workflow to opt into Node.js 24 compatibility and also make the deployment more reliable.
+The likely real failure is in the install step: this project has Bun lockfiles (`bun.lock`, `bun.lockb`) and also a `package-lock.json`, but `package-lock.json` is out of sync with `package.json` (it is missing several dev dependencies such as Vitest/Testing Library/Playwright-related packages). The workflow currently runs `npm ci`, which can fail when the npm lockfile is not aligned.
 
 Plan:
 
-1. Update `.github/workflows/deploy.yml`
-   - Add `FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true` at the workflow level so GitHub actions run with the new Node 24 runtime now.
-   - Keep the app build itself on a stable Node version supported by this Vite project, likely Node 22 LTS.
-   - Use `npm ci` and `npm run build` as before.
-   - Keep uploading `./dist` to GitHub Pages.
-   - Keep copying the root `CNAME` into `dist/CNAME` so `www.allbetbg.com` remains attached after each deployment.
+1. Update `.github/workflows/deploy.yml` to use Bun for installation/build instead of npm:
+   - Keep GitHub Pages permissions and deployment steps.
+   - Add `oven-sh/setup-bun@v2`.
+   - Run `bun install --frozen-lockfile`.
+   - Run `bun run build`.
 
-2. Add small deployment checks to the workflow
-   - After build, verify that `dist/index.html` exists.
-   - Verify that `dist/assets` exists.
-   - List the generated `dist` contents in the Actions log, so if it fails again we can immediately see whether the build output was created.
+2. Keep/adjust deployment compatibility settings:
+   - Keep `FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"` to address the GitHub Actions Node 20 deprecation warning.
+   - Remove unnecessary `actions/setup-node` usage if Bun handles the build, reducing one Node-based action warning source.
 
-3. Update SPA fallback handling
-   - Ensure the GitHub Pages deployed artifact includes a correct `404.html` fallback.
-   - Rather than relying only on the static `public/404.html`, add a workflow step that copies the freshly built `dist/index.html` to `dist/404.html`. This guarantees the fallback always has the same built asset references as the actual production `index.html`.
+3. Improve diagnostics in the workflow:
+   - Print Bun version.
+   - Verify `dist/index.html` and `dist/assets` exist after build.
+   - Keep copying `CNAME` into `dist/`.
+   - Keep generating `dist/404.html` from the built `index.html` for GitHub Pages SPA fallback.
 
-4. Optional cleanup if needed
-   - Leave `public/404.html` in place or replace it later; the workflow-generated `dist/404.html` will be the important file for GitHub Pages.
-   - No committed `/dist` folder will be added, because committing build output is not needed for GitHub Actions Pages deployment.
+4. Optional cleanup after the workflow is stable:
+   - Consider removing or regenerating `package-lock.json` later to avoid confusion between npm and Bun lockfiles. I will not remove it unless needed for the workflow fix.
 
-After implementation, you will need to push/sync the changes to GitHub. Then check GitHub → Actions → `Deploy to GitHub Pages`. If it passes, GitHub Pages should serve the generated `dist` artifact automatically.
+After approval, I’ll edit only the workflow file and leave the app code unchanged.
