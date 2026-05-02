@@ -1,7 +1,10 @@
 import CasinoLayout from "@/components/CasinoLayout";
 import { newCasinos } from "@/data/casinos";
+import { useCanonicalUrl } from "@/hooks/useCanonicalUrl";
 
-const NewCasinos = () => (
+const NewCasinos = () => {
+  useCanonicalUrl("/novi-kazina");
+  return (
   <CasinoLayout
     showDivider={false}
     cleanSubtitle
@@ -26,6 +29,7 @@ const NewCasinos = () => (
     showProsCons
     compact
   />
-);
+  );
+};
 
 export default NewCasinos;
