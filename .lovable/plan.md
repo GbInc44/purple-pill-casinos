@@ -1,48 +1,35 @@
-## Goal
-Make AllBet discoverable in search engines (Google, Bing, etc.) by adding a proper sitemap, a smarter robots.txt, and real SEO meta tags. Canonical domain: `https://www.allbetbg.com`.
+## Plan: Deploy to GitHub Pages via GitHub Actions
 
-## What will change
+Make your site build and deploy automatically to GitHub Pages on every push to `main`, so opening `www.allbetbg.com` shows your app instead of a blank page.
 
-### 1. New file: `public/sitemap.xml`
-Lists all 4 public routes so search engines can crawl them in one go.
+### Files to create
 
-URLs included:
-- `https://www.allbetbg.com/` (priority 1.0)
-- `https://www.allbetbg.com/novi-kazina` (priority 0.8)
-- `https://www.allbetbg.com/top-10` (priority 0.8)
-- `https://www.allbetbg.com/pechalbi` (priority 0.7)
+1. **`.github/workflows/deploy.yml`** — GitHub Actions workflow that:
+   - Triggers on every push to `main` (and supports manual runs)
+   - Installs dependencies with `npm ci`
+   - Builds the Vite app with `npm run build`
+   - Copies the existing `CNAME` file into `dist/` so the custom domain stays bound
+   - Uploads `dist/` as a Pages artifact and deploys it to the `github-pages` environment
+   - Uses official actions: `actions/checkout@v4`, `actions/setup-node@v4` (Node 20), `actions/configure-pages@v5`, `actions/upload-pages-artifact@v3`, `actions/deploy-pages@v4`
+   - Has correct permissions (`pages: write`, `id-token: write`) and concurrency control
 
-Each entry will have `<lastmod>` set to today and `<changefreq>weekly</changefreq>`.
+2. **`public/404.html`** — Copy of `index.html`. GitHub Pages does NOT auto-fallback to `index.html` for client-side routes, so without this, refreshing on `/novi-kazina`, `/top-10`, or `/pechalbi` would 404. With this file at `dist/404.html`, GitHub serves it for unmatched paths and React Router takes over.
 
-### 2. Update `public/robots.txt`
-Keep the existing "allow all" rules and add a `Sitemap:` line so crawlers find the sitemap automatically:
-```
-Sitemap: https://www.allbetbg.com/sitemap.xml
-```
+### What stays the same
 
-### 3. Update `index.html` (SEO meta tags)
-Replace the "Lovable App" placeholders with real values for AllBet (Bulgarian casino directory):
-- `<title>` → `AllBet — Онлайн казина в България | Ревюта, бонуси и печалби`
-- `<meta name="description">` → short Bulgarian description (~155 chars) about the casino directory, reviews and bonuses
-- `<meta name="author">` → `AllBet`
-- `<html lang="en">` → `<html lang="bg">` (the site content is Bulgarian)
-- Add `<link rel="canonical" href="https://www.allbetbg.com/" />`
-- Update `og:title`, `og:description`, `og:url`, `og:image` (use a site asset instead of the lovable.dev placeholder) and matching `twitter:` tags
+- `vite.config.ts` — default `base: '/'` is correct for a custom domain at root
+- `CNAME` — already at repo root ✓
+- `index.html`, `sitemap.xml`, `robots.txt` — already configured for `https://www.allbetbg.com`
 
-## Other recommendations (so SEO actually works)
+### What you do in GitHub after this deploys
 
-These are things outside the code that you should know about:
+1. Repo → **Settings → Pages**
+2. Change **Source** from "Deploy from a branch" to **"GitHub Actions"**
+3. Save. The workflow runs automatically on the next push (or trigger manually from the Actions tab)
+4. After ~1–2 min, your site is live at `www.allbetbg.com`
+5. Once GitHub provisions SSL, tick **"Enforce HTTPS"** (currently greyed out in your screenshot)
 
-1. **Connect the custom domain in Lovable** (Project Settings → Domains) and publish the project. Search engines can only index a live domain — `*.lovable.app` preview URLs won't help your ranking.
-2. **Submit the sitemap** to:
-   - Google Search Console → add `www.allbetbg.com` as a property → Sitemaps → submit `https://www.allbetbg.com/sitemap.xml`
-   - Bing Webmaster Tools → same flow
-3. **Verify domain ownership** in Google Search Console (usually a TXT DNS record or an HTML meta tag — if needed I can add the verification meta tag to `index.html`).
-4. **Pick one canonical host** (`www.allbetbg.com` vs `allbetbg.com`) and make the other 301-redirect to it. In Lovable Domains, mark `www.allbetbg.com` as Primary so the bare domain redirects to it.
-5. **Per-page meta tags (optional, future improvement)**: Right now `index.html` has site-wide tags. For better ranking on individual pages we can later add `react-helmet-async` so `/top-10`, `/novi-kazina`, `/pechalbi` get their own titles and descriptions. Not part of this task — say the word and I'll add it.
-6. **Backlinks & content** still matter most for ranking — no code change can replace those.
+### Notes
 
-## Files touched
-- `public/sitemap.xml` (new)
-- `public/robots.txt` (edit)
-- `index.html` (edit)
+- Every Lovable edit auto-syncs to GitHub `main`, which auto-triggers a deploy — no manual steps per change.
+- Build time ~1–2 min per deploy. Free for public repos.
