@@ -1,60 +1,48 @@
-## Problem
+## Goal
+Make AllBet discoverable in search engines (Google, Bing, etc.) by adding a proper sitemap, a smarter robots.txt, and real SEO meta tags. Canonical domain: `https://www.allbetbg.com`.
 
-When the "Очаквайте скоро" pop-up opens (clicking the Betwild card, or any card without a `url`), the whole page appears to get slightly wider, then snaps back when it closes.
+## What will change
 
-### Root cause
+### 1. New file: `public/sitemap.xml`
+Lists all 4 public routes so search engines can crawl them in one go.
 
-Radix UI's Dialog (used by `src/components/ui/dialog.tsx`) locks body scroll while the dialog is open. To prevent the layout from jumping when the vertical scrollbar disappears, Radix adds inline styles to `<body>`:
+URLs included:
+- `https://www.allbetbg.com/` (priority 1.0)
+- `https://www.allbetbg.com/novi-kazina` (priority 0.8)
+- `https://www.allbetbg.com/top-10` (priority 0.8)
+- `https://www.allbetbg.com/pechalbi` (priority 0.7)
 
-- `overflow: hidden`
-- `padding-right: <scrollbar-width>px` (typically ~15px on desktop, 0 on mobile where scrollbars overlay)
+Each entry will have `<lastmod>` set to today and `<changefreq>weekly</changefreq>`.
 
-In our layout this padding is visible as a "widening" because:
-
-1. The page background is `bg-fixed` on the root container (`CasinoLayout.tsx` line 43). The fixed background does not shift, but the content area gets the extra right padding — making the visible content area look offset/wider.
-2. The nav is `sticky` and full-width; combined with the body padding it visually shifts.
-3. On mobile (overlay scrollbars) the same Radix logic can still briefly toggle styles, producing a subtle reflow.
-
-So this is not a Betwild-specific bug — it happens for any card that triggers `setComingSoonOpen(true)`. The user just notices it on Betwild because that's the card they click.
-
-## Fix
-
-Neutralize Radix's scrollbar compensation globally so the body width stays identical whether a dialog is open or not. This is a one-line CSS rule that overrides the inline styles Radix injects.
-
-### Change
-
-**`src/index.css`** — add a small global rule:
-
-```css
-/* Prevent layout shift when Radix Dialog/Sheet locks body scroll.
-   Radix sets padding-right on <body> to compensate for the scrollbar;
-   because our layout uses bg-fixed + sticky nav, that compensation
-   reads as a visible "widening" of the page. We pin it to 0. */
-body[data-scroll-locked] {
-  margin-right: 0 !important;
-  padding-right: 0 !important;
-  overflow: hidden !important;
-}
+### 2. Update `public/robots.txt`
+Keep the existing "allow all" rules and add a `Sitemap:` line so crawlers find the sitemap automatically:
+```
+Sitemap: https://www.allbetbg.com/sitemap.xml
 ```
 
-The `overflow: hidden` part keeps Radix's scroll-lock behavior (so the background page doesn't scroll while the dialog is open) — we only cancel the width-changing padding.
+### 3. Update `index.html` (SEO meta tags)
+Replace the "Lovable App" placeholders with real values for AllBet (Bulgarian casino directory):
+- `<title>` → `AllBet — Онлайн казина в България | Ревюта, бонуси и печалби`
+- `<meta name="description">` → short Bulgarian description (~155 chars) about the casino directory, reviews and bonuses
+- `<meta name="author">` → `AllBet`
+- `<html lang="en">` → `<html lang="bg">` (the site content is Bulgarian)
+- Add `<link rel="canonical" href="https://www.allbetbg.com/" />`
+- Update `og:title`, `og:description`, `og:url`, `og:image` (use a site asset instead of the lovable.dev placeholder) and matching `twitter:` tags
 
-### Why this is safe
+## Other recommendations (so SEO actually works)
 
-- Modern desktop browsers always show a scrollbar gutter on this page (content is taller than the viewport), so removing the compensation does NOT cause a separate "scrollbar disappears" jump — the gutter simply stays put.
-- Mobile uses overlay scrollbars, so there's nothing to compensate for anyway.
-- Applies only while a Radix overlay is open (`[data-scroll-locked]`), so normal page behavior is unaffected.
-- The same fix automatically benefits the mobile `Sheet` menu (which uses the same Radix scroll-lock), if it ever exhibits a similar twitch.
+These are things outside the code that you should know about:
 
-### Files touched
+1. **Connect the custom domain in Lovable** (Project Settings → Domains) and publish the project. Search engines can only index a live domain — `*.lovable.app` preview URLs won't help your ranking.
+2. **Submit the sitemap** to:
+   - Google Search Console → add `www.allbetbg.com` as a property → Sitemaps → submit `https://www.allbetbg.com/sitemap.xml`
+   - Bing Webmaster Tools → same flow
+3. **Verify domain ownership** in Google Search Console (usually a TXT DNS record or an HTML meta tag — if needed I can add the verification meta tag to `index.html`).
+4. **Pick one canonical host** (`www.allbetbg.com` vs `allbetbg.com`) and make the other 301-redirect to it. In Lovable Domains, mark `www.allbetbg.com` as Primary so the bare domain redirects to it.
+5. **Per-page meta tags (optional, future improvement)**: Right now `index.html` has site-wide tags. For better ranking on individual pages we can later add `react-helmet-async` so `/top-10`, `/novi-kazina`, `/pechalbi` get their own titles and descriptions. Not part of this task — say the word and I'll add it.
+6. **Backlinks & content** still matter most for ranking — no code change can replace those.
 
-- `src/index.css` — add the rule above (no other changes).
-
-No changes to `CasinoLayout.tsx`, the dialog component, or any page.
-
-## Verification
-
-After the change:
-1. Click a card without a URL (Betwild) on `/` and `/novi-kazina` at desktop width — page edges and nav must stay perfectly still on open and close.
-2. Same on mobile viewport.
-3. Open the mobile hamburger menu — should still lock background scroll correctly.
+## Files touched
+- `public/sitemap.xml` (new)
+- `public/robots.txt` (edit)
+- `index.html` (edit)
