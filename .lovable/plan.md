@@ -1,26 +1,36 @@
-I checked the current workflow and dependency files. The red error shown in the screenshot is the overall job failure; the Node.js 20 message is a warning, not necessarily the thing that caused `exit code 1`.
+## Goal
+Make the `<link rel="canonical">` URL reflect the current page URL on every route, instead of always pointing to `https://www.allbetbg.com/`.
 
-The likely real failure is in the install step: this project has Bun lockfiles (`bun.lock`, `bun.lockb`) and also a `package-lock.json`, but `package-lock.json` is out of sync with `package.json` (it is missing several dev dependencies such as Vitest/Testing Library/Playwright-related packages). The workflow currently runs `npm ci`, which can fail when the npm lockfile is not aligned.
+## Approach
+Create a small reusable hook `useCanonicalUrl(path)` that updates the existing `<link rel="canonical">` tag in the document head whenever a page mounts. Call it from each page component with that page's path.
 
-Plan:
+No new dependencies (no react-helmet) — we just mutate the existing canonical `<link>` tag directly.
 
-1. Update `.github/workflows/deploy.yml` to use Bun for installation/build instead of npm:
-   - Keep GitHub Pages permissions and deployment steps.
-   - Add `oven-sh/setup-bun@v2`.
-   - Run `bun install --frozen-lockfile`.
-   - Run `bun run build`.
+## Changes
 
-2. Keep/adjust deployment compatibility settings:
-   - Keep `FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"` to address the GitHub Actions Node 20 deprecation warning.
-   - Remove unnecessary `actions/setup-node` usage if Bun handles the build, reducing one Node-based action warning source.
+### 1. New file: `src/hooks/useCanonicalUrl.ts`
+A `useEffect`-based hook that:
+- Locates `<link rel="canonical">` in `<head>` (creates it if missing).
+- Sets its `href` to `https://www.allbetbg.com${path}`.
+- Normalizes: ensures path starts with `/`, strips any trailing slash (except for root `/`).
 
-3. Improve diagnostics in the workflow:
-   - Print Bun version.
-   - Verify `dist/index.html` and `dist/assets` exist after build.
-   - Keep copying `CNAME` into `dist/`.
-   - Keep generating `dist/404.html` from the built `index.html` for GitHub Pages SPA fallback.
+### 2. Update each page to call the hook
+- `src/pages/Index.tsx` → `useCanonicalUrl("/")`
+- `src/pages/NewCasinos.tsx` → `useCanonicalUrl("/novi-kazina")`
+- `src/pages/Top10.tsx` → `useCanonicalUrl("/top-10")`
+- `src/pages/Winnings.tsx` → `useCanonicalUrl("/pechalbi")`
+- `src/pages/NotFound.tsx` → no canonical (or set to current path); recommended: skip / leave default, since 404 pages shouldn't be canonicalized.
 
-4. Optional cleanup after the workflow is stable:
-   - Consider removing or regenerating `package-lock.json` later to avoid confusion between npm and Bun lockfiles. I will not remove it unless needed for the workflow fix.
+### 3. `index.html`
+Leave the existing `<link rel="canonical" href="https://www.allbetbg.com/" />` as the default. The hook overwrites it on navigation, so it's correct for the landing page on first paint and gets updated for sub-pages once React hydrates.
 
-After approval, I’ll edit only the workflow file and leave the app code unchanged.
+## Resulting behavior
+| Route | Canonical |
+|---|---|
+| `/` | `https://www.allbetbg.com/` |
+| `/novi-kazina` | `https://www.allbetbg.com/novi-kazina` |
+| `/top-10` | `https://www.allbetbg.com/top-10` |
+| `/pechalbi` | `https://www.allbetbg.com/pechalbi` |
+
+## Note on SEO
+Search engine crawlers (Googlebot) execute JavaScript and will see the updated canonical. This is a standard SPA approach. If you later want the correct canonical present in the initial HTML response (no JS required), that would need pre-rendering / SSG, which is a larger change — happy to plan that separately if needed.
