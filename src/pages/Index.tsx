@@ -1,7 +1,10 @@
 import CasinoLayout from "@/components/CasinoLayout";
 import { allCasinos } from "@/data/casinos";
+import { useCanonicalUrl } from "@/hooks/useCanonicalUrl";
 
-const Index = () => (
+const Index = () => {
+  useCanonicalUrl("/");
+  return (
   <CasinoLayout
     showDivider={false}
     cleanSubtitle
