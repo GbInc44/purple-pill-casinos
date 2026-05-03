@@ -1,44 +1,22 @@
-## Goal
+## Add Favicon (Slot Machine 777 Icon)
 
-Add a centered "Последвайте ни в:" line followed by a clickable Facebook icon that opens https://www.facebook.com/allbetbg in a new tab. It should appear below the disclaimer paragraph "AllBet е независим източник..." on all pages (Home, Нови Казина, ТОП 10, Печалби).
+### What we will do
+Use the uploaded slot machine image as the browser tab favicon for all pages.
 
-## Where
+### Steps
 
-The disclaimer paragraph lives in two places — both footers must be updated to keep all pages consistent:
+1. **Copy the uploaded image** into the project's `public/` folder as `favicon.png`:
+   - Source: `user-uploads://360_F_171658134_AMFQMPJTYAGiGjMNgJBIAtAylnFHRSrR.jpg`
+   - Destination: `public/favicon.png`
 
-1. `src/components/CasinoLayout.tsx` — used by `/`, `/novi-kazina`, `/top-10`
-2. `src/pages/Winnings.tsx` — used by `/pechalbi`
+2. **Delete the existing** `public/favicon.ico` so browsers don't fall back to it when requesting `/favicon.ico` by default.
 
-## What to add
+3. **Update `index.html`** — add inside `<head>`:
+   ```html
+   <link rel="icon" href="/favicon.png" type="image/png">
+   ```
 
-Directly below the existing `<p>AllBet е независим източник...</p>`, insert:
-
-```tsx
-<div className="mt-6 flex items-center justify-center gap-3 text-white text-sm">
-  <span>Последвайте ни в:</span>
-  <a
-    href="https://www.facebook.com/allbetbg"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Последвайте ни във Facebook"
-    className="inline-flex items-center justify-center h-9 w-9 rounded-full text-white transition-all hover:shadow-[0_0_20px_hsla(270,100%,65%,0.6)] hover:scale-110"
-    style={{ background: "linear-gradient(135deg, hsl(270,100%,55%), hsl(220,100%,55%))" }}
-  >
-    <Facebook className="h-5 w-5" />
-  </a>
-</div>
-```
-
-The `Facebook` icon comes from `lucide-react` — add it to the existing `lucide-react` import at the top of each file.
-
-## Styling notes
-
-- Centered horizontally (flex + justify-center).
-- Uses the existing brand purple→blue gradient already used by CTA buttons for visual consistency.
-- Subtle hover: neon purple glow + slight scale, matching the site's neon aesthetic.
-- Spacing: `mt-6` separates it from the disclaimer paragraph above.
-
-## Out of scope
-
-- No other social networks.
-- No changes to the existing 18+ responsible-gambling block or the disclaimer text itself.
+### Notes
+- The image is a JPG saved as PNG (acceptable for favicon use). Browsers will scale it down to ~16x16 / 32x32 in the tab.
+- The icon will show in the browser tab on every page (Home, Нови Казина, ТОП 10, Печалби) since `index.html` is shared.
+- If you'd later prefer a sharper, square-cropped version optimized for tiny sizes, we can generate a proper multi-size `.ico`.
