@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu } from "lucide-react";
+import { Menu, Facebook } from "lucide-react";
 import { useCanonicalUrl } from "@/hooks/useCanonicalUrl";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from "@/components/ui/sheet";
@@ -265,6 +265,19 @@ const Winnings = () => {
           <p className="mt-4 text-center text-white text-xs leading-relaxed">
             AllBet е независим източник на информация, свързана с онлайн казината в България. AllBet не се управлява от никой от хазартните оператори.
           </p>
+          <div className="mt-6 flex items-center justify-center gap-3 text-white text-sm">
+            <span>Последвайте ни в:</span>
+            <a
+              href="https://www.facebook.com/allbetbg"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Последвайте ни във Facebook"
+              className="inline-flex items-center justify-center h-9 w-9 rounded-full text-white transition-all hover:shadow-[0_0_20px_hsla(270,100%,65%,0.6)] hover:scale-110"
+              style={{ background: "linear-gradient(135deg, hsl(270,100%,55%), hsl(220,100%,55%))" }}
+            >
+              <Facebook className="h-5 w-5" />
+            </a>
+          </div>
         </footer>
       </div>
     </div>
