@@ -28,6 +28,7 @@ import slotinoNk from "@/assets/slotino-nk.png";
 import admiralbetNk from "@/assets/admiralbet-nk.png";
 import magicbetNk from "@/assets/magicbet-nk.png";
 import betwildNk from "@/assets/betwild-nk.png";
+import betwildFs from "@/assets/betwild-fs.png";
 
 export type Casino = {
   name: string;
@@ -185,6 +186,8 @@ export const allCasinos: Casino[] = [
     logo: betwildNk,
     bonus: "Бонус 100% до 1000 €",
     url: "https://betwild.com/casino",
+    centerImage: betwildFs,
+    centerCaption: "До 1000 FREE SPINS БЕЗ ДЕПОЗИТ",
   },
   { name: "PokerStars", logo: pokerstarsLogo, bonus: "Осребряване на точки в пари", url: "https://www.pokerstars.bg/casino/" },
 ];
