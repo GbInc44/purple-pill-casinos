@@ -165,7 +165,7 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
                 {/* Left: logo + name */}
                 <div className={`flex flex-col items-center ${compact ? "gap-1.5 lg:w-40" : "gap-2 lg:w-56"} w-full shrink-0`}>
                   <div className={`${compact ? "h-20 lg:w-36" : "h-24 lg:w-48"} w-full sm:max-w-xs lg:max-w-none rounded-xl bg-black/40 flex items-center justify-center overflow-hidden border border-white/5`}>
-                    <img src={casino.logo} alt={casino.name} className={`h-full w-full opacity-100 ${casino.name === "Betwild" ? "object-contain p-2" : "object-cover"}`} />
+                    <img src={casino.logo} alt={casino.name} className="h-full w-full object-cover opacity-100" />
                   </div>
                   <span className="text-base font-bold tracking-wide text-white">{casino.name}</span>
                 </div>
