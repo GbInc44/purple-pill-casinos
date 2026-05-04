@@ -28,6 +28,7 @@ import slotinoNk from "@/assets/slotino-nk.png";
 import admiralbetNk from "@/assets/admiralbet-nk.png";
 import magicbetNk from "@/assets/magicbet-nk.png";
 import betwildNk from "@/assets/betwild-nk.png";
+import betwildFs from "@/assets/betwild-fs.png";
 
 export type Casino = {
   name: string;
