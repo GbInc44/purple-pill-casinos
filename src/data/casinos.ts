@@ -187,7 +187,7 @@ export const allCasinos: Casino[] = [
     bonus: "Бонус 100% до 1000 €",
     url: "https://betwild.com/casino",
     centerImage: betwildFs,
-    centerCaption: "До 1000 FREE SPINS БЕЗ ДЕПОЗИТ",
+    centerCaption: "До 1000 FS БЕЗ ДЕПОЗИТ",
   },
   { name: "PokerStars", logo: pokerstarsLogo, bonus: "Осребряване на точки в пари", url: "https://www.pokerstars.bg/casino/" },
 ];
