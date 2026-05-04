@@ -128,7 +128,7 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
                 <div className="ranking-badge absolute top-3 left-3">{index + 1}</div>
 
                 <div className="h-24 w-full rounded-xl bg-black/40 flex items-center justify-center overflow-hidden border border-white/5">
-                  <img src={casino.logo} alt={casino.name} className={`h-full w-full opacity-100 ${casino.name === "Betwild" ? "object-contain p-2" : "object-cover"}`} />
+                  <img src={casino.logo} alt={casino.name} className="h-full w-full object-cover opacity-100" />
                 </div>
 
                 {casino.bonus && (
