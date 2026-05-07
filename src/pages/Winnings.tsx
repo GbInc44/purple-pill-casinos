@@ -27,6 +27,15 @@ interface Winning {
 
 const winnings: Winning[] = [
   {
+    casino: "Palmsbet",
+    date: "05/05/26",
+    win: "56 126.94 €",
+    bet: "10 €",
+    game: "Regal Spins 10",
+    image: regalSpins10,
+    url: "https://news.palmsbet.com/jackpot-regal-win/",
+  },
+  {
     casino: "Palms Bet",
     date: "25/04/26",
     win: "50 300.00 €",
