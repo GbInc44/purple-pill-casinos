@@ -14,6 +14,7 @@ import superHot20 from "@/assets/20-super-hot.webp";
 import keshShans2 from "@/assets/kesh-shans-2.webp";
 import burningHot2 from "@/assets/40-burning-hot-2.png";
 import regalSpins10 from "@/assets/regal-spins-10.png";
+import winStormDeluxe from "@/assets/win-storm-deluxe.jpg";
 
 interface Winning {
   casino: string;
@@ -26,6 +27,15 @@ interface Winning {
 }
 
 const winnings: Winning[] = [
+  {
+    casino: "Palms Bet",
+    date: "05/05/26",
+    win: "40 571.24 €",
+    bet: "4.50 €",
+    game: "Win Storm DELUXE",
+    image: winStormDeluxe,
+    url: "https://news.palmsbet.com/win-storm-deluxe-hot-luck/",
+  },
   {
     casino: "Palmsbet",
     date: "05/05/26",
