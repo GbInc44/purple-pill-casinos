@@ -13,6 +13,7 @@ import megaSlotDiamondTree from "@/assets/20-mega-slot-diamond-tree.png";
 import superHot20 from "@/assets/20-super-hot.webp";
 import keshShans2 from "@/assets/kesh-shans-2.webp";
 import burningHot2 from "@/assets/40-burning-hot-2.png";
+import regalSpins10 from "@/assets/regal-spins-10.png";
 
 interface Winning {
   casino: string;
