@@ -13,6 +13,7 @@ import megaSlotDiamondTree from "@/assets/20-mega-slot-diamond-tree.png";
 import superHot20 from "@/assets/20-super-hot.webp";
 import keshShans2 from "@/assets/kesh-shans-2.webp";
 import burningHot2 from "@/assets/40-burning-hot-2.png";
+import regalSpins10 from "@/assets/regal-spins-10.png";
 
 interface Winning {
   casino: string;
@@ -25,6 +26,15 @@ interface Winning {
 }
 
 const winnings: Winning[] = [
+  {
+    casino: "Palmsbet",
+    date: "05/05/26",
+    win: "56 126.94 €",
+    bet: "10 €",
+    game: "Regal Spins 10",
+    image: regalSpins10,
+    url: "https://news.palmsbet.com/jackpot-regal-win/",
+  },
   {
     casino: "Palms Bet",
     date: "25/04/26",
