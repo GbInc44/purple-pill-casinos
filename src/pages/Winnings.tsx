@@ -28,6 +28,15 @@ interface Winning {
 
 const winnings: Winning[] = [
   {
+    casino: "Palms Bet",
+    date: "05/05/26",
+    win: "40 571.24 €",
+    bet: "4.50 €",
+    game: "Win Storm DELUXE",
+    image: winStormDeluxe,
+    url: "https://news.palmsbet.com/win-storm-deluxe-hot-luck/",
+  },
+  {
     casino: "Palmsbet",
     date: "05/05/26",
     win: "56 126.94 €",
