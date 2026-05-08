@@ -15,6 +15,7 @@ import keshShans2 from "@/assets/kesh-shans-2.webp";
 import burningHot2 from "@/assets/40-burning-hot-2.png";
 import regalSpins10 from "@/assets/regal-spins-10.png";
 import winStormDeluxe from "@/assets/win-storm-deluxe.jpg";
+import cloverChance from "@/assets/clover-chance.png";
 
 interface Winning {
   casino: string;
@@ -27,6 +28,15 @@ interface Winning {
 }
 
 const winnings: Winning[] = [
+  {
+    casino: "Sesame",
+    date: "08/05/26",
+    win: "124 529,51 €",
+    bet: "3 €",
+    game: "Clover Chance",
+    image: cloverChance,
+    url: "https://www.facebook.com/photo/?fbid=122178964544784308&set=a.122111820272784308",
+  },
   {
     casino: "Palms Bet",
     date: "05/05/26",
