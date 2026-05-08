@@ -1,22 +1,30 @@
-## Add Favicon (Slot Machine 777 Icon)
+# Plan: Add Efbet Affiliate Banner to Landing Page
 
-### What we will do
-Use the uploaded slot machine image as the browser tab favicon for all pages.
+## Goal
+Place the provided affiliate JavaScript banner between the H1/H2 text and the casino cards grid on the landing page (`/`).
 
-### Steps
+## How It Works
+The affiliate script (`<script src="https://js.efbet.com/javascript.php?..." />`) loads external JavaScript that renders a banner. Since React does not execute scripts injected via JSX, we will mount the script into the real DOM inside a container `<div>`.
 
-1. **Copy the uploaded image** into the project's `public/` folder as `favicon.png`:
-   - Source: `user-uploads://360_F_171658134_AMFQMPJTYAGiGjMNgJBIAtAylnFHRSrR.jpg`
-   - Destination: `public/favicon.png`
+## Steps
 
-2. **Delete the existing** `public/favicon.ico` so browsers don't fall back to it when requesting `/favicon.ico` by default.
+1. **Create an `ExternalScript` component** (`src/components/ExternalScript.tsx`)
+   - Accepts `src: string` and `containerId?: string`.
+   - Uses a `useEffect` to create a `<script>` element, set its `src` and `type`, append it to a container `div` ref, and clean it up on unmount.
+   - Renders an empty `<div>` that serves as the mount point for whatever HTML the script injects.
 
-3. **Update `index.html`** — add inside `<head>`:
-   ```html
-   <link rel="icon" href="/favicon.png" type="image/png">
-   ```
+2. **Extend `CasinoLayout` with an optional `banner` prop**
+   - Add `banner?: ReactNode` to the `Props` interface.
+   - Render `{banner}` between the header section (subtitle / divider) and the casino cards grid/list.
 
-### Notes
-- The image is a JPG saved as PNG (acceptable for favicon use). Browsers will scale it down to ~16x16 / 32x32 in the tab.
-- The icon will show in the browser tab on every page (Home, Нови Казина, ТОП 10, Печалби) since `index.html` is shared.
-- If you'd later prefer a sharper, square-cropped version optimized for tiny sizes, we can generate a proper multi-size `.ico`.
+3. **Wire it into `Index.tsx`**
+   - Import `ExternalScript`.
+   - Pass it as the new `banner` prop to `CasinoLayout` with the provided `src` URL.
+
+## Result
+- The banner will appear on `https://www.allbetbg.com/` only.
+- No impact on other pages (`/top-10`, `/novi-kazina`, `/pechalbi`).
+- The script is loaded and removed cleanly when the component unmounts.
+
+## Technical Note
+React intentionally ignores `<script>` tags rendered in JSX for security. Appending the script to the DOM via `useEffect` is the standard, safe way to load third-party scripts that need to execute inside a React app.
