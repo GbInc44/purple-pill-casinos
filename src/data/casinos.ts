@@ -46,7 +46,7 @@ export const allCasinos: Casino[] = [
     name: "Efbet",
     logo: efbetLogo,
     bonus: "Бонус до 1500 €",
-    url: "https://efbet.com/",
+    url: "https://record.efbet.com/_Zahiu1R5LU7UOsjNOfgKeWNd7ZgqdRLk/1/",
     pros: ["Обновен уебсайт и приложение", "Високи коефициенти и редовни бонуси", "Опит в пазари в чужбина"],
     cons: ["Липса на покер на живо"],
   },
