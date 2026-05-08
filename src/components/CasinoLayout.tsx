@@ -15,9 +15,10 @@ interface Props {
   showDivider?: boolean;
   cleanSubtitle?: boolean;
   compact?: boolean;
+  banner?: ReactNode;
 }
 
-const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = false, showDivider = true, cleanSubtitle = false, compact = false }: Props) => {
+const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = false, showDivider = true, cleanSubtitle = false, compact = false, banner }: Props) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [comingSoonOpen, setComingSoonOpen] = useState(false);
   const navigate = useNavigate();
@@ -111,6 +112,12 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
           <div className="neon-divider max-w-md mx-auto mb-12 rounded-full" />
         ) : (
           <div className="max-w-md mx-auto mb-12" aria-hidden />
+        )}
+
+        {banner && (
+          <div className="max-w-6xl mx-auto mb-8 flex justify-center">
+            {banner}
+          </div>
         )}
 
         {variant === "grid" ? (

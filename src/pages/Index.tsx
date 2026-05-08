@@ -1,4 +1,5 @@
 import CasinoLayout from "@/components/CasinoLayout";
+import ExternalScript from "@/components/ExternalScript";
 import { allCasinos } from "@/data/casinos";
 import { useCanonicalUrl } from "@/hooks/useCanonicalUrl";
 
@@ -25,6 +26,9 @@ const Index = () => {
       </>
     }
     casinos={allCasinos}
+    banner={
+      <ExternalScript src="https://js.efbet.com/javascript.php?prefix=Zahiu1R5LU7UOsjNOfgKeWNd7ZgqdRLk&media=19&campaign=1" />
+    }
   />
   );
 };
