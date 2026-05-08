@@ -1,46 +1,25 @@
-import { useEffect, useRef } from "react";
-
 interface Props {
   src: string;
   className?: string;
+  width?: number;
+  height?: number;
 }
 
-const ExternalScript = ({ src, className }: Props) => {
-  const containerRef = useRef<HTMLDivElement>(null);
+const ExternalScript = ({ src, className, width = 468, height = 60 }: Props) => {
+  const srcDoc = `<!doctype html><html><head><style>html,body{margin:0;padding:0;overflow:hidden;background:transparent;}a,img{display:block;}</style></head><body><script type="text/javascript" src="${src}"><\/script></body></html>`;
 
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    let cancelled = false;
-
-    fetch(src)
-      .then((r) => r.text())
-      .then((code) => {
-        if (cancelled || !container) return;
-        // Intercept document.write calls from the affiliate script
-        const writes: string[] = [];
-        const fakeDoc = {
-          write: (html: string) => writes.push(html),
-          writeln: (html: string) => writes.push(html + "\n"),
-        };
-        try {
-          // eslint-disable-next-line no-new-func
-          new Function("document", code)(fakeDoc);
-          container.innerHTML = writes.join("");
-        } catch (err) {
-          console.error("ExternalScript execution failed:", err);
-        }
-      })
-      .catch((err) => console.error("ExternalScript fetch failed:", err));
-
-    return () => {
-      cancelled = true;
-      if (container) container.innerHTML = "";
-    };
-  }, [src]);
-
-  return <div ref={containerRef} className={className} />;
+  return (
+    <iframe
+      title="Affiliate banner"
+      srcDoc={srcDoc}
+      width={width}
+      height={height}
+      scrolling="no"
+      frameBorder={0}
+      className={className}
+      style={{ border: 0, background: "transparent" }}
+    />
+  );
 };
 
 export default ExternalScript;
