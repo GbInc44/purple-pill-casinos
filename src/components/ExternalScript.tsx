@@ -12,14 +12,31 @@ const ExternalScript = ({ src, className }: Props) => {
     const container = containerRef.current;
     if (!container) return;
 
-    const script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src = src;
-    script.async = true;
-    container.appendChild(script);
+    let cancelled = false;
+
+    fetch(src)
+      .then((r) => r.text())
+      .then((code) => {
+        if (cancelled || !container) return;
+        // Intercept document.write calls from the affiliate script
+        const writes: string[] = [];
+        const fakeDoc = {
+          write: (html: string) => writes.push(html),
+          writeln: (html: string) => writes.push(html + "\n"),
+        };
+        try {
+          // eslint-disable-next-line no-new-func
+          new Function("document", code)(fakeDoc);
+          container.innerHTML = writes.join("");
+        } catch (err) {
+          console.error("ExternalScript execution failed:", err);
+        }
+      })
+      .catch((err) => console.error("ExternalScript fetch failed:", err));
 
     return () => {
-      container.innerHTML = "";
+      cancelled = true;
+      if (container) container.innerHTML = "";
     };
   }, [src]);
 
