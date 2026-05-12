@@ -16,9 +16,12 @@ const order = [
   "Alphawin",
 ];
 
+const affiliateUrl = "https://www.palmsbet.com/affiliate/?marketingCode=PB-0594&banID=&brand=ecasino&ns=&clickid=&pages=welcome-bonus-casino-affiliate";
+
 const top10Casinos = order
   .map((name) => allCasinos.find((c) => c.name === name))
-  .filter((c): c is NonNullable<typeof c> => Boolean(c));
+  .filter((c): c is NonNullable<typeof c> => Boolean(c))
+  .map((c) => (c.name === "Palms Bet" ? { ...c, url: affiliateUrl } : c));
 
 const Top10 = () => {
   useCanonicalUrl("/top-10");
