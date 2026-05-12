@@ -31,7 +31,7 @@ const Index = () => {
         </span>
       </>
     }
-    casinos={allCasinos}
+    casinos={casinos}
     banner={
       <ExternalScript src="https://js.efbet.com/javascript.php?prefix=Zahiu1R5LU7UOsjNOfgKeWNd7ZgqdRLk&media=19&campaign=1" />
     }
