@@ -3,10 +3,17 @@ interface Props {
   className?: string;
   width?: number;
   height?: number;
+  attributes?: Record<string, string>;
 }
 
-const ExternalScript = ({ src, className, width = 468, height = 60 }: Props) => {
-  const srcDoc = `<!doctype html><html><head><style>html,body{margin:0;padding:0;overflow:hidden;background:transparent;}a,img{display:block;}</style></head><body><script type="text/javascript" src="${src}"><\/script></body></html>`;
+const ExternalScript = ({ src, className, width = 468, height = 60, attributes }: Props) => {
+  const attrString = attributes
+    ? Object.entries(attributes)
+        .map(([k, v]) => `${k}="${String(v).replace(/"/g, "&quot;")}"`)
+        .join(" ")
+    : "";
+
+  const srcDoc = `<!doctype html><html><head><style>html,body{margin:0;padding:0;overflow:hidden;background:transparent;}a,img{display:block;}</style></head><body><script type="text/javascript" src="${src}" ${attrString}><\/script></body></html>`;
 
   return (
     <iframe

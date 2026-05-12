@@ -1,4 +1,5 @@
 import CasinoLayout from "@/components/CasinoLayout";
+import ExternalScript from "@/components/ExternalScript";
 import { allCasinos } from "@/data/casinos";
 import { useCanonicalUrl } from "@/hooks/useCanonicalUrl";
 
@@ -44,6 +45,21 @@ const Top10 = () => {
     casinos={top10Casinos}
     variant="list"
     showProsCons
+    banner={
+      <ExternalScript
+        src="https://affiliates.palmsbet.com/js/ban-20.js"
+        width={728}
+        height={90}
+        attributes={{
+          "display-lang": "11",
+          "display-banner": "06-1001",
+          "display-ns": "",
+          "display-clickid": "",
+          "display-code": "PB-0594",
+          class: "palms-728x90",
+        }}
+      />
+    }
   />
   );
 };
