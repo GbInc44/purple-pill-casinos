@@ -3,6 +3,12 @@ import ExternalScript from "@/components/ExternalScript";
 import { allCasinos } from "@/data/casinos";
 import { useCanonicalUrl } from "@/hooks/useCanonicalUrl";
 
+const affiliateUrl = "https://www.palmsbet.com/affiliate/?marketingCode=PB-0594&banID=&brand=ecasino&ns=&clickid=&pages=welcome-bonus-casino-affiliate";
+
+const casinos = allCasinos.map((c) =>
+  c.name === "Palms Bet" ? { ...c, url: affiliateUrl } : c
+);
+
 const Index = () => {
   useCanonicalUrl("/");
   return (
