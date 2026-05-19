@@ -135,7 +135,7 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
                 <div className="ranking-badge absolute top-3 left-3">{index + 1}</div>
 
                 <div className="h-24 w-full rounded-xl bg-black/40 flex items-center justify-center overflow-hidden border border-white/5">
-                  <img src={casino.logo} alt={casino.name} className="h-full w-full object-cover opacity-100" />
+                  <img src={casino.logo} alt={`${casino.name} онлайн казино — лого`} className="h-full w-full object-cover opacity-100" />
                 </div>
 
                 {casino.bonus && (
@@ -172,7 +172,7 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
                 {/* Left: logo + name */}
                 <div className={`flex flex-col items-center ${compact ? "gap-1.5 lg:w-40" : "gap-2 lg:w-56"} w-full shrink-0`}>
                   <div className={`${compact ? "h-20 lg:w-36" : "h-24 lg:w-48"} w-full sm:max-w-xs lg:max-w-none rounded-xl bg-black/40 flex items-center justify-center overflow-hidden border border-white/5`}>
-                    <img src={casino.logo} alt={casino.name} className="h-full w-full object-cover opacity-100" />
+                    <img src={casino.logo} alt={`${casino.name} онлайн казино — лого`} className="h-full w-full object-cover opacity-100" />
                   </div>
                   <span className="text-base font-bold tracking-wide text-white">{casino.name}</span>
                 </div>
@@ -183,9 +183,9 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
                     <div className="flex-1 w-full grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-4">
                       {casino.pros?.length ? (
                         <div className="flex flex-col gap-2">
-                          <h4 className="text-white font-bold text-sm tracking-wide font-['Orbitron'] border-b border-[hsla(270,100%,65%,0.4)] pb-1">
+                          <h3 className="text-white font-bold text-sm tracking-wide font-['Orbitron'] border-b border-[hsla(270,100%,65%,0.4)] pb-1">
                             Плюсове
-                          </h4>
+                          </h3>
                           <ul className="flex flex-col gap-1.5">
                             {casino.pros.map((p) => (
                               <li key={p} className="flex items-center gap-2 text-white text-sm">
@@ -200,9 +200,9 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
                       ) : null}
                       {casino.cons?.length ? (
                         <div className="flex flex-col gap-2">
-                          <h4 className="text-white font-bold text-sm tracking-wide font-['Orbitron'] border-b border-[hsla(270,100%,65%,0.4)] pb-1">
+                          <h3 className="text-white font-bold text-sm tracking-wide font-['Orbitron'] border-b border-[hsla(270,100%,65%,0.4)] pb-1">
                             Минуси
-                          </h4>
+                          </h3>
                           <ul className="flex flex-col gap-1.5">
                             {casino.cons.map((c) => (
                               <li key={c} className="flex items-center gap-2 text-white text-sm">
@@ -222,7 +222,7 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
                         <div className="h-20 w-full max-w-[260px] rounded-xl overflow-hidden border border-white/5 bg-black/40 flex items-center justify-center">
                           <img
                             src={casino.centerImage}
-                            alt={casino.name}
+                            alt={`${casino.name} промоционална оферта`}
                             className="h-full w-full object-cover"
                           />
                         </div>
