@@ -1,7 +1,7 @@
 import CasinoLayout from "@/components/CasinoLayout";
-import ExternalScript from "@/components/ExternalScript";
 import { allCasinos } from "@/data/casinos";
 import { useCanonicalUrl } from "@/hooks/useCanonicalUrl";
+import palmsbetBanner from "@/assets/palmsbet-banner-728x90.png";
 
 const order = [
   "Bet365",
@@ -17,6 +17,7 @@ const order = [
 ];
 
 const affiliateUrl = "https://www.palmsbet.com/affiliate/?marketingCode=PB-0594&banID=&brand=ecasino&ns=&clickid=&pages=welcome-bonus-casino-affiliate";
+const bannerUrl = "https://www.palmsbet.com/affiliate/?marketingCode=PB-0594&banID=&brand=ecasino&ns=&clickid=&pages=fs-bonus-lending";
 
 const top10Casinos = order
   .map((name) => allCasinos.find((c) => c.name === name))
@@ -49,19 +50,21 @@ const Top10 = () => {
     variant="list"
     showProsCons
     banner={
-      <ExternalScript
-        src="https://affiliates.palmsbet.com/js/ban-20.js"
-        width={728}
-        height={90}
-        attributes={{
-          "display-lang": "11",
-          "display-banner": "06-1001",
-          "display-ns": "",
-          "display-clickid": "",
-          "display-code": "PB-0594",
-          class: "palms-728x90",
-        }}
-      />
+      <a
+        href={bannerUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block w-full max-w-[728px]"
+        aria-label="Palms Bet — 5€ за спорт + 100 FS за казино без депозит"
+      >
+        <img
+          src={palmsbetBanner}
+          alt="Palms Bet — 5€ за спорт + 100 FS за казино без депозит"
+          width={728}
+          height={90}
+          className="w-full h-auto block"
+        />
+      </a>
     }
   />
   );
