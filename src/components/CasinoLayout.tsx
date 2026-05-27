@@ -283,7 +283,8 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
                         onKeyDown={(e) => {
                           if (e.key === "Enter" || e.key === " ") handleReviewClick(e as unknown as React.MouseEvent, casino.reviewPath!);
                         }}
-                        className={`block w-full text-center rounded-full ${compact ? "px-5 py-1.5" : "px-6 py-2"} text-xs font-bold text-white tracking-wider uppercase transition-all border border-[hsla(270,100%,65%,0.55)] bg-[hsla(270,80%,10%,0.5)] hover:bg-[hsla(270,80%,18%,0.7)] hover:shadow-[0_0_16px_hsla(270,100%,65%,0.55)] cursor-pointer`}
+                        className={`block w-full text-center rounded-full ${compact ? "px-5 py-1.5" : "px-6 py-2"} text-xs font-bold text-white tracking-wider uppercase transition-all hover:shadow-[0_0_20px_hsla(270,100%,65%,0.5)] cursor-pointer`}
+                        style={{ background: "linear-gradient(135deg, hsl(270,100%,55%), hsl(220,100%,55%))" }}
                       >
                         Ревю
                       </span>
