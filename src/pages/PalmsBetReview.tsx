@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, Clock, Gift, Gamepad2, Wallet, Timer, Coins, Globe, Mail, Phone, Star } from "lucide-react";
+import { ArrowLeft, Clock, Gift, Gamepad2, Wallet, Timer, Coins, Mail, Phone, Star } from "lucide-react";
 import casinoBg from "@/assets/casino-bg.png";
 import palmsbetLogo from "@/assets/palmsbet-logo-new.png";
 import { useCanonicalUrl } from "@/hooks/useCanonicalUrl";
@@ -48,13 +48,13 @@ const InfoTile = ({
   children: React.ReactNode;
 }) => (
   <div
-    className="rounded-2xl px-4 py-4 border flex flex-col gap-2 backdrop-blur-md"
+    className="rounded-2xl px-4 py-4 border flex flex-col gap-2 backdrop-blur-md items-center text-center"
     style={{
       background: `linear-gradient(135deg, hsla(${hue},60%,18%,0.55), hsla(${hue},50%,8%,0.55))`,
       borderColor: `hsla(${hue},80%,55%,0.35)`,
     }}
   >
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-2 justify-center">
       <span
         className="inline-flex h-8 w-8 items-center justify-center rounded-lg"
         style={{ background: `hsl(${hue},80%,50%)` }}
@@ -65,7 +65,7 @@ const InfoTile = ({
         {label}
       </span>
     </div>
-    <div className="text-white text-sm">{children}</div>
+    <div className="text-white text-sm w-full flex flex-col items-center">{children}</div>
   </div>
 );
 
@@ -174,9 +174,8 @@ const PalmsBetReview = () => {
 
         {/* Summary section */}
         <section className="mt-8">
-          <div className="flex items-center justify-end mb-2">
-            <span className="text-xs text-white/60 font-mono">Последен ъпдейт: 20.02.2026</span>
-          </div>
+
+
           <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)] gap-5">
             {/* Left: brand panel */}
             <div
@@ -209,14 +208,8 @@ const PalmsBetReview = () => {
                 Вход в Palms Bet
               </a>
 
-              <a
-                href={affiliateUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white/70 text-xs underline hover:text-white"
-              >
-                Правила и условия
-              </a>
+
+
 
               <div className="text-white/60 text-xs flex items-center gap-2">
                 <span>Съвместимост:</span>
@@ -282,12 +275,8 @@ const PalmsBetReview = () => {
                 borderColor: "hsla(270,100%,65%,0.25)",
               }}
             >
-              <div className="flex items-center gap-3 text-white text-sm">
-                <Globe className="h-4 w-4 text-[hsl(270,100%,65%)]" />
-                <a href="https://www.palmsbet.com/" target="_blank" rel="noopener noreferrer" className="hover:underline">
-                  https://www.palmsbet.com/
-                </a>
-              </div>
+
+
               <div className="flex items-center gap-3 text-white text-sm">
                 <Mail className="h-4 w-4 text-[hsl(270,100%,65%)]" />
                 <a href="mailto:support@palmsbet.com" className="hover:underline">support@palmsbet.com</a>
@@ -315,6 +304,9 @@ const PalmsBetReview = () => {
                 ))}
               </div>
             </div>
+          </div>
+          <div className="mt-4 text-center">
+            <span className="text-xs text-white/60 font-mono">Последен ъпдейт: 27.05.2026</span>
           </div>
         </section>
 
