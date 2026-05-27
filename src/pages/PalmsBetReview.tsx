@@ -305,6 +305,9 @@ const PalmsBetReview = () => {
               </div>
             </div>
           </div>
+          <div className="mt-4 text-center">
+            <span className="text-xs text-white/60 font-mono">Последен ъпдейт: 27.05.2026</span>
+          </div>
         </section>
 
         {/* Payment methods section */}
