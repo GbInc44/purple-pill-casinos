@@ -241,7 +241,7 @@ const PalmsBetReview = () => {
                     href={affiliateUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs underline text-white/70 hover:text-white"
+                    className="text-xs underline text-slate-600 hover:text-slate-900"
                   >
                     Към игрите
                   </a>
