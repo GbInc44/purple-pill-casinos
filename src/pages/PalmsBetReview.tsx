@@ -48,13 +48,13 @@ const InfoTile = ({
   children: React.ReactNode;
 }) => (
   <div
-    className="rounded-2xl px-4 py-4 border flex flex-col gap-2 backdrop-blur-md"
+    className="rounded-2xl px-4 py-4 border flex flex-col gap-2 backdrop-blur-md items-center text-center"
     style={{
       background: `linear-gradient(135deg, hsla(${hue},60%,18%,0.55), hsla(${hue},50%,8%,0.55))`,
       borderColor: `hsla(${hue},80%,55%,0.35)`,
     }}
   >
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-2 justify-center">
       <span
         className="inline-flex h-8 w-8 items-center justify-center rounded-lg"
         style={{ background: `hsl(${hue},80%,50%)` }}
@@ -65,7 +65,7 @@ const InfoTile = ({
         {label}
       </span>
     </div>
-    <div className="text-white text-sm">{children}</div>
+    <div className="text-white text-sm w-full flex flex-col items-center">{children}</div>
   </div>
 );
 
