@@ -29,6 +29,12 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
       setComingSoonOpen(true);
     }
   };
+
+  const handleReviewClick = (e: React.MouseEvent, reviewPath: string) => {
+    e.preventDefault();
+    e.stopPropagation();
+    navigate(reviewPath);
+  };
   const { pathname } = useLocation();
 
   const go = (path: string) => {
