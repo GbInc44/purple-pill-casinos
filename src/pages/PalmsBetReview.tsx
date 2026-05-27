@@ -227,7 +227,7 @@ const PalmsBetReview = () => {
               <InfoTile icon={Gift} label="Начален бонус" hue={20}>
                 <div className="space-y-1 text-sm">
                   <div className="font-bold">100% до 100 €</div>
-                  <a href="#bonuses" className="text-xs underline text-slate-600 hover:text-slate-900">Още…</a>
+                  <a href="#bonuses" className="text-xs underline text-white/70 hover:text-white">Още…</a>
                 </div>
               </InfoTile>
 
@@ -238,7 +238,7 @@ const PalmsBetReview = () => {
                     href={affiliateUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs underline text-slate-600 hover:text-slate-900"
+                    className="text-xs underline text-white/70 hover:text-white"
                   >
                     Към игрите
                   </a>
@@ -250,7 +250,7 @@ const PalmsBetReview = () => {
                   <span className="px-2 py-0.5 rounded bg-[hsl(50,90%,50%)] text-[10px] font-bold text-black">Easy</span>
                   <span className="px-2 py-0.5 rounded bg-black text-[10px] font-bold text-white">Pay</span>
                   <span className="px-2 py-0.5 rounded bg-[hsl(280,60%,50%)] text-[10px] font-bold text-white">Skrill</span>
-                  <a href="#payments" className="text-xs underline text-slate-600 hover:text-slate-900 ml-1">Още…</a>
+                  <a href="#payments" className="text-xs underline text-white/70 hover:text-white ml-1">Още…</a>
                 </div>
               </InfoTile>
 
