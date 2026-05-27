@@ -127,7 +127,26 @@ const PalmsBetReview = () => {
         {/* Back button */}
         <button
           onClick={() => navigate(-1)}
-          className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-bold text-white tracking-wider uppercase border border-[hsla(270,100%,65%,0.55)] bg-[hsla(270,80%,10%,0.5)] hover:bg-[hsla(270,80%,18%,0.7)] hover:shadow-[0_0_16px_hsla(270,100%,65%,0.55)] transition-all"
+          className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-bold tracking-wider uppercase bg-transparent border transition-all"
+          style={{
+            color: "hsl(45, 100%, 55%)",
+            borderColor: "hsl(45, 100%, 55%)",
+            boxShadow: "0 0 6px hsla(45, 100%, 55%, 0.25)",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.boxShadow = "0 0 14px hsla(45, 100%, 55%, 0.55)";
+            e.currentTarget.style.filter = "brightness(1.1)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.boxShadow = "0 0 6px hsla(45, 100%, 55%, 0.25)";
+            e.currentTarget.style.filter = "none";
+          }}
+          onMouseDown={(e) => {
+            e.currentTarget.style.transform = "translateY(1px)";
+          }}
+          onMouseUp={(e) => {
+            e.currentTarget.style.transform = "translateY(0)";
+          }}
           aria-label="Назад към предишната страница"
         >
           <ArrowLeft className="h-4 w-4" />
