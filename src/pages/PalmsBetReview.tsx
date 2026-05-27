@@ -326,7 +326,10 @@ const PalmsBetReview = () => {
           >
             Платежни методи
           </h2>
-          <p className="text-white/80 text-sm md:text-base leading-relaxed mb-6 max-w-4xl">
+          <p
+            className="text-white text-sm md:text-base leading-relaxed mb-6 max-w-4xl font-['Orbitron'] tracking-wide font-bold"
+            style={{ textShadow: "0 0 10px hsla(270,100%,65%,0.6)" }}
+          >
             Palms Bet предоставя широк избор от методи за депозит и теглене — Apple Pay, Google Pay,
             A1 Wallet, Fast Pay, Easy Pay и др. За депозиране можете да изберете между следните
             опции: Apple Pay, A1 Wallet, Fast Pay, Easy Pay, ePay, Cashterminal и др. Други методи
