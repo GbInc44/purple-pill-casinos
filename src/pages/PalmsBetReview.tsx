@@ -55,10 +55,10 @@ const InfoTile = ({
     }}
   >
     <span
-      className="absolute top-3 left-3 inline-flex h-7 w-7 items-center justify-center rounded-lg"
+      className="absolute top-0 left-0 inline-flex h-6 w-6 items-center justify-center rounded-tl-2xl rounded-br-lg"
       style={{ background: `hsl(${hue},80%,50%)` }}
     >
-      <Icon className="h-3.5 w-3.5 text-white" />
+      <Icon className="h-3 w-3 text-white" />
     </span>
     <span className="text-[11px] tracking-wider font-bold text-white/90 uppercase font-['Orbitron'] w-full text-center min-h-[2rem] flex items-center justify-center">
       {label}
