@@ -30,6 +30,11 @@ const SEO: Record<string, SeoEntry> = {
     description:
       "Актуални печалби от различни видове игри, обявени от лицензираните казина в България.",
   },
+  "/kazino/palms-bet": {
+    title: "Ревю на Palms Bet казино | AllBet",
+    description:
+      "Подробно ревю на Palms Bet — лиценз, бонуси, платежни методи, контакти и оценка. Прочетете преди да играете.",
+  },
 };
 
 function normalize(path: string) {

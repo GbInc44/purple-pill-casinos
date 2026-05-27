@@ -29,6 +29,12 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
       setComingSoonOpen(true);
     }
   };
+
+  const handleReviewClick = (e: React.MouseEvent, reviewPath: string) => {
+    e.preventDefault();
+    e.stopPropagation();
+    navigate(reviewPath);
+  };
   const { pathname } = useLocation();
 
   const go = (path: string) => {
@@ -152,6 +158,20 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
                 <span className="btn-gradient rounded-full px-6 py-2 text-xs font-bold text-white tracking-wider uppercase transition-all group-hover:shadow-[0_0_20px_hsla(270,100%,65%,0.5)]">
                   Посети сайта
                 </span>
+
+                {casino.reviewPath && (
+                  <span
+                    role="button"
+                    tabIndex={0}
+                    onClick={(e) => handleReviewClick(e, casino.reviewPath!)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") handleReviewClick(e as unknown as React.MouseEvent, casino.reviewPath!);
+                    }}
+                    className="rounded-full px-5 py-1.5 text-xs font-bold text-white tracking-wider uppercase transition-all border border-[hsla(270,100%,65%,0.55)] bg-[hsla(270,80%,10%,0.5)] hover:bg-[hsla(270,80%,18%,0.7)] hover:shadow-[0_0_16px_hsla(270,100%,65%,0.55)] cursor-pointer"
+                  >
+                    Ревю
+                  </span>
+                )}
               </a>
             ))}
           </div>
@@ -253,6 +273,19 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
                     <span className={`btn-gradient block w-full text-center rounded-full ${compact ? "px-5 py-1.5" : "px-6 py-2"} text-xs font-bold text-white tracking-wider uppercase transition-all group-hover:shadow-[0_0_20px_hsla(270,100%,65%,0.5)]`}>
                       Посети сайта
                     </span>
+                    {casino.reviewPath && (
+                      <span
+                        role="button"
+                        tabIndex={0}
+                        onClick={(e) => handleReviewClick(e, casino.reviewPath!)}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter" || e.key === " ") handleReviewClick(e as unknown as React.MouseEvent, casino.reviewPath!);
+                        }}
+                        className={`block w-full text-center rounded-full ${compact ? "px-5 py-1.5" : "px-6 py-2"} text-xs font-bold text-white tracking-wider uppercase transition-all border border-[hsla(270,100%,65%,0.55)] bg-[hsla(270,80%,10%,0.5)] hover:bg-[hsla(270,80%,18%,0.7)] hover:shadow-[0_0_16px_hsla(270,100%,65%,0.55)] cursor-pointer`}
+                      >
+                        Ревю
+                      </span>
+                    )}
                     {casino.bonus && (
                       <div
                         className={`w-full rounded-full text-center font-bold tracking-wide text-white ${compact ? "py-1 px-3 text-xs" : "py-1.5 px-3 text-sm"}`}
@@ -263,9 +296,24 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
                     )}
                   </div>
                 ) : (
-                  <span className="btn-gradient shrink-0 rounded-full px-6 py-2 text-xs font-bold text-white tracking-wider uppercase transition-all group-hover:shadow-[0_0_20px_hsla(270,100%,65%,0.5)]">
-                    Посети сайта
-                  </span>
+                  <div className="flex flex-col items-center gap-2 shrink-0">
+                    <span className="btn-gradient rounded-full px-6 py-2 text-xs font-bold text-white tracking-wider uppercase transition-all group-hover:shadow-[0_0_20px_hsla(270,100%,65%,0.5)]">
+                      Посети сайта
+                    </span>
+                    {casino.reviewPath && (
+                      <span
+                        role="button"
+                        tabIndex={0}
+                        onClick={(e) => handleReviewClick(e, casino.reviewPath!)}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter" || e.key === " ") handleReviewClick(e as unknown as React.MouseEvent, casino.reviewPath!);
+                        }}
+                        className="rounded-full px-5 py-1.5 text-xs font-bold text-white tracking-wider uppercase transition-all border border-[hsla(270,100%,65%,0.55)] bg-[hsla(270,80%,10%,0.5)] hover:bg-[hsla(270,80%,18%,0.7)] hover:shadow-[0_0_16px_hsla(270,100%,65%,0.55)] cursor-pointer"
+                      >
+                        Ревю
+                      </span>
+                    )}
+                  </div>
                 )}
               </a>
             ))}

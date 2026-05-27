@@ -1,30 +1,60 @@
-# Plan: Add Efbet Affiliate Banner to Landing Page
+# План: Ревю страница за Palms Bet
 
-## Goal
-Place the provided affiliate JavaScript banner between the H1/H2 text and the casino cards grid on the landing page (`/`).
+## Обхват
+Създаваме една нова ревю страница за **Palms Bet**, достъпна от бутон „Ревю“ в Palms Bet картите на landing (`/`) и Top-10 (`/top-10`). Структура и стилистика, която ще преизползваме лесно за следващи казина.
 
-## How It Works
-The affiliate script (`<script src="https://js.efbet.com/javascript.php?..." />`) loads external JavaScript that renders a banner. Since React does not execute scripts injected via JSX, we will mount the script into the real DOM inside a container `<div>`.
+## Маршрут и навигация
+- Нов route: `/kazino/palms-bet` (в `src/App.tsx`).
+- Бутон „Ревю“ в Palms Bet картата на landing + Top-10 — отваря страницата.
+- Бутон „Назад“ горе вляво на ревю страницата — `navigate(-1)` (връща към предишната страница, запазва позиция доколкото браузърът позволява).
+- Линковете „Посети сайта“ / affiliate остават както са сега (бутон „Ревю“ е допълнителен, не ги замества).
 
-## Steps
+## Структура на страницата (в стила на сайта: glassmorphism, неон лилав/розов, Orbitron заглавия)
+Базира се на двата скрийншота. Всичко — карти със същия border/glow като в каталога, фон casino-bg с overlay.
 
-1. **Create an `ExternalScript` component** (`src/components/ExternalScript.tsx`)
-   - Accepts `src: string` and `containerId?: string`.
-   - Uses a `useEffect` to create a `<script>` element, set its `src` and `type`, append it to a container `div` ref, and clean it up on unmount.
-   - Renders an empty `<div>` that serves as the mount point for whatever HTML the script injects.
+1. **Hero блок (горе)**
+   - Бутон „← Назад“ горе вляво.
+   - Кратък интро параграф (като в първия скрийншот): „Палмс Бет предлага удобни и достатъчно на брой методи за депозит и теглене…“ — пренаписан в нашия тон.
 
-2. **Extend `CasinoLayout` with an optional `banner` prop**
-   - Add `banner?: ReactNode` to the `Props` interface.
-   - Render `{banner}` between the header section (subtitle / divider) and the casino cards grid/list.
+2. **Summary секция** (повтаря 1-вия скрийншот)
+   - Лява карта: лого Palms Bet, рейтинг 4.8/5 със звезди, CTA бутон „Вход в Palms Bet“ (affiliate URL), линк „Правила и условия“, ред „Съвместимост: Windows / macOS“.
+   - Дясна grid 3×2 с цветни иконки-карти:
+     - Ключова информация: Основан 2005 · Лиценз ДКХ към НАП
+     - Начален бонус: 100% до 100 € (линк „Още…“ скролва към секцията Бонуси)
+     - Игри: „Към игрите“
+     - Плащания: Apple Pay / Skrill / Easy Pay лога (линк „Още…“ скролва към таблиците)
+     - Най-бързо изплащане: 1–3 дни
+     - Мин/Макс депозит: €10 / €1000
+   - Долен ред: контактна карта (сайт, email, телефон) + „Доставчици на софтуер“.
+   - „Последен ъпдейт: 20.02.2026“ горе вдясно.
 
-3. **Wire it into `Index.tsx`**
-   - Import `ExternalScript`.
-   - Pass it as the new `banner` prop to `CasinoLayout` with the provided `src` URL.
+3. **„Платежни методи“ секция** (повтаря 2-ия скрийншот)
+   - Кратък параграф „Продължавайки от PalmsBet…“ — пренаписан.
+   - Две колони таблици: **Начини за депозиране** и **Опции за теглене**.
+   - Всеки ред: иконка/име на метод, минимум, максимум.
+   - Методи от скрийншота: A1 Wallet, Apple Pay, Cashterminal, Easy Pay, ePay, Fast Pay, Google Pay, Mastercard, Skrill, Visa, банков превод, Български пощи (депозит). Теглене: Cashterminal, Easy Pay, ePay, Fast Pay, Mastercard, Skrill, Visa, банков превод, Български пощи.
+   - Сумите от скрийншота 1:1.
 
-## Result
-- The banner will appear on `https://www.allbetbg.com/` only.
-- No impact on other pages (`/top-10`, `/novi-kazina`, `/pechalbi`).
-- The script is loaded and removed cleanly when the component unmounts.
+4. **Долна CTA лента**: голям бутон „Вход в Palms Bet“ (affiliate URL) + кратко responsible-gambling напомняне.
 
-## Technical Note
-React intentionally ignores `<script>` tags rendered in JSX for security. Appending the script to the DOM via `useEffect` is the standard, safe way to load third-party scripts that need to execute inside a React app.
+5. **Footer** — наследява от `CasinoLayout` (responsible gambling блок).
+
+## Технически детайли
+- Нова страница: `src/pages/PalmsBetReview.tsx`.
+- Преизползваеми компоненти (за бъдещи ревюта):
+  - `src/components/review/ReviewHero.tsx` (бутон Назад + интро)
+  - `src/components/review/ReviewSummary.tsx` (лява лого карта + дясна 3×2 grid)
+  - `src/components/review/InfoTile.tsx` (цветната иконка-карта)
+  - `src/components/review/PaymentTable.tsx` (таблица с методи)
+- Данни за Palms Bet като typed обект (`src/data/reviews/palmsbet.ts`) — лесно копираме структурата за следващо казино.
+- Бутон „Ревю“:
+  - Добавяме опционално `reviewPath?: string` поле в `Casino` type (`src/data/casinos.ts`); за Palms Bet = `/kazino/palms-bet`.
+  - В `CasinoLayout` (grid + list варианти) — ако `reviewPath` е зададен, рендерираме втори бутон „Ревю“ до „Посети сайта“, със същата glassmorphism стилистика, но outline/secondary вариант (неон лилав border, без shimmer).
+- Иконки: `lucide-react` (Clock, Gift, Gamepad2, Wallet, Timer, Coins, Globe, Mail, Phone).
+- Лога на платежни методи: иконки от `lucide-react` или цветни кръгчета с инициали (без външни брандове освен ако нямаме файлове) — ще използваме стилизирани значки с инициали, за да избегнем липсващи асети.
+- SEO: `useCanonicalUrl("/kazino/palms-bet")` + entry в `src/prerender.tsx` SEO map (title: „Ревю на Palms Bet казино | AllBet“).
+- Sitemap (`public/sitemap.xml`) — добавяме URL-а.
+- Responsive: на mobile (<727px) grid-овете стават 1 колона; таблиците остават с хоризонтален скрол при нужда.
+
+## След потвърждение
+След като одобриш, имплементирам всичко наведнъж и пускам preview, за да го прегледаме визуално.
