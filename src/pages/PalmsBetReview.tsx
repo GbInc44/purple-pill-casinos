@@ -48,25 +48,22 @@ const InfoTile = ({
   children: React.ReactNode;
 }) => (
   <div
-    className="rounded-2xl px-4 py-4 border flex flex-col gap-2 backdrop-blur-md items-center text-center"
+    className="relative rounded-2xl px-4 py-4 pt-5 border flex flex-col gap-2 backdrop-blur-md items-center text-center"
     style={{
-      background: "rgba(255,255,255,0.95)",
-      borderColor: `hsla(${hue},80%,55%,0.45)`,
-      boxShadow: `0 4px 18px hsla(${hue},80%,40%,0.18)`,
+      background: `linear-gradient(135deg, hsla(${hue},60%,18%,0.55), hsla(${hue},50%,8%,0.55))`,
+      borderColor: `hsla(${hue},80%,55%,0.35)`,
     }}
   >
-    <div className="flex items-center gap-2 justify-center">
-      <span
-        className="inline-flex h-8 w-8 items-center justify-center rounded-lg"
-        style={{ background: `hsl(${hue},80%,50%)` }}
-      >
-        <Icon className="h-4 w-4 text-white" />
-      </span>
-      <span className="text-[11px] tracking-wider font-bold uppercase font-['Orbitron'] text-slate-800">
-        {label}
-      </span>
-    </div>
-    <div className="text-slate-900 text-sm w-full flex flex-col items-center">{children}</div>
+    <span
+      className="absolute top-3 left-3 inline-flex h-8 w-8 items-center justify-center rounded-lg"
+      style={{ background: `hsl(${hue},80%,50%)` }}
+    >
+      <Icon className="h-4 w-4 text-white" />
+    </span>
+    <span className="text-[11px] tracking-wider font-bold text-white/90 uppercase font-['Orbitron'] pl-10 pr-1 min-h-[2rem] flex items-center">
+      {label}
+    </span>
+    <div className="text-white text-sm w-full flex flex-col items-center">{children}</div>
   </div>
 );
 
