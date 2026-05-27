@@ -275,12 +275,8 @@ const PalmsBetReview = () => {
                 borderColor: "hsla(270,100%,65%,0.25)",
               }}
             >
-              <div className="flex items-center gap-3 text-white text-sm">
-                <Globe className="h-4 w-4 text-[hsl(270,100%,65%)]" />
-                <a href="https://www.palmsbet.com/" target="_blank" rel="noopener noreferrer" className="hover:underline">
-                  https://www.palmsbet.com/
-                </a>
-              </div>
+
+
               <div className="flex items-center gap-3 text-white text-sm">
                 <Mail className="h-4 w-4 text-[hsl(270,100%,65%)]" />
                 <a href="mailto:support@palmsbet.com" className="hover:underline">support@palmsbet.com</a>
