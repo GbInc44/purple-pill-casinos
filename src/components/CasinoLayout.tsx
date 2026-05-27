@@ -155,8 +155,8 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
 
                 <span className="text-base font-bold tracking-wide text-white">{casino.name}</span>
 
-                <div className={`w-full flex ${casino.reviewPath ? "gap-2" : ""} items-stretch`}>
-                  <span className="btn-gradient flex-1 text-center rounded-full px-6 py-2 text-xs font-bold text-white tracking-wider uppercase transition-all group-hover:shadow-[0_0_20px_hsla(270,100%,65%,0.5)]">
+                <div className={`w-full flex flex-col sm:flex-row ${casino.reviewPath ? "gap-2" : ""} items-stretch`}>
+                  <span className="btn-gradient flex-1 text-center rounded-full px-4 sm:px-6 py-2 text-xs font-bold text-white tracking-wider uppercase transition-all group-hover:shadow-[0_0_20px_hsla(270,100%,65%,0.5)]">
                     Посети сайта
                   </span>
                   {casino.reviewPath && (
@@ -167,7 +167,7 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
                       onKeyDown={(e) => {
                         if (e.key === "Enter" || e.key === " ") handleReviewClick(e as unknown as React.MouseEvent, casino.reviewPath!);
                       }}
-                      className="flex-1 text-center rounded-full px-6 py-2 text-xs font-bold text-white tracking-wider uppercase transition-all cursor-pointer hover:shadow-[0_0_20px_hsla(270,100%,65%,0.5)]"
+                      className="flex-1 text-center rounded-full px-4 sm:px-6 py-2 text-xs font-bold text-white tracking-wider uppercase transition-all cursor-pointer hover:shadow-[0_0_20px_hsla(270,100%,65%,0.5)]"
                       style={{ background: "linear-gradient(135deg, hsl(270,100%,55%), hsl(220,100%,55%))" }}
                     >
                       Ревю
