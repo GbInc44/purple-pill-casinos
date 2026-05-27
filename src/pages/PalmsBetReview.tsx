@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, Clock, Gift, Gamepad2, Wallet, Timer, Coins, Globe, Mail, Phone, Star } from "lucide-react";
+import { ArrowLeft, Clock, Gift, Gamepad2, Wallet, Timer, Coins, Mail, Phone, Star } from "lucide-react";
 import casinoBg from "@/assets/casino-bg.png";
 import palmsbetLogo from "@/assets/palmsbet-logo-new.png";
 import { useCanonicalUrl } from "@/hooks/useCanonicalUrl";
