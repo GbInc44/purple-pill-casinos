@@ -208,14 +208,8 @@ const PalmsBetReview = () => {
                 Вход в Palms Bet
               </a>
 
-              <a
-                href={affiliateUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white/70 text-xs underline hover:text-white"
-              >
-                Правила и условия
-              </a>
+
+
 
               <div className="text-white/60 text-xs flex items-center gap-2">
                 <span>Съвместимост:</span>
