@@ -72,6 +72,7 @@ export const allCasinos: Casino[] = [
     logo: palmsbetLogo,
     bonus: "Бонус до 1000 € + до 300 FS",
     url: "https://www.palmsbet.com/bg/casino/slots/",
+    reviewPath: "/kazino/palms-bet",
     pros: ["Персонализирани промоции за лоялни клиенти", "Богат набор от спортове", "Лоялна програма с атрактивни награди", "Мобилно приложение за Android и iPhone"],
     cons: ["Малко опции за видео излъчване на живо"],
   },
