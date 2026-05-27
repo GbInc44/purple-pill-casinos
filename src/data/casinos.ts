@@ -39,6 +39,7 @@ export type Casino = {
   cons?: string[];
   centerImage?: string;
   centerCaption?: string;
+  reviewPath?: string;
 };
 
 export const allCasinos: Casino[] = [
