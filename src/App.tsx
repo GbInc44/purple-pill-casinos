@@ -26,6 +26,7 @@ const App = () => (
         <Route path="/novi-kazina" element={<NewCasinos />} />
         <Route path="/top-10" element={<Top10 />} />
         <Route path="/pechalbi" element={<Winnings />} />
+        <Route path="/kazino/palms-bet" element={<PalmsBetReview />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>
