@@ -2,6 +2,12 @@ import { useNavigate } from "react-router-dom";
 import { ArrowLeft, Clock, Gift, Gamepad2, Wallet, Timer, Coins, Mail, Phone, Star } from "lucide-react";
 import casinoBg from "@/assets/casino-bg.png";
 import palmsbetLogo from "@/assets/palmsbet-logo-new.png";
+import providerSpinomenal from "@/assets/providers/spinomenal.png";
+import providerWazdan from "@/assets/providers/wazdan.webp";
+import providerEndorphina from "@/assets/providers/endorphina.png";
+import providerPragmatic from "@/assets/providers/pragmatic-play.png";
+import providerAmusnet from "@/assets/providers/amusnet.jpeg";
+import providerPlayson from "@/assets/providers/playson.webp";
 import { useCanonicalUrl } from "@/hooks/useCanonicalUrl";
 
 const affiliateUrl =
