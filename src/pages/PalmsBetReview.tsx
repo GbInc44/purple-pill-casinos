@@ -309,8 +309,8 @@ const PalmsBetReview = () => {
                   { name: "Wazdan", logo: providerWazdan },
                   { name: "Endorphina", logo: providerEndorphina },
                 ].map((p) => (
-                  <span key={p.name} className="px-2.5 py-1 rounded-full text-xs text-white/85 border border-white/15 bg-white/5 inline-flex items-center">
-                    <img src={p.logo} alt={`${p.name} — лого`} className="h-4 w-auto object-contain" />
+                  <span key={p.name} className="h-7 w-auto rounded-full overflow-hidden border border-white/15 bg-white/5 inline-flex items-center justify-center">
+                    <img src={p.logo} alt={`${p.name} — лого`} className="h-full w-full object-cover" />
                   </span>
                 ))}
               </div>
