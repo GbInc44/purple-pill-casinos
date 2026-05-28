@@ -2,6 +2,12 @@ import { useNavigate } from "react-router-dom";
 import { ArrowLeft, Clock, Gift, Gamepad2, Wallet, Timer, Coins, Mail, Phone, Star } from "lucide-react";
 import casinoBg from "@/assets/casino-bg.png";
 import palmsbetLogo from "@/assets/palmsbet-logo-new.png";
+import providerSpinomenal from "@/assets/providers/spinomenal.png";
+import providerWazdan from "@/assets/providers/wazdan.webp";
+import providerEndorphina from "@/assets/providers/endorphina.png";
+import providerPragmatic from "@/assets/providers/pragmatic-play.png";
+import providerAmusnet from "@/assets/providers/amusnet.jpeg";
+import providerPlayson from "@/assets/providers/playson.webp";
 import { useCanonicalUrl } from "@/hooks/useCanonicalUrl";
 
 const affiliateUrl =
@@ -295,9 +301,16 @@ const PalmsBetReview = () => {
                 Доставчици на софтуер
               </h3>
               <div className="flex flex-wrap gap-2">
-                {["Pragmatic Play", "Amusnet", "Playson", "Spinomenal", "Wazdan", "Endorphina"].map((p) => (
-                  <span key={p} className="px-2.5 py-1 rounded-full text-xs text-white/85 border border-white/15 bg-white/5">
-                    {p}
+                {[
+                  { name: "Pragmatic Play", logo: providerPragmatic },
+                  { name: "Amusnet", logo: providerAmusnet },
+                  { name: "Playson", logo: providerPlayson },
+                  { name: "Spinomenal", logo: providerSpinomenal },
+                  { name: "Wazdan", logo: providerWazdan },
+                  { name: "Endorphina", logo: providerEndorphina },
+                ].map((p) => (
+                  <span key={p.name} className="px-2.5 py-1 rounded-full text-xs text-white/85 border border-white/15 bg-white/5 inline-flex items-center">
+                    <img src={p.logo} alt={`${p.name} — лого`} className="h-4 w-auto object-contain" />
                   </span>
                 ))}
               </div>
