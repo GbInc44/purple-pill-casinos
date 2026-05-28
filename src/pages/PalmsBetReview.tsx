@@ -300,7 +300,7 @@ const PalmsBetReview = () => {
               <h3 className="text-[11px] tracking-wider uppercase text-white/70 font-['Orbitron'] font-bold mb-2">
                 Доставчици на софтуер
               </h3>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-3">
                 {[
                   { name: "Pragmatic Play", logo: providerPragmatic },
                   { name: "Amusnet", logo: providerAmusnet },
@@ -309,9 +309,12 @@ const PalmsBetReview = () => {
                   { name: "Wazdan", logo: providerWazdan },
                   { name: "Endorphina", logo: providerEndorphina },
                 ].map((p) => (
-                  <span key={p.name} className="h-7 w-auto rounded-full overflow-hidden border border-white/15 bg-white/5 inline-flex items-center justify-center">
-                    <img src={p.logo} alt={`${p.name} — лого`} className="h-full w-full object-cover" />
-                  </span>
+                  <div key={p.name} className="flex flex-col items-center gap-1">
+                    <span className="h-7 w-16 rounded-full overflow-hidden border border-white/15 bg-white/5 inline-flex items-center justify-center">
+                      <img src={p.logo} alt={`${p.name} — лого`} className="h-full w-full object-cover" />
+                    </span>
+                    <span className="text-[10px] text-white/70 text-center leading-tight">{p.name}</span>
+                  </div>
                 ))}
               </div>
             </div>
