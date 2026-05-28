@@ -301,9 +301,16 @@ const PalmsBetReview = () => {
                 Доставчици на софтуер
               </h3>
               <div className="flex flex-wrap gap-2">
-                {["Pragmatic Play", "Amusnet", "Playson", "Spinomenal", "Wazdan", "Endorphina"].map((p) => (
-                  <span key={p} className="px-2.5 py-1 rounded-full text-xs text-white/85 border border-white/15 bg-white/5">
-                    {p}
+                {[
+                  { name: "Pragmatic Play", logo: providerPragmatic },
+                  { name: "Amusnet", logo: providerAmusnet },
+                  { name: "Playson", logo: providerPlayson },
+                  { name: "Spinomenal", logo: providerSpinomenal },
+                  { name: "Wazdan", logo: providerWazdan },
+                  { name: "Endorphina", logo: providerEndorphina },
+                ].map((p) => (
+                  <span key={p.name} className="px-2.5 py-1 rounded-full text-xs text-white/85 border border-white/15 bg-white/5 inline-flex items-center">
+                    <img src={p.logo} alt={`${p.name} — лого`} className="h-4 w-auto object-contain" />
                   </span>
                 ))}
               </div>
