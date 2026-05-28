@@ -87,7 +87,7 @@ const PaymentTable = ({ title, rows, accentHue }: { title: string; rows: Payment
     >
       {title}
     </div>
-    <div className="grid grid-cols-[1fr_auto_auto] gap-x-3 gap-y-0 px-3 py-2 text-[10px] sm:text-xs tracking-wider uppercase text-white/60 border-b border-white/10">
+    <div className="grid grid-cols-[1fr_4rem_4rem] gap-x-3 gap-y-0 px-3 py-2 text-[10px] sm:text-xs tracking-wider uppercase text-white/60 border-b border-white/10">
       <span>Метод</span>
       <span className="text-right">Мин.</span>
       <span className="text-right">Макс.</span>
@@ -96,7 +96,7 @@ const PaymentTable = ({ title, rows, accentHue }: { title: string; rows: Payment
       {rows.map((r, i) => (
         <div
           key={r.name}
-          className="grid grid-cols-[1fr_auto_auto] gap-x-3 items-center px-3 py-2 text-sm text-white border-b border-white/5 last:border-b-0"
+          className="grid grid-cols-[1fr_4rem_4rem] gap-x-3 items-center px-3 py-2 text-sm text-white border-b border-white/5 last:border-b-0"
           style={{ background: i % 2 === 0 ? "rgba(255,255,255,0.02)" : "transparent" }}
         >
           <div className="flex items-center gap-2 min-w-0">
@@ -108,8 +108,8 @@ const PaymentTable = ({ title, rows, accentHue }: { title: string; rows: Payment
             </span>
             <span className="truncate">{r.name}</span>
           </div>
-          <span className="text-right font-mono text-xs sm:text-sm">{r.min}</span>
-          <span className="text-right font-mono text-xs sm:text-sm">{r.max}</span>
+          <span className="text-right font-mono tabular-nums text-xs sm:text-sm">{r.min}</span>
+          <span className="text-right font-mono tabular-nums text-xs sm:text-sm">{r.max}</span>
         </div>
       ))}
     </div>
