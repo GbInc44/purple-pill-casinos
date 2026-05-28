@@ -259,7 +259,7 @@ const PalmsBetReview = () => {
               </InfoTile>
 
               <InfoTile icon={Coins} label="Мин/Макс депозит" hue={195}>
-                <div className="font-bold">€10 / €1000</div>
+                <div className="font-bold">€5 / €1000</div>
               </InfoTile>
             </div>
           </div>
