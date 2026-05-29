@@ -346,21 +346,21 @@ const PalmsBetReview = () => {
             className="text-2xl md:text-3xl font-bold text-white font-['Orbitron'] tracking-wide mb-4"
             style={{ textShadow: "0 0 10px hsla(270,100%,65%,0.6)" }}
           >
-            Платежни методи
+            Депозит и теглене в Palms Bet
           </h2>
           <p
             className="text-white text-sm md:text-base leading-relaxed mb-6 max-w-4xl font-medium"
             style={{ textShadow: "0 2px 8px rgba(0,0,0,0.9), 0 0 16px hsla(270,100%,65%,0.4)" }}
           >
-            Palms Bet предоставя широк избор от методи за депозит и теглене — Apple Pay, Google Pay,
-            A1 Wallet, Fast Pay, Easy Pay и др. За депозиране можете да изберете между следните
-            опции: Apple Pay, A1 Wallet, Fast Pay, Easy Pay, ePay, Cashterminal и др. Други методи
-            са: Skrill, eP, кредитни карти от MasterCard, Visa, Visa Electron и Maestro. Можете
-            също да депозирате в Български пощи. За теглене на печалбите ви на ваше разположение са
-            горните дебитни и кредитни карти, Fast Pay, ePay, Easy Pay, Cashterminal и Skrill, както
-            и онлайн чрез банков превод. Минималната сума за депозиране чрез трансфер от КЕШ-каса
-            гранцира с останалите стотни левови опции. Само банков трансфер е стандартизиран.
+            Palms Bet предлага разнообразни методи за депозит и теглене, включително Apple Pay,
+            Google Pay, A1 Wallet, Easy Pay, Fast Pay, Skrill и банкови карти Visa и MasterCard.
+            Онлайн казиното осигурява бързи и сигурни транзакции, съобразени с нуждите на
+            българските играчи. За теглене на печалби са налични банков превод, Skrill, Easy Pay,
+            Fast Pay и други популярни платежни решения. Благодарение на богатия избор от методи за
+            плащане, Palms Bet улеснява както депозирането на средства, така и получаването на
+            печалби.
           </p>
+
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <PaymentTable title="Начини за депозиране" rows={depositMethods} accentHue={0} />
