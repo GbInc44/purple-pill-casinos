@@ -206,8 +206,8 @@ const PalmsBetReview = () => {
                 boxShadow: "0 0 24px hsla(270,100%,65%,0.18) inset",
               }}
             >
-              <div className="h-24 w-full rounded-xl bg-black/50 flex items-center justify-center overflow-hidden border border-white/10">
-                <img src={palmsbetLogo} alt="Palms Bet — лого" className="h-full w-full object-cover" />
+              <div className="h-32 sm:h-36 w-full rounded-xl flex items-center justify-center overflow-hidden border border-white/10" style={{ backgroundColor: "#0d1b3d" }}>
+                <img src={palmsbetLogo} alt="Palms Bet — лого" className="h-full w-full object-contain" />
               </div>
 
               <div className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/95">

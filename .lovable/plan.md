@@ -1,60 +1,20 @@
-# План: Ревю страница за Palms Bet
+## Problem
 
-## Обхват
-Създаваме една нова ревю страница за **Palms Bet**, достъпна от бутон „Ревю“ в Palms Bet картите на landing (`/`) и Top-10 (`/top-10`). Структура и стилистика, която ще преизползваме лесно за следващи казина.
+`object-cover` fills the banner but crops the top/bottom of the "Palms Bet" wordmark. The logo image itself has a dark-blue background, so when we use `object-contain` it shows letterboxing against the card's black background.
 
-## Маршрут и навигация
-- Нов route: `/kazino/palms-bet` (в `src/App.tsx`).
-- Бутон „Ревю“ в Palms Bet картата на landing + Top-10 — отваря страницата.
-- Бутон „Назад“ горе вляво на ревю страницата — `navigate(-1)` (връща към предишната страница, запазва позиция доколкото браузърът позволява).
-- Линковете „Посети сайта“ / affiliate остават както са сега (бутон „Ревю“ е допълнителен, не ги замества).
+## Proposed fix
 
-## Структура на страницата (в стила на сайта: glassmorphism, неон лилав/розов, Orbitron заглавия)
-Базира се на двата скрийншота. Всичко — карти със същия border/glow като в каталога, фон casino-bg с overlay.
+In `src/pages/PalmsBetReview.tsx` (logo container around line 209-211):
 
-1. **Hero блок (горе)**
-   - Бутон „← Назад“ горе вляво.
-   - Кратък интро параграф (като в първия скрийншот): „Палмс Бет предлага удобни и достатъчно на брой методи за депозит и теглене…“ — пренаписан в нашия тон.
+1. Switch the `<img>` back to `object-contain` so no part of the logo is cut.
+2. Make the container's background match the logo's blue (`#0d1b3d`-ish navy) so the contained image visually fills the banner with no visible empty space.
+3. Increase the banner height (e.g. from `h-24` to `h-32 sm:h-36`) and remove inner padding so the wordmark reads larger and centered.
+4. Keep `overflow-hidden` and the rounded corners intact.
 
-2. **Summary секция** (повтаря 1-вия скрийншот)
-   - Лява карта: лого Palms Bet, рейтинг 4.8/5 със звезди, CTA бутон „Вход в Palms Bet“ (affiliate URL), линк „Правила и условия“, ред „Съвместимост: Windows / macOS“.
-   - Дясна grid 3×2 с цветни иконки-карти:
-     - Ключова информация: Основан 2005 · Лиценз ДКХ към НАП
-     - Начален бонус: 100% до 100 € (линк „Още…“ скролва към секцията Бонуси)
-     - Игри: „Към игрите“
-     - Плащания: Apple Pay / Skrill / Easy Pay лога (линк „Още…“ скролва към таблиците)
-     - Най-бързо изплащане: 1–3 дни
-     - Мин/Макс депозит: €10 / €1000
-   - Долен ред: контактна карта (сайт, email, телефон) + „Доставчици на софтуер“.
-   - „Последен ъпдейт: 20.02.2026“ горе вдясно.
+Result: the full "Palms Bet" logo is visible, nothing is cropped, and the banner still looks like one solid filled block instead of a small logo on a black card.
 
-3. **„Платежни методи“ секция** (повтаря 2-ия скрийншот)
-   - Кратък параграф „Продължавайки от PalmsBet…“ — пренаписан.
-   - Две колони таблици: **Начини за депозиране** и **Опции за теглене**.
-   - Всеки ред: иконка/име на метод, минимум, максимум.
-   - Методи от скрийншота: A1 Wallet, Apple Pay, Cashterminal, Easy Pay, ePay, Fast Pay, Google Pay, Mastercard, Skrill, Visa, банков превод, Български пощи (депозит). Теглене: Cashterminal, Easy Pay, ePay, Fast Pay, Mastercard, Skrill, Visa, банков превод, Български пощи.
-   - Сумите от скрийншота 1:1.
+## Alternative (if you'd rather keep the current height)
 
-4. **Долна CTA лента**: голям бутон „Вход в Palms Bet“ (affiliate URL) + кратко responsible-gambling напомняне.
+Crop a tighter version of the logo asset (trim the empty navy padding around the wordmark) and keep `object-cover` — this way cover doesn't cut letters because the source no longer has extra vertical space.
 
-5. **Footer** — наследява от `CasinoLayout` (responsible gambling блок).
-
-## Технически детайли
-- Нова страница: `src/pages/PalmsBetReview.tsx`.
-- Преизползваеми компоненти (за бъдещи ревюта):
-  - `src/components/review/ReviewHero.tsx` (бутон Назад + интро)
-  - `src/components/review/ReviewSummary.tsx` (лява лого карта + дясна 3×2 grid)
-  - `src/components/review/InfoTile.tsx` (цветната иконка-карта)
-  - `src/components/review/PaymentTable.tsx` (таблица с методи)
-- Данни за Palms Bet като typed обект (`src/data/reviews/palmsbet.ts`) — лесно копираме структурата за следващо казино.
-- Бутон „Ревю“:
-  - Добавяме опционално `reviewPath?: string` поле в `Casino` type (`src/data/casinos.ts`); за Palms Bet = `/kazino/palms-bet`.
-  - В `CasinoLayout` (grid + list варианти) — ако `reviewPath` е зададен, рендерираме втори бутон „Ревю“ до „Посети сайта“, със същата glassmorphism стилистика, но outline/secondary вариант (неон лилав border, без shimmer).
-- Иконки: `lucide-react` (Clock, Gift, Gamepad2, Wallet, Timer, Coins, Globe, Mail, Phone).
-- Лога на платежни методи: иконки от `lucide-react` или цветни кръгчета с инициали (без външни брандове освен ако нямаме файлове) — ще използваме стилизирани значки с инициали, за да избегнем липсващи асети.
-- SEO: `useCanonicalUrl("/kazino/palms-bet")` + entry в `src/prerender.tsx` SEO map (title: „Ревю на Palms Bet казино | AllBet“).
-- Sitemap (`public/sitemap.xml`) — добавяме URL-а.
-- Responsive: на mobile (<727px) grid-овете стават 1 колона; таблиците остават с хоризонтален скрол при нужда.
-
-## След потвърждение
-След като одобриш, имплементирам всичко наведнъж и пускам preview, за да го прегледаме визуално.
+Let me know which direction you prefer and I'll implement it.
