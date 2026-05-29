@@ -127,7 +127,7 @@ const PalmsBetReview = () => {
     >
       <div className="fixed inset-0 animated-overlay pointer-events-none" />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-4 py-8">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 md:px-8 py-8">
         {/* Back button */}
         <button
           onClick={() => navigate(-1)}
