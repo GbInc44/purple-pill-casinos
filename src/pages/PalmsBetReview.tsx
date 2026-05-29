@@ -281,7 +281,16 @@ const PalmsBetReview = () => {
                   <span className="px-2 py-0.5 rounded bg-[hsl(45,90%,50%)] text-[10px] font-bold text-black">Български пощи</span>
                   <span className="px-2 py-0.5 rounded bg-black text-[10px] font-bold text-white">Apple Pay</span>
                   <span className="px-2 py-0.5 rounded bg-[hsl(280,60%,50%)] text-[10px] font-bold text-white">Skrill</span>
-                  <a href="#payments" className="text-xs underline text-white/70 hover:text-white ml-1">Още…</a>
+                  <a
+                    href="#payments"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document.getElementById("payments")?.scrollIntoView({ behavior: "smooth", block: "start" });
+                    }}
+                    className="text-xs underline text-white/70 hover:text-white ml-1"
+                  >
+                    Още…
+                  </a>
                 </div>
               </InfoTile>
 
