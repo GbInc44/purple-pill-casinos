@@ -167,7 +167,7 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
                       onKeyDown={(e) => {
                         if (e.key === "Enter" || e.key === " ") handleReviewClick(e as unknown as React.MouseEvent, casino.reviewPath!);
                       }}
-                      className="flex-1 text-center rounded-full px-4 sm:px-6 py-2 text-xs font-bold text-white tracking-wider uppercase transition-all cursor-pointer hover:shadow-[0_0_20px_hsla(270,100%,65%,0.5)]"
+                      className="flex-1 text-center rounded-full px-4 sm:px-6 py-2 text-xs font-bold text-white tracking-wider uppercase transition-all cursor-pointer border border-[hsl(45,100%,55%)] shadow-[0_0_6px_hsla(45,100%,55%,0.25)] hover:shadow-[0_0_14px_hsla(45,100%,55%,0.55)]"
                       style={{ background: "linear-gradient(135deg, hsl(270,100%,55%), hsl(220,100%,55%))" }}
                     >
                       Ревю
@@ -283,7 +283,7 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
                         onKeyDown={(e) => {
                           if (e.key === "Enter" || e.key === " ") handleReviewClick(e as unknown as React.MouseEvent, casino.reviewPath!);
                         }}
-                        className={`block w-full text-center rounded-full ${compact ? "px-5 py-1.5" : "px-6 py-2"} text-xs font-bold text-white tracking-wider uppercase transition-all hover:shadow-[0_0_20px_hsla(270,100%,65%,0.5)] cursor-pointer`}
+                        className={`block w-full text-center rounded-full ${compact ? "px-5 py-1.5" : "px-6 py-2"} text-xs font-bold text-white tracking-wider uppercase transition-all border border-[hsl(45,100%,55%)] shadow-[0_0_6px_hsla(45,100%,55%,0.25)] hover:shadow-[0_0_14px_hsla(45,100%,55%,0.55)] cursor-pointer`}
                         style={{ background: "linear-gradient(135deg, hsl(270,100%,55%), hsl(220,100%,55%))" }}
                       >
                         Ревю
