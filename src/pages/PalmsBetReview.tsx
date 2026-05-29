@@ -166,7 +166,7 @@ const PalmsBetReview = () => {
             Ревю на Palms Bet
           </h1>
           <div
-            className="block mt-3 max-w-2xl md:max-w-4xl mx-auto leading-snug text-left md:text-center text-base md:text-lg font-medium text-white space-y-3"
+            className="block mt-3 max-w-2xl lg:max-w-4xl mx-auto px-2 md:px-6 lg:px-0 leading-snug text-left md:text-center text-base md:text-lg font-medium text-white space-y-3"
             style={{ textShadow: "0 2px 8px rgba(0,0,0,0.9), 0 0 16px hsla(270,100%,65%,0.4)" }}
           >
             <p>
