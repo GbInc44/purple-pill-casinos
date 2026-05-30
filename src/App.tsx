@@ -8,6 +8,7 @@ import NewCasinos from "./pages/NewCasinos.tsx";
 import Top10 from "./pages/Top10.tsx";
 import Winnings from "./pages/Winnings.tsx";
 import PalmsBetReview from "./pages/PalmsBetReview.tsx";
+import EfbetReview from "./pages/EfbetReview.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import ScrollToTop from "./components/ScrollToTop.tsx";
 import ScrollToTopButton from "./components/ScrollToTopButton.tsx";
