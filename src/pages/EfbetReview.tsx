@@ -214,7 +214,7 @@ const EfbetReview = () => {
                 rel="noopener noreferrer"
                 className="btn-gradient w-full block text-center rounded-full px-6 py-3 text-sm font-bold text-white tracking-wider uppercase hover:shadow-[0_0_20px_hsla(270,100%,65%,0.55)] transition-all"
               >
-                Вход в Palms Bet
+                Вход в Efbet
               </a>
 
 
@@ -306,7 +306,7 @@ const EfbetReview = () => {
 
               <div className="flex items-center gap-3 text-white text-sm">
                 <Mail className="h-4 w-4 text-[hsl(270,100%,65%)]" />
-                <a href="mailto:support@palmsbet.com" className="hover:underline">support@palmsbet.com</a>
+                <a href="mailto:support@efbet.com" className="hover:underline">support@efbet.com</a>
               </div>
               <div className="flex items-center gap-3 text-white text-sm">
                 <Phone className="h-4 w-4 text-[hsl(270,100%,65%)]" />
@@ -353,18 +353,18 @@ const EfbetReview = () => {
             className="text-2xl md:text-3xl font-bold text-white font-['Orbitron'] tracking-wide mb-4"
             style={{ textShadow: "0 0 10px hsla(270,100%,65%,0.6)" }}
           >
-            Депозит и теглене в Palms Bet
+            Депозит и теглене в Efbet
           </h2>
           <p
             className="text-white text-sm md:text-base leading-relaxed mb-6 max-w-4xl font-medium"
             style={{ textShadow: "0 2px 8px rgba(0,0,0,0.9), 0 0 16px hsla(270,100%,65%,0.4)" }}
           >
-            Palms Bet предлага разнообразни методи за депозит и теглене, включително Apple Pay,
+            Efbet предлага разнообразни методи за депозит и теглене, включително Apple Pay,
             Google Pay, A1 Wallet, Easy Pay, Fast Pay, Skrill и банкови карти Visa и MasterCard.
             Онлайн казиното осигурява бързи и сигурни транзакции, съобразени с нуждите на
             българските играчи. За теглене на печалби са налични банков превод, Skrill, Easy Pay,
             Fast Pay и други популярни платежни решения. Благодарение на богатия избор от методи за
-            плащане, Palms Bet улеснява както депозирането на средства, така и получаването на
+            плащане, Efbet улеснява както депозирането на средства, така и получаването на
             печалби.
           </p>
 
@@ -389,7 +389,7 @@ const EfbetReview = () => {
               className="text-2xl md:text-3xl font-bold text-white font-['Orbitron'] tracking-wide mb-2"
               style={{ textShadow: "0 0 12px hsla(270,100%,65%,0.7)" }}
             >
-              Готови ли сте за Palms Bet?
+              Готови ли сте за Efbet?
             </h2>
             <p className="text-white/85 mb-5">
               Начален бонус 100% до 100 €. Регистрирайте се през нашия линк.
@@ -400,7 +400,7 @@ const EfbetReview = () => {
               rel="noopener noreferrer"
               className="btn-gradient inline-block rounded-full px-8 py-3 text-sm font-bold text-white tracking-wider uppercase hover:shadow-[0_0_24px_hsla(270,100%,65%,0.6)] transition-all"
             >
-              Вход в Palms Bet
+              Вход в Efbet
             </a>
             <p className="mt-4 text-white/55 text-xs">
               Само за лица над 18 г. Играйте отговорно.
