@@ -248,7 +248,7 @@ const PalmsBetReview = () => {
 
               <InfoTile icon={Gift} label="Начален бонус" hue={20}>
                 <div className="space-y-1 text-sm">
-                  <div className="font-bold">100% до 100 €</div>
+                  <div className="font-bold">до 1000 € + до 300 FS</div>
                   <a
                     href="#bonuses"
                     onClick={(e) => {
