@@ -400,7 +400,7 @@ const EfbetReview = () => {
               rel="noopener noreferrer"
               className="btn-gradient inline-block rounded-full px-8 py-3 text-sm font-bold text-white tracking-wider uppercase hover:shadow-[0_0_24px_hsla(270,100%,65%,0.6)] transition-all"
             >
-              Вход в Palms Bet
+              Вход в Efbet
             </a>
             <p className="mt-4 text-white/55 text-xs">
               Само за лица над 18 г. Играйте отговорно.
