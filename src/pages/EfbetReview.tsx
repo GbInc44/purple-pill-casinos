@@ -306,7 +306,7 @@ const EfbetReview = () => {
 
               <div className="flex items-center gap-3 text-white text-sm">
                 <Mail className="h-4 w-4 text-[hsl(270,100%,65%)]" />
-                <a href="mailto:support@palmsbet.com" className="hover:underline">support@palmsbet.com</a>
+                <a href="mailto:support@efbet.com" className="hover:underline">support@efbet.com</a>
               </div>
               <div className="flex items-center gap-3 text-white text-sm">
                 <Phone className="h-4 w-4 text-[hsl(270,100%,65%)]" />
