@@ -11,7 +11,7 @@ import providerPlayson from "@/assets/providers/playson.webp";
 import { useCanonicalUrl } from "@/hooks/useCanonicalUrl";
 
 const affiliateUrl =
-  "https://www.palmsbet.com/affiliate/?marketingCode=PB-0594&banID=&brand=ecasino&ns=&clickid=&pages=welcome-bonus-casino-affiliate";
+  "https://efbet.com/bounce/affiliate/page?affiliateToken=kKP_wtMgTAahd2HdwUYplmNd7ZgqdRLk&campaignId=1&siteId=&affiliateId=AG1140254867";
 
 type PaymentRow = { name: string; min: string; max: string; initials: string; color: string };
 
@@ -237,7 +237,7 @@ const EfbetReview = () => {
 
               <InfoTile icon={Gift} label="Начален бонус" hue={20}>
                 <div className="space-y-1 text-sm">
-                  <div className="font-bold">100% до 100 €</div>
+                  <div className="font-bold">до 1500 €</div>
                   <a
                     href="#bonuses"
                     onClick={(e) => {
@@ -392,7 +392,7 @@ const EfbetReview = () => {
               Готови ли сте за Efbet?
             </h2>
             <p className="text-white/85 mb-5">
-              Начален бонус 100% до 100 €. Регистрирайте се през нашия линк.
+              Начален бонус до 1500 €. Регистрирайте се през нашия линк.
             </p>
             <a
               href={affiliateUrl}
