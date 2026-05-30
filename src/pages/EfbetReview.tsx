@@ -389,7 +389,7 @@ const EfbetReview = () => {
               className="text-2xl md:text-3xl font-bold text-white font-['Orbitron'] tracking-wide mb-2"
               style={{ textShadow: "0 0 12px hsla(270,100%,65%,0.7)" }}
             >
-              Готови ли сте за Palms Bet?
+              Готови ли сте за Efbet?
             </h2>
             <p className="text-white/85 mb-5">
               Начален бонус 100% до 100 €. Регистрирайте се през нашия линк.
