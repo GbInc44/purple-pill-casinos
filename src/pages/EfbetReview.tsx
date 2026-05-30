@@ -214,7 +214,7 @@ const EfbetReview = () => {
                 rel="noopener noreferrer"
                 className="btn-gradient w-full block text-center rounded-full px-6 py-3 text-sm font-bold text-white tracking-wider uppercase hover:shadow-[0_0_20px_hsla(270,100%,65%,0.55)] transition-all"
               >
-                Вход в Palms Bet
+                Вход в Efbet
               </a>
 
 
