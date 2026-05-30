@@ -155,13 +155,13 @@ const Winnings = () => {
         <div className="flex items-center justify-between w-full max-w-full gap-2">
           <Link
             to="/"
-            className="shrink-0 inline-block relative aspect-[179/60] h-10 sm:h-12 md:h-14 -my-1 sm:-my-2 overflow-visible"
+            className="shrink-0 inline-block relative aspect-[500/60] h-10 sm:h-12 md:h-14 -my-1 sm:-my-2"
             aria-label="All Bet — към началната страница"
           >
             <img
               src={allBetLogo}
               alt="All Bet"
-              className="absolute left-0 top-0 h-full w-auto max-w-none pointer-events-none"
+              className="absolute left-0 top-0 h-full w-full object-contain pointer-events-none"
             />
           </Link>
 
