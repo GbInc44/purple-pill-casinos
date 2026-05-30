@@ -353,18 +353,18 @@ const EfbetReview = () => {
             className="text-2xl md:text-3xl font-bold text-white font-['Orbitron'] tracking-wide mb-4"
             style={{ textShadow: "0 0 10px hsla(270,100%,65%,0.6)" }}
           >
-            Депозит и теглене в Palms Bet
+            Депозит и теглене в Efbet
           </h2>
           <p
             className="text-white text-sm md:text-base leading-relaxed mb-6 max-w-4xl font-medium"
             style={{ textShadow: "0 2px 8px rgba(0,0,0,0.9), 0 0 16px hsla(270,100%,65%,0.4)" }}
           >
-            Palms Bet предлага разнообразни методи за депозит и теглене, включително Apple Pay,
+            Efbet предлага разнообразни методи за депозит и теглене, включително Apple Pay,
             Google Pay, A1 Wallet, Easy Pay, Fast Pay, Skrill и банкови карти Visa и MasterCard.
             Онлайн казиното осигурява бързи и сигурни транзакции, съобразени с нуждите на
             българските играчи. За теглене на печалби са налични банков превод, Skrill, Easy Pay,
             Fast Pay и други популярни платежни решения. Благодарение на богатия избор от методи за
-            плащане, Palms Bet улеснява както депозирането на средства, така и получаването на
+            плащане, Efbet улеснява както депозирането на средства, така и получаването на
             печалби.
           </p>
 
