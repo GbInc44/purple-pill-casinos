@@ -230,7 +230,7 @@ const EfbetReview = () => {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 content-start">
               <InfoTile icon={Clock} label="Ключова информация" hue={180}>
                 <div className="space-y-1 text-sm">
-                  <div>Основан: <span className="font-bold">2005</span></div>
+                  <div>Основан: <span className="font-bold">2006</span></div>
                   <div>Лиценз: <span className="font-bold">ДКХ към НАП</span></div>
                 </div>
               </InfoTile>
@@ -310,7 +310,7 @@ const EfbetReview = () => {
               </div>
               <div className="flex items-center gap-3 text-white text-sm">
                 <Phone className="h-4 w-4 text-[hsl(270,100%,65%)]" />
-                <a href="tel:070045700" className="hover:underline">0700 45 700</a>
+                <a href="tel:070020788" className="hover:underline">0700 20 788</a>
               </div>
             </div>
             <div
