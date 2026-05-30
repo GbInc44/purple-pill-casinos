@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft, Clock, Gift, Gamepad2, Wallet, Timer, Coins, Mail, Phone, Star } from "lucide-react";
 import casinoBg from "@/assets/casino-bg.png";
-import palmsbetLogo from "@/assets/palmsbet-logo-new.png";
+import efbetLogo from "@/assets/efbet-logo.png";
 import providerSpinomenal from "@/assets/providers/spinomenal.png";
 import providerWazdan from "@/assets/providers/wazdan.webp";
 import providerEndorphina from "@/assets/providers/endorphina.png";
@@ -116,8 +116,8 @@ const PaymentTable = ({ title, rows, accentHue }: { title: string; rows: Payment
   </div>
 );
 
-const PalmsBetReview = () => {
-  useCanonicalUrl("/kazino/palms-bet");
+const EfbetReview = () => {
+  useCanonicalUrl("/kazino/efbet");
   const navigate = useNavigate();
 
   return (
@@ -207,7 +207,7 @@ const PalmsBetReview = () => {
               }}
             >
               <div className="h-32 sm:h-36 w-full rounded-xl flex items-center justify-center overflow-hidden border border-white/10" style={{ backgroundColor: "#0d1b3d" }}>
-                <img src={palmsbetLogo} alt="Palms Bet — лого" className="h-full w-full object-contain" />
+                <img src={efbetLogo} alt="Efbet — лого" className="h-full w-full object-contain" />
               </div>
 
               <div className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/95">
@@ -423,4 +423,4 @@ const PalmsBetReview = () => {
   );
 };
 
-export default PalmsBetReview;
+export default EfbetReview;
