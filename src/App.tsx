@@ -8,6 +8,7 @@ import NewCasinos from "./pages/NewCasinos.tsx";
 import Top10 from "./pages/Top10.tsx";
 import Winnings from "./pages/Winnings.tsx";
 import PalmsBetReview from "./pages/PalmsBetReview.tsx";
+import EfbetReview from "./pages/EfbetReview.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import ScrollToTop from "./components/ScrollToTop.tsx";
 import ScrollToTopButton from "./components/ScrollToTopButton.tsx";
@@ -27,6 +28,7 @@ const App = () => (
         <Route path="/top-10" element={<Top10 />} />
         <Route path="/pechalbi" element={<Winnings />} />
         <Route path="/kazino/palms-bet" element={<PalmsBetReview />} />
+        <Route path="/kazino/efbet" element={<EfbetReview />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>
