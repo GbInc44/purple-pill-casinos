@@ -97,7 +97,7 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
         </div>
       </nav>
 
-      <div className="relative z-10 py-10 px-4">
+      <div className="relative z-10 py-10 px-4 sm:px-6 md:px-8">
         <header className="text-center mb-4">
           {cleanSubtitle ? (
             <div className="text-center">{subtitle}</div>
