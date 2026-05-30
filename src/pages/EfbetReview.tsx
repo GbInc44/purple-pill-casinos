@@ -11,7 +11,7 @@ import providerPlayson from "@/assets/providers/playson.webp";
 import { useCanonicalUrl } from "@/hooks/useCanonicalUrl";
 
 const affiliateUrl =
-  "https://www.palmsbet.com/affiliate/?marketingCode=PB-0594&banID=&brand=ecasino&ns=&clickid=&pages=welcome-bonus-casino-affiliate";
+  "https://efbet.com/bounce/affiliate/page?affiliateToken=kKP_wtMgTAahd2HdwUYplmNd7ZgqdRLk&campaignId=1&siteId=&affiliateId=AG1140254867";
 
 type PaymentRow = { name: string; min: string; max: string; initials: string; color: string };
 
