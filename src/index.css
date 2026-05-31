@@ -58,6 +58,7 @@
   }
 
   .casino-page-bg {
+    background-image: var(--casino-bg-mobile);
     background-repeat: no-repeat;
     background-position: center top;
     background-size: 100% auto;
@@ -65,6 +66,7 @@
 
   @media (min-width: 768px) {
     .casino-page-bg {
+      background-image: var(--casino-bg-desktop);
       background-position: center center;
       background-size: cover;
       background-attachment: fixed;
