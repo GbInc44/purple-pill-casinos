@@ -59,17 +59,13 @@
 
   .casino-page-bg {
     background-color: hsl(var(--background));
+    background-image: var(--casino-bg-desktop);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
   }
 
-  @media (min-width: 768px) {
-    .casino-page-bg {
-      background-image: var(--casino-bg-desktop);
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: cover;
-      background-attachment: fixed;
-    }
-  }
 
 }
 
