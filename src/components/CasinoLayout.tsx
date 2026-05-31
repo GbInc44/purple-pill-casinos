@@ -47,12 +47,12 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
 
   return (
     <div
-      className="min-h-screen bg-cover bg-center bg-no-repeat md:bg-fixed relative overflow-x-hidden"
-      style={{ backgroundImage: `url(${casinoBg})` }}
+      className="min-h-screen bg-background md:bg-[image:var(--casino-bg)] md:bg-cover md:bg-center md:bg-no-repeat md:bg-fixed relative overflow-x-hidden"
+      style={{ "--casino-bg": `url(${casinoBg})` } as React.CSSProperties}
     >
       <div
         className="fixed inset-x-0 top-0 h-[100lvh] bg-cover bg-center bg-no-repeat pointer-events-none md:hidden"
-        style={{ backgroundImage: `url(${casinoBg})` }}
+        style={{ backgroundImage: "var(--casino-bg)" }}
         aria-hidden
       />
       <div className="fixed inset-0 animated-overlay pointer-events-none" />
