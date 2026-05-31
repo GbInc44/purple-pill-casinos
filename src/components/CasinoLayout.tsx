@@ -2,7 +2,7 @@ import { ReactNode, useState } from "react";
 import { Menu, X, Check, Minus, Facebook } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import casinoBg from "@/assets/casino-bg.png";
-import casinoBgMobile from "@/assets/casino-bg-mobile.png";
+
 import allBetLogo from "@/assets/all-bet-logo.png";
 import { Casino } from "@/data/casinos";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -50,11 +50,23 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
     <div
       className="casino-page-bg min-h-screen bg-background relative overflow-x-hidden"
       style={{
-        "--casino-bg-mobile": `url(${casinoBgMobile})`,
         "--casino-bg-desktop": `url(${casinoBg})`,
       } as React.CSSProperties}
+
     >
+      <div
+        className="md:hidden fixed inset-0 -z-10 pointer-events-none"
+        aria-hidden
+      >
+        <img
+          src={casinoBg}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
+      </div>
+
       <div className="fixed inset-0 animated-overlay pointer-events-none" />
+
 
       <nav className="nav-bar sticky top-0 z-50 w-full max-w-full px-3 sm:px-4 py-2 overflow-visible">
         <div className="flex items-center justify-between w-full max-w-full gap-2">
