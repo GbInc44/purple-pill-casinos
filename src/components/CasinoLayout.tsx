@@ -2,7 +2,7 @@ import { ReactNode, useState } from "react";
 import { Menu, X, Check, Minus, Facebook } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import casinoBg from "@/assets/casino-bg.png";
-import casinoBgMobile from "@/assets/casino-bg-mobile.png";
+
 import allBetLogo from "@/assets/all-bet-logo.png";
 import { Casino } from "@/data/casinos";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
