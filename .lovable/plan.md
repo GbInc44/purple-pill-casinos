@@ -1,31 +1,18 @@
 ## Problem
 
-In `src/components/CasinoLayout.tsx`, the root wrapper uses `bg-fixed` (CSS `background-attachment: fixed`) together with `bg-cover`. On mobile browsers the URL/toolbar collapses and expands during scroll, which changes the viewport height. Since the fixed background is sized to the viewport, it gets re-scaled on every toolbar transition, producing the visible zoom-in/zoom-out effect.
-
-Desktop is unaffected because the viewport height does not change during scroll.
+The header logo `<Link to="/">` in `src/components/CasinoLayout.tsx` uses `aspect-[500/60]` with an absolutely-positioned `<img>` filling it. The source PNG (`all-bet-logo.png`) contains the visible slot + "All Bet" mark on the left side with transparent padding, so the link's hit area is much wider than the visible logo. Clicking the empty space next to the logo still navigates home.
 
 ## Fix
 
-Replace the single `bg-fixed` class with a responsive variant so the fixed attachment only applies on larger screens:
+In `src/components/CasinoLayout.tsx`, change the logo `<Link>` so it wraps only the intrinsic size of the image:
 
-- Mobile/tablet: use the default `background-attachment: scroll` — the background scrolls with the page and never re-scales.
-- Desktop (`md:` and up): keep `bg-fixed` for the existing parallax-style look.
+- Remove `aspect-[500/60]`, `relative`, and the fixed-height variants from the `<Link>`.
+- Remove `absolute left-0 top-0 h-full w-full` from the `<img>`.
+- Give the `<img>` the responsive height (`h-10 sm:h-12 md:h-14`) with `w-auto`, so the anchor shrinks to the image's actual rendered width.
+- Keep `shrink-0`, the negative vertical margins, `object-contain`, and `pointer-events-none` removed from the img (the img itself should receive the click).
 
-Concretely, in `CasinoLayout.tsx` change the wrapper class from:
+Result: the clickable area matches the visible logo bounds on mobile, tablet, and desktop. No other files change.
 
-```
-bg-cover bg-center bg-fixed bg-no-repeat
-```
+## Verification
 
-to:
-
-```
-bg-cover bg-center bg-no-repeat md:bg-fixed
-```
-
-No other files need to change. This preserves the current desktop look while eliminating the mobile zoom artifact.
-
-## Notes
-
-- This is purely a CSS/presentation change in one file — no logic, data, or layout changes.
-- An alternative (using `100svh` or a separately positioned fixed background layer) is more invasive and not needed to resolve the reported issue.
+Reload `/` at 390px, tablet, and desktop widths; clicking just to the right of "All Bet" should no longer navigate, while clicking the slot icon or text should still go to `/`.
