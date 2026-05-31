@@ -267,7 +267,7 @@ const MrBitReview = () => {
 
               <InfoTile icon={Wallet} label="Плащания" hue={195}>
                 <div className="flex flex-wrap gap-1.5 items-center justify-center">
-                  <span className="px-2 py-0.5 rounded bg-[hsl(45,90%,50%)] text-[10px] font-bold text-black">Български пощи</span>
+                  <span className="px-2 py-0.5 rounded bg-[hsl(0,80%,55%)] text-[10px] font-bold text-white">A1 Wallet</span>
                   <span className="px-2 py-0.5 rounded bg-black text-[10px] font-bold text-white">Apple Pay</span>
                   <span className="px-2 py-0.5 rounded bg-[hsl(280,60%,50%)] text-[10px] font-bold text-white">Skrill</span>
                   <a
