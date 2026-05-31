@@ -54,7 +54,19 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
         "--casino-bg-desktop": `url(${casinoBg})`,
       } as React.CSSProperties}
     >
+      <div
+        className="md:hidden fixed inset-0 -z-10 pointer-events-none"
+        aria-hidden
+      >
+        <img
+          src={casinoBg}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
+      </div>
+
       <div className="fixed inset-0 animated-overlay pointer-events-none" />
+
 
       <nav className="nav-bar sticky top-0 z-50 w-full max-w-full px-3 sm:px-4 py-2 overflow-visible">
         <div className="flex items-center justify-between w-full max-w-full gap-2">
