@@ -15,30 +15,29 @@ const affiliateUrl = "https://mrbit.bg/bg";
 type PaymentRow = { name: string; min: string; max: string; initials: string; color: string };
 
 const depositMethods: PaymentRow[] = [
-  { name: "A1 Wallet", min: "5€", max: "50€", initials: "A1", color: "hsl(0,80%,55%)" },
-  { name: "Apple Pay", min: "5€", max: "5000€", initials: "AP", color: "hsl(0,0%,15%)" },
-  { name: "Cashterminal", min: "5€", max: "2500€", initials: "CT", color: "hsl(150,60%,40%)" },
-  { name: "Easy Pay", min: "5€", max: "5000€", initials: "EP", color: "hsl(30,90%,50%)" },
-  { name: "ePay", min: "5€", max: "1500€", initials: "eP", color: "hsl(210,80%,50%)" },
-  { name: "Fast Pay", min: "5€", max: "2500€", initials: "FP", color: "hsl(50,90%,50%)" },
-  { name: "Google Pay", min: "5€", max: "5000€", initials: "G", color: "hsl(220,80%,55%)" },
-  { name: "Mastercard", min: "5€", max: "5000€", initials: "MC", color: "hsl(15,80%,55%)" },
-  { name: "Skrill", min: "5€", max: "25000€", initials: "Sk", color: "hsl(280,60%,50%)" },
-  { name: "Visa", min: "5€", max: "5000€", initials: "V", color: "hsl(220,90%,40%)" },
-  { name: "Банков превод", min: "5€", max: "5000€", initials: "БП", color: "hsl(200,30%,45%)" },
-  { name: "Български пощи", min: "5€", max: "5000€", initials: "БГ", color: "hsl(45,90%,50%)" },
+  { name: "A1 Wallet", min: "10€", max: "30€", initials: "A1", color: "hsl(0,80%,55%)" },
+  { name: "Apple Pay", min: "10€", max: "7500€", initials: "AP", color: "hsl(0,0%,15%)" },
+  { name: "Cashterminal", min: "5.50€", max: "10000€", initials: "CT", color: "hsl(150,60%,40%)" },
+  { name: "Easy Pay", min: "5.50€", max: "2500€", initials: "EP", color: "hsl(30,90%,50%)" },
+  { name: "ePay", min: "5.50€", max: "7500€", initials: "eP", color: "hsl(210,80%,50%)" },
+  { name: "Fast Pay", min: "5.50€", max: "2500€", initials: "FP", color: "hsl(50,90%,50%)" },
+  { name: "Google Pay", min: "10€", max: "10000€", initials: "G", color: "hsl(220,80%,55%)" },
+  { name: "Mastercard", min: "10€", max: "7500€", initials: "MC", color: "hsl(15,80%,55%)" },
+  { name: "Neteller", min: "10€", max: "10000€", initials: "Nt", color: "hsl(140,70%,40%)" },
+  { name: "Paysafe card", min: "10€", max: "2000€", initials: "PS", color: "hsl(200,80%,45%)" },
+  { name: "Skrill", min: "10€", max: "10000€", initials: "Sk", color: "hsl(280,60%,50%)" },
+  { name: "Visa", min: "10€", max: "7500€", initials: "V", color: "hsl(220,90%,40%)" },
 ];
 
 const withdrawMethods: PaymentRow[] = [
-  { name: "Cashterminal", min: "15€", max: "2500€", initials: "CT", color: "hsl(150,60%,40%)" },
-  { name: "Easy Pay", min: "15€", max: "2500€", initials: "EP", color: "hsl(30,90%,50%)" },
-  { name: "ePay", min: "15€", max: "2500€", initials: "eP", color: "hsl(210,80%,50%)" },
-  { name: "Fast Pay", min: "15€", max: "2500€", initials: "FP", color: "hsl(50,90%,50%)" },
-  { name: "Mastercard", min: "15€", max: "5000€", initials: "MC", color: "hsl(15,80%,55%)" },
-  { name: "Skrill", min: "15€", max: "2500€", initials: "Sk", color: "hsl(280,60%,50%)" },
-  { name: "Visa", min: "15€", max: "5000€", initials: "V", color: "hsl(220,90%,40%)" },
-  { name: "Банков превод", min: "15€", max: "5000€", initials: "БП", color: "hsl(200,30%,45%)" },
-  { name: "Български пощи", min: "15€", max: "5000€", initials: "БГ", color: "hsl(45,90%,50%)" },
+  { name: "Cashterminal", min: "20€", max: "2500€", initials: "CT", color: "hsl(150,60%,40%)" },
+  { name: "Easy Pay", min: "20€", max: "2500€", initials: "EP", color: "hsl(30,90%,50%)" },
+  { name: "ePay", min: "20€", max: "2500€", initials: "eP", color: "hsl(210,80%,50%)" },
+  { name: "Fast Pay", min: "20€", max: "2500€", initials: "FP", color: "hsl(50,90%,50%)" },
+  { name: "Mastercard", min: "10€", max: "10000€", initials: "MC", color: "hsl(15,80%,55%)" },
+  { name: "Neteller", min: "10€", max: "2000€", initials: "Nt", color: "hsl(140,70%,40%)" },
+  { name: "Skrill", min: "10€", max: "2000€", initials: "Sk", color: "hsl(280,60%,50%)" },
+  { name: "Visa", min: "10€", max: "10000€", initials: "V", color: "hsl(220,90%,40%)" },
 ];
 
 const InfoTile = ({
