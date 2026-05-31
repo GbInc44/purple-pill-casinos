@@ -231,7 +231,7 @@ const MrBitReview = () => {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 content-start">
               <InfoTile icon={Clock} label="Ключова информация" hue={180}>
                 <div className="space-y-1 text-sm">
-                  <div>Основан: <span className="font-bold">2005</span></div>
+                  <div>Основан: <span className="font-bold">2018</span></div>
                   <div>Лиценз: <span className="font-bold">ДКХ към НАП</span></div>
                 </div>
               </InfoTile>
@@ -311,7 +311,7 @@ const MrBitReview = () => {
               </div>
               <div className="flex items-center gap-3 text-white text-sm">
                 <Phone className="h-4 w-4 text-[hsl(270,100%,65%)]" />
-                <a href="tel:070045700" className="hover:underline">0700 45 700</a>
+                <a href="tel:008002100604" className="hover:underline">008002100604</a>
               </div>
             </div>
             <div
@@ -360,13 +360,12 @@ const MrBitReview = () => {
             className="text-white text-sm md:text-base leading-relaxed mb-6 max-w-4xl font-medium"
             style={{ textShadow: "0 2px 8px rgba(0,0,0,0.9), 0 0 16px hsla(270,100%,65%,0.4)" }}
           >
-            MrBit предлага разнообразни методи за депозит и теглене, включително Apple Pay,
-            Google Pay, A1 Wallet, Easy Pay, Fast Pay, Skrill и банкови карти Visa и MasterCard.
-            Онлайн казиното осигурява бързи и сигурни транзакции, съобразени с нуждите на
-            българските играчи. За теглене на печалби са налични банков превод, Skrill, Easy Pay,
-            Fast Pay и други популярни платежни решения. Благодарение на богатия избор от методи за
-            плащане, MrBit улеснява както депозирането на средства, така и получаването на
-            печалби.
+            Mr Bit предлага богат избор от платежни методи за депозит и теглене, осигурявайки
+            бързи, сигурни и удобни транзакции. Платформата поддържа популярни електронни
+            портфейли като Skrill, Neteller, A1 Wallet и Apple Pay, както и банкови карти Visa и
+            MasterCard. За българските потребители са налични и предпочитаните местни методи ePay
+            и EasyPay. Благодарение на разнообразните опции за плащане, Mr Bit улеснява
+            управлението на средствата и осигурява комфортно онлайн залагане и казино изживяване.
           </p>
 
 
