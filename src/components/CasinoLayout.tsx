@@ -51,7 +51,7 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
       style={{ "--casino-bg": `url(${casinoBg})` } as React.CSSProperties}
     >
       <div
-        className="fixed inset-x-0 top-0 h-[100lvh] bg-[length:100%_100%] bg-center bg-no-repeat pointer-events-none md:hidden"
+        className="fixed inset-x-0 top-0 h-[100lvh] bg-[length:100%_auto] bg-top bg-repeat-y pointer-events-none md:hidden"
         style={{ backgroundImage: "var(--casino-bg)" }}
         aria-hidden
       />
