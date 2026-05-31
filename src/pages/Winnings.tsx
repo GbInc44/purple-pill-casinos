@@ -161,7 +161,7 @@ const Winnings = () => {
             <img
               src={allBetLogo}
               alt="All Bet"
-              className="h-10 sm:h-12 md:h-14 w-auto object-contain"
+              className="h-[22px] sm:h-[26px] md:h-[31px] w-auto object-contain"
             />
           </Link>
 
