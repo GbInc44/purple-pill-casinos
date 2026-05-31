@@ -7,11 +7,11 @@ const order = [
   "Bet365",
   "Efbet",
   "Palms Bet",
-  "Betano",
+  "MrBit",
   "8888",
   "Winbet",
   "Inbet",
-  "MrBit",
+  "Betano",
   "Sesame",
   "Alphawin",
 ];
