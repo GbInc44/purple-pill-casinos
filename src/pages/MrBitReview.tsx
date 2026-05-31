@@ -200,7 +200,7 @@ const MrBitReview = () => {
               </div>
 
               <div className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/95">
-                <span className="font-bold text-black text-sm">4.8/5</span>
+                <span className="font-bold text-black text-sm">4.7/5</span>
                 <div className="flex items-center gap-0.5">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="h-4 w-4 fill-[hsl(45,100%,55%)] text-[hsl(45,100%,55%)]" />
