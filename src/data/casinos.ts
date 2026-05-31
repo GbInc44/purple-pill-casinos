@@ -106,6 +106,7 @@ export const allCasinos: Casino[] = [
     logo: mrbitLogo,
     bonus: "Бонус до 1000 € + до 100 FS",
     url: "https://mrbit.bg/bg",
+    reviewPath: "/kazino/mrbit",
     pros: ["Разнообразие от начални бонуси", "Над 1000 казино игри", "Най-популярните доставчици"],
     cons: ["Кратък срок за превъртане на бонусите"],
   },
