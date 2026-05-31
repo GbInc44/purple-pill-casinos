@@ -5,7 +5,17 @@ import { useCanonicalUrl } from "@/hooks/useCanonicalUrl";
 
 const affiliateUrl = "https://www.palmsbet.com/affiliate/?marketingCode=PB-0594&banID=&brand=ecasino&ns=&clickid=&pages=welcome-bonus-casino-affiliate";
 
-const casinos = allCasinos.map((c) =>
+const reorderedCasinos = (() => {
+  const list = [...allCasinos];
+  const winbetIdx = list.findIndex((c) => c.name === "Winbet");
+  const palmsIdx = list.findIndex((c) => c.name === "Palms Bet");
+  if (winbetIdx !== -1 && palmsIdx !== -1) {
+    [list[winbetIdx], list[palmsIdx]] = [list[palmsIdx], list[winbetIdx]];
+  }
+  return list;
+})();
+
+const casinos = reorderedCasinos.map((c) =>
   c.name === "Palms Bet" ? { ...c, url: affiliateUrl } : c
 );
 
