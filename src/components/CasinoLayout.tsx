@@ -47,9 +47,14 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
 
   return (
     <div
-      className="min-h-screen bg-cover bg-center bg-no-repeat md:bg-fixed relative"
+      className="min-h-screen bg-cover bg-center bg-no-repeat md:bg-fixed relative overflow-x-hidden"
       style={{ backgroundImage: `url(${casinoBg})` }}
     >
+      <div
+        className="fixed inset-x-0 top-0 h-[100lvh] bg-cover bg-center bg-no-repeat pointer-events-none md:hidden"
+        style={{ backgroundImage: `url(${casinoBg})` }}
+        aria-hidden
+      />
       <div className="fixed inset-0 animated-overlay pointer-events-none" />
 
       <nav className="nav-bar sticky top-0 z-50 w-full max-w-full px-3 sm:px-4 py-2 overflow-visible">
