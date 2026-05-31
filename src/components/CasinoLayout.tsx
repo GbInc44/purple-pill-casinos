@@ -50,9 +50,9 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
     <div
       className="casino-page-bg min-h-screen bg-background relative overflow-x-hidden"
       style={{
-        "--casino-bg-mobile": `url(${casinoBgMobile})`,
         "--casino-bg-desktop": `url(${casinoBg})`,
       } as React.CSSProperties}
+
     >
       <div
         className="md:hidden fixed inset-0 -z-10 pointer-events-none"
