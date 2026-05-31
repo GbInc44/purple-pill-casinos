@@ -7,11 +7,13 @@ const affiliateUrl = "https://www.palmsbet.com/affiliate/?marketingCode=PB-0594&
 
 const reorderedCasinos = (() => {
   const list = [...allCasinos];
-  const winbetIdx = list.findIndex((c) => c.name === "Winbet");
-  const palmsIdx = list.findIndex((c) => c.name === "Palms Bet");
-  if (winbetIdx !== -1 && palmsIdx !== -1) {
-    [list[winbetIdx], list[palmsIdx]] = [list[palmsIdx], list[winbetIdx]];
-  }
+  const swap = (a: string, b: string) => {
+    const i = list.findIndex((c) => c.name === a);
+    const j = list.findIndex((c) => c.name === b);
+    if (i !== -1 && j !== -1) [list[i], list[j]] = [list[j], list[i]];
+  };
+  swap("Winbet", "Palms Bet");
+  swap("8888", "MrBit");
   return list;
 })();
 
