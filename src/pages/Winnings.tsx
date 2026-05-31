@@ -198,7 +198,7 @@ const Winnings = () => {
         </div>
       </nav>
 
-      <div className="relative z-10 py-10 px-4">
+      <div className="relative z-10 py-10 px-4 sm:px-6 md:px-14 lg:px-8">
         <header className="text-center mb-4">
           <div className="text-center">
             <h1
