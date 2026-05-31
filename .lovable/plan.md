@@ -1,20 +1,31 @@
 ## Problem
 
-`object-cover` fills the banner but crops the top/bottom of the "Palms Bet" wordmark. The logo image itself has a dark-blue background, so when we use `object-contain` it shows letterboxing against the card's black background.
+In `src/components/CasinoLayout.tsx`, the root wrapper uses `bg-fixed` (CSS `background-attachment: fixed`) together with `bg-cover`. On mobile browsers the URL/toolbar collapses and expands during scroll, which changes the viewport height. Since the fixed background is sized to the viewport, it gets re-scaled on every toolbar transition, producing the visible zoom-in/zoom-out effect.
 
-## Proposed fix
+Desktop is unaffected because the viewport height does not change during scroll.
 
-In `src/pages/PalmsBetReview.tsx` (logo container around line 209-211):
+## Fix
 
-1. Switch the `<img>` back to `object-contain` so no part of the logo is cut.
-2. Make the container's background match the logo's blue (`#0d1b3d`-ish navy) so the contained image visually fills the banner with no visible empty space.
-3. Increase the banner height (e.g. from `h-24` to `h-32 sm:h-36`) and remove inner padding so the wordmark reads larger and centered.
-4. Keep `overflow-hidden` and the rounded corners intact.
+Replace the single `bg-fixed` class with a responsive variant so the fixed attachment only applies on larger screens:
 
-Result: the full "Palms Bet" logo is visible, nothing is cropped, and the banner still looks like one solid filled block instead of a small logo on a black card.
+- Mobile/tablet: use the default `background-attachment: scroll` — the background scrolls with the page and never re-scales.
+- Desktop (`md:` and up): keep `bg-fixed` for the existing parallax-style look.
 
-## Alternative (if you'd rather keep the current height)
+Concretely, in `CasinoLayout.tsx` change the wrapper class from:
 
-Crop a tighter version of the logo asset (trim the empty navy padding around the wordmark) and keep `object-cover` — this way cover doesn't cut letters because the source no longer has extra vertical space.
+```
+bg-cover bg-center bg-fixed bg-no-repeat
+```
 
-Let me know which direction you prefer and I'll implement it.
+to:
+
+```
+bg-cover bg-center bg-no-repeat md:bg-fixed
+```
+
+No other files need to change. This preserves the current desktop look while eliminating the mobile zoom artifact.
+
+## Notes
+
+- This is purely a CSS/presentation change in one file — no logic, data, or layout changes.
+- An alternative (using `100svh` or a separately positioned fixed background layer) is more invasive and not needed to resolve the reported issue.
