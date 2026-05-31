@@ -288,7 +288,7 @@ const MrBitReview = () => {
               </InfoTile>
 
               <InfoTile icon={Coins} label="Мин/Макс депозит" hue={195}>
-                <div className="font-bold">€5 / €1000</div>
+                <div className="font-bold">€5 / €500</div>
               </InfoTile>
             </div>
           </div>
