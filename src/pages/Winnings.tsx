@@ -155,7 +155,7 @@ const Winnings = () => {
         <div className="flex items-center justify-between w-full max-w-full gap-2">
           <Link
             to="/"
-            className="shrink-0 inline-block -my-1 sm:-my-2"
+            className="shrink-0 inline-block -my-1 sm:-my-2 md:my-0 md:py-1"
             aria-label="All Bet — към началната страница"
           >
             <img
