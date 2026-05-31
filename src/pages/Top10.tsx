@@ -6,10 +6,10 @@ import palmsbetBanner from "@/assets/palmsbet-banner-728x90.png";
 const order = [
   "Bet365",
   "Efbet",
-  "Winbet",
+  "Palms Bet",
   "Betano",
   "8888",
-  "Palms Bet",
+  "Winbet",
   "Inbet",
   "MrBit",
   "Sesame",
