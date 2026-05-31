@@ -47,14 +47,9 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
 
   return (
     <div
-      className="min-h-screen bg-background md:bg-[image:var(--casino-bg)] md:bg-cover md:bg-center md:bg-no-repeat md:bg-fixed relative overflow-x-hidden"
-      style={{ "--casino-bg": `url(${casinoBg})` } as React.CSSProperties}
+      className="min-h-screen bg-background bg-cover bg-center bg-no-repeat md:bg-fixed relative overflow-x-hidden"
+      style={{ backgroundImage: `url(${casinoBg})` }}
     >
-      <div
-        className="fixed inset-x-0 top-0 h-[100lvh] bg-[length:100%_auto] bg-top bg-repeat-y pointer-events-none md:hidden"
-        style={{ backgroundImage: "var(--casino-bg)" }}
-        aria-hidden
-      />
       <div className="fixed inset-0 animated-overlay pointer-events-none" />
 
       <nav className="nav-bar sticky top-0 z-50 w-full max-w-full px-3 sm:px-4 py-2 overflow-visible">
