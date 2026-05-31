@@ -47,7 +47,7 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
 
   return (
     <div
-      className="min-h-screen bg-background bg-cover bg-center bg-no-repeat md:bg-fixed relative overflow-x-hidden"
+      className="casino-page-bg min-h-screen bg-background relative overflow-x-hidden"
       style={{ backgroundImage: `url(${casinoBg})` }}
     >
       <div className="fixed inset-0 animated-overlay pointer-events-none" />
