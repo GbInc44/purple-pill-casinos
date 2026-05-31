@@ -2,6 +2,7 @@ import { ReactNode, useState } from "react";
 import { Menu, X, Check, Minus, Facebook } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import casinoBg from "@/assets/casino-bg.png";
+import casinoBgMobile from "@/assets/casino-bg-mobile.png";
 import allBetLogo from "@/assets/all-bet-logo.png";
 import { Casino } from "@/data/casinos";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -47,8 +48,11 @@ const CasinoLayout = ({ subtitle, casinos, variant = "grid", showProsCons = fals
 
   return (
     <div
-      className="min-h-screen bg-background bg-cover bg-center bg-no-repeat md:bg-fixed relative overflow-x-hidden"
-      style={{ backgroundImage: `url(${casinoBg})` }}
+      className="casino-page-bg min-h-screen bg-background relative overflow-x-hidden"
+      style={{
+        "--casino-bg-mobile": `url(${casinoBgMobile})`,
+        "--casino-bg-desktop": `url(${casinoBg})`,
+      } as React.CSSProperties}
     >
       <div className="fixed inset-0 animated-overlay pointer-events-none" />
 
