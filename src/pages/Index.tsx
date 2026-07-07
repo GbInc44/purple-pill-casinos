@@ -46,7 +46,7 @@ const Index = () => {
     casinos={casinos}
     banner={
       <div className="relative inline-block">
-        <ExternalScript src="https://js.efbet.com/javascript.php?prefix=Zahiu1R5LU7UOsjNOfgKeWNd7ZgqdRLk&media=43&campaign=1" />
+        <ExternalScript src="https://js.efbet.com/javascript.php?prefix=Zahiu1R5LU7UOsjNOfgKeWNd7ZgqdRLk&media=43&campaign=1" width={728} height={90} />
         <a
           href="https://record.efbet.com/_Zahiu1R5LU7UOsjNOfgKeWNd7ZgqdRLk/1/"
           target="_blank"
