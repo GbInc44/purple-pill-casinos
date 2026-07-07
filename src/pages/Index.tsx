@@ -45,7 +45,16 @@ const Index = () => {
     }
     casinos={casinos}
     banner={
-      <ExternalScript src="https://js.efbet.com/javascript.php?prefix=Zahiu1R5LU7UOsjNOfgKeWNd7ZgqdRLk&media=19&campaign=1" />
+      <div className="relative inline-block">
+        <ExternalScript src="https://js.efbet.com/javascript.php?prefix=Zahiu1R5LU7UOsjNOfgKeWNd7ZgqdRLk&media=43&campaign=1" />
+        <a
+          href="https://record.efbet.com/_Zahiu1R5LU7UOsjNOfgKeWNd7ZgqdRLk/1/"
+          target="_blank"
+          rel="noopener noreferrer sponsored"
+          aria-label="Efbet"
+          className="absolute inset-0 z-10"
+        />
+      </div>
     }
   />
   );
